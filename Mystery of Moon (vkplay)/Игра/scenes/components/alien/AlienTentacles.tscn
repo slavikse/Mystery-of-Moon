@@ -1,0 +1,283 @@
+[gd_scene load_steps=27 format=2]
+
+[ext_resource path="res://scenes/components/alien/textures/cloak/alien_cloak_light2.png" type="Texture" id=1]
+[ext_resource path="res://scenes/components/alien/textures/cloak/alien_cloak_light1.png" type="Texture" id=2]
+[ext_resource path="res://scenes/components/alien/textures/cloak/alien_cloak_light3.png" type="Texture" id=3]
+[ext_resource path="res://scenes/components/alien/AlienTentacles.gd" type="Script" id=4]
+[ext_resource path="res://scenes/components/alien/textures/grab/alien_grab1.png" type="Texture" id=5]
+[ext_resource path="res://scenes/components/alien/textures/grab/alien_grab3.png" type="Texture" id=6]
+[ext_resource path="res://scenes/components/alien/textures/grab/alien_grab2.png" type="Texture" id=7]
+[ext_resource path="res://scenes/components/alien/textures/grab/alien_grab4.png" type="Texture" id=8]
+[ext_resource path="res://scenes/components/alien/textures/grab/alien_grab5.png" type="Texture" id=9]
+[ext_resource path="res://scenes/components/final/textures/tentacle1.png" type="Texture" id=10]
+[ext_resource path="res://scenes/components/final/textures/tentacle2.png" type="Texture" id=11]
+[ext_resource path="res://scenes/components/final/textures/tentacle4.png" type="Texture" id=12]
+[ext_resource path="res://scenes/components/final/textures/tentacle3.png" type="Texture" id=13]
+[ext_resource path="res://scenes/components/alien/Bubble.tscn" type="PackedScene" id=14]
+[ext_resource path="res://scenes/components/final/textures/tentacle_line1.png" type="Texture" id=15]
+[ext_resource path="res://scenes/components/alien/TentacleHook.gd" type="Script" id=16]
+[ext_resource path="res://scenes/components/alien/textures/alien_shot1.png" type="Texture" id=17]
+[ext_resource path="res://scenes/components/alien/textures/alien_shot2.png" type="Texture" id=18]
+[ext_resource path="res://scenes/components/alien/audio/raincoat.wav" type="AudioStream" id=19]
+[ext_resource path="res://scenes/components/alien/audio/grabbed.wav" type="AudioStream" id=20]
+
+[sub_resource type="SpriteFrames" id=8]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 1 ), ExtResource( 3 ), ExtResource( 1 ), ExtResource( 1 ), ExtResource( 3 ), ExtResource( 1 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "light",
+"speed": 6.0
+} ]
+
+[sub_resource type="SpriteFrames" id=13]
+animations = [ {
+"frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 10 ), ExtResource( 13 ), ExtResource( 12 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "wait",
+"speed": 2.0
+} ]
+
+[sub_resource type="SpriteFrames" id=9]
+animations = [ {
+"frames": [ ExtResource( 9 ), ExtResource( 8 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 5 ) ],
+"loop": false,
+"name": "grabbed",
+"speed": 4.0
+} ]
+
+[sub_resource type="SpriteFrames" id=14]
+animations = [ {
+"frames": [ ExtResource( 17 ), ExtResource( 18 ) ],
+"loop": true,
+"name": "shot",
+"speed": 1.0
+} ]
+
+[sub_resource type="Animation" id=11]
+length = 0.001
+
+[sub_resource type="Animation" id=12]
+resource_name = "shot"
+length = 0.6
+loop = true
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "_create_bubble_anim"
+}, {
+"args": [  ],
+"method": "_create_bubble_anim"
+} ]
+}
+
+[node name="AlienTentacles" type="Area2D"]
+collision_layer = 128
+collision_mask = 0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true,
+"_editor_description_": "По началу будут встречаться без щупальцы и свечения. С щупальцей будеть только в конце (2 концовки).
+Метеоров рядом быть не должно, чтобы не задевали щупальцу.
+"
+}
+_BubbleScene = ExtResource( 14 )
+
+[node name="TentacleSpeedIncrease" type="Area2D" parent="."]
+visible = false
+position = Vector2( -2, 1020 )
+rotation = 3.14159
+scale = Vector2( 3, -3 )
+collision_layer = 67108864
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="IncreaseCollision" type="CollisionPolygon2D" parent="TentacleSpeedIncrease"]
+polygon = PoolVector2Array( 212.667, -339.837, 212.667, 22.8295, 215.333, 22.8295, 215.333, -339.837 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Trapper" type="AnimatedSprite" parent="."]
+position = Vector2( 0, 1080 )
+scale = Vector2( 2, 2 )
+z_index = 1
+frames = SubResource( 8 )
+animation = "light"
+frame = 1
+playing = true
+offset = Vector2( 0, -57 )
+__meta__ = {
+"_edit_lock_": true,
+"_editor_description_": ""
+}
+
+[node name="GrabCollision" type="CollisionPolygon2D" parent="."]
+visible = false
+position = Vector2( -32, 8 )
+polygon = PoolVector2Array( 24, 848, 24, 1000, 16, 1000, 16, 848, 8, 720, -16, 296, -40, -8, -32, -8, -8, 296, 16, 720 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Legs" type="Node2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Grab" type="Tween" parent="Legs"]
+
+[node name="TentacleHook" type="Area2D" parent="Legs"]
+position = Vector2( 0, 1248 )
+collision_layer = 536870912
+script = ExtResource( 16 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="TentacleCollision" type="CollisionPolygon2D" parent="Legs/TentacleHook"]
+visible = false
+position = Vector2( 0, -1016 )
+polygon = PoolVector2Array( -24, 856, 24, 856, 24, 1008, -24, 1008 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Tentacle" type="AnimatedSprite" parent="Legs/TentacleHook"]
+position = Vector2( -8, 1 )
+rotation = -3.14159
+scale = Vector2( -3, -3 )
+frames = SubResource( 13 )
+animation = "wait"
+frame = 3
+playing = true
+offset = Vector2( 2.20537e-06, -25.1705 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Leg" type="Sprite" parent="Legs"]
+position = Vector2( -8, 1332 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 15 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Leg2" type="Sprite" parent="Legs"]
+position = Vector2( -9, 2082 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 15 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Leg3" type="Sprite" parent="Legs"]
+position = Vector2( -9, 1932 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 15 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Leg4" type="Sprite" parent="Legs"]
+position = Vector2( -8, 1632 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 15 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Leg5" type="Sprite" parent="Legs"]
+position = Vector2( -8, 1482 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 15 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Leg6" type="Sprite" parent="Legs"]
+position = Vector2( -8, 1782 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 15 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Catch" type="AudioStreamPlayer2D" parent="Legs"]
+position = Vector2( 0, 900 )
+stream = ExtResource( 19 )
+volume_db = 1.0
+pitch_scale = 0.4
+max_distance = 1500.0
+bus = "Effects"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Grabbed" type="AudioStreamPlayer2D" parent="Legs"]
+stream = ExtResource( 20 )
+volume_db = 15.0
+max_distance = 1500.0
+bus = "Effects"
+
+[node name="Grabbed" type="AnimatedSprite" parent="."]
+position = Vector2( 4, 1080 )
+scale = Vector2( 2, 2 )
+z_index = 1
+frames = SubResource( 9 )
+animation = "grabbed"
+offset = Vector2( -4, -57.5 )
+__meta__ = {
+"_edit_lock_": true,
+"_editor_description_": ""
+}
+
+[node name="Delay" type="Timer" parent="Grabbed"]
+one_shot = true
+
+[node name="TakeOnRaincoat" type="AudioStreamPlayer2D" parent="Grabbed"]
+stream = ExtResource( 19 )
+pitch_scale = 0.8
+max_distance = 1500.0
+bus = "Effects"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Shooting" type="AnimatedSprite" parent="."]
+visible = false
+position = Vector2( 1, 1081 )
+scale = Vector2( 2, 2 )
+z_index = 1
+frames = SubResource( 14 )
+animation = "shot"
+playing = true
+offset = Vector2( 0, -58 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Shot" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 11 )
+anims/shot = SubResource( 12 )
+
+[node name="BubbleSpawn" type="Position2D" parent="."]
+position = Vector2( -5, 912 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[connection signal="area_entered" from="TentacleSpeedIncrease" to="." method="_on_TentacleSpeedIncrease_area_entered"]
+[connection signal="tween_all_completed" from="Legs/Grab" to="." method="_on_Grab_tween_all_completed"]
+[connection signal="area_entered" from="Legs/TentacleHook" to="." method="_on_TentacleHook_area_entered"]
+[connection signal="animation_finished" from="Grabbed" to="." method="_on_Grabbed_animation_finished"]
+[connection signal="timeout" from="Grabbed/Delay" to="." method="_on_Grabbed_Delay_timeout"]

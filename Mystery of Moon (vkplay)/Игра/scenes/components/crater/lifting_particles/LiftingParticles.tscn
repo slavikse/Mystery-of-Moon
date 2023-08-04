@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/components/crater/lifting_particles/LiftingParticles.gd" type="Script" id=1]
+[ext_resource path="res://scenes/components/alien/Bubble.tscn" type="PackedScene" id=3]
+
+[sub_resource type="Animation" id=17]
+length = 0.001
+
+[sub_resource type="Animation" id=18]
+resource_name = "create"
+length = 1.2
+loop = true
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "_create_bubble_anim"
+}, {
+"args": [  ],
+"method": "_create_bubble_anim"
+}, {
+"args": [  ],
+"method": "_create_bubble_anim"
+} ]
+}
+
+[node name="LiftingParticles" type="Node2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": ""
+}
+_BubbleScene = ExtResource( 3 )
+
+[node name="Initiator" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 17 )
+anims/create = SubResource( 18 )
+
+[node name="Bubbles" type="Node2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}

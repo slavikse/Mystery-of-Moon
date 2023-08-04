@@ -1,0 +1,153 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://scenes/components/player/laser_shot/LaserShot.gd" type="Script" id=1]
+[ext_resource path="res://scenes/components/player/laser_shot/textures/ring/laser_shot2.png" type="Texture" id=3]
+[ext_resource path="res://scenes/components/player/laser_shot/textures/ring/laser_shot1.png" type="Texture" id=4]
+[ext_resource path="res://scenes/components/player/laser_shot/LaserShotRay.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/components/player/laser_shot/textures/charge/laser_shot1.png" type="Texture" id=6]
+[ext_resource path="res://scenes/components/player/laser_shot/textures/charge/laser_shot4.png" type="Texture" id=7]
+[ext_resource path="res://scenes/components/player/laser_shot/textures/charge/laser_shot5.png" type="Texture" id=8]
+[ext_resource path="res://scenes/components/player/laser_shot/textures/charge/laser_shot3.png" type="Texture" id=9]
+[ext_resource path="res://scenes/components/player/laser_shot/audio/charging.wav" type="AudioStream" id=10]
+[ext_resource path="res://scenes/components/player/laser_shot/audio/shooting.wav" type="AudioStream" id=16]
+[ext_resource path="res://scenes/components/player/laser_shot/textures/charge/laser_shot2.png" type="Texture" id=17]
+[ext_resource path="res://scenes/components/player/laser_shot/audio/discharging.wav" type="AudioStream" id=18]
+
+[sub_resource type="Animation" id=22]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=23]
+resource_name = "hide"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=24]
+resource_name = "show"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [ ExtResource( 4 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 2.0
+} ]
+
+[sub_resource type="SpriteFrames" id=8]
+animations = [ {
+"frames": [ ExtResource( 8 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 17 ), ExtResource( 6 ) ],
+"loop": false,
+"name": "cooling",
+"speed": 6.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 17 ), ExtResource( 9 ), ExtResource( 7 ), ExtResource( 8 ) ],
+"loop": false,
+"name": "heating",
+"speed": 10.0
+} ]
+
+[node name="LaserShot" type="Node2D"]
+scale = Vector2( 1e-05, 1e-05 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="ToggleShowing" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 22 )
+anims/hide = SubResource( 23 )
+anims/show = SubResource( 24 )
+
+[node name="Weapon" type="Node2D" parent="."]
+rotation = 0.610865
+scale = Vector2( 2, 2 )
+z_index = 1
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Ring" type="AnimatedSprite" parent="Weapon"]
+modulate = Color( 0.784314, 0.784314, 0.784314, 1 )
+position = Vector2( 34, 9 )
+rotation = 0.314159
+frames = SubResource( 7 )
+frame = 1
+playing = true
+offset = Vector2( -24, -8 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Charge" type="AnimatedSprite" parent="Weapon"]
+position = Vector2( 34, 9 )
+rotation = 0.314159
+frames = SubResource( 8 )
+animation = "heating"
+offset = Vector2( -24, -8 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Fire" type="Timer" parent="Weapon/Charge"]
+wait_time = 2.0
+one_shot = true
+
+[node name="LaserShotRay" parent="Weapon/Charge" instance=ExtResource( 5 )]
+
+[node name="Charging" type="AudioStreamPlayer" parent="Weapon/Charge"]
+stream = ExtResource( 10 )
+volume_db = -5.0
+pitch_scale = 1.6
+bus = "Effects"
+
+[node name="Shooting" type="AudioStreamPlayer" parent="Weapon/Charge"]
+stream = ExtResource( 16 )
+volume_db = -5.0
+pitch_scale = 0.8
+bus = "Effects"
+
+[node name="Discharging" type="AudioStreamPlayer" parent="Weapon/Charge"]
+stream = ExtResource( 18 )
+volume_db = -15.0
+bus = "Effects"
+
+[connection signal="animation_finished" from="Weapon/Charge" to="." method="_on_Charge_animation_finished"]
+[connection signal="frame_changed" from="Weapon/Charge" to="." method="_on_Charge_frame_changed"]
+[connection signal="timeout" from="Weapon/Charge/Fire" to="." method="_on_Charge_Fire_timeout"]

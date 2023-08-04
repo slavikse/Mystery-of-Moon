@@ -1,0 +1,98 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/components/cosmos/Cosmos.gd" type="Script" id=1]
+[ext_resource path="res://scenes/components/cosmos/CosmosBufferZone.gd" type="Script" id=2]
+[ext_resource path="res://scenes/components/cosmos/textures/stars.png" type="Texture" id=4]
+
+[node name="Cosmos" type="Area2D"]
+collision_layer = 32
+collision_mask = 0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Collision" type="CollisionPolygon2D" parent="."]
+visible = false
+position = Vector2( 425.396, -8 )
+scale = Vector2( 1.76302, 1 )
+polygon = PoolVector2Array( -313.891, 8, 1079.17, 8, 1079.17, 200, -313.891, 200 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CosmosBufferZone" type="Area2D" parent="."]
+position = Vector2( 0, 176 )
+collision_layer = 512
+collision_mask = 0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Collision" type="CollisionPolygon2D" parent="CosmosBufferZone"]
+visible = false
+position = Vector2( 0, -16 )
+polygon = PoolVector2Array( -128, 0, -128, 192, 2328, 192, 2328, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Stars" type="Node2D" parent="."]
+position = Vector2( 24, -1508 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="StarsLine1" type="Node2D" parent="Stars"]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Stars1" type="Sprite" parent="Stars/StarsLine1"]
+position = Vector2( 455.5, 1258 )
+scale = Vector2( 1.44881, 1.44862 )
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Stars3" type="Sprite" parent="Stars/StarsLine1"]
+position = Vector2( 1687.37, 1268.5 )
+scale = Vector2( 1.48246, 1.48246 )
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="StarsLine3" type="Node2D" parent="Stars"]
+position = Vector2( 0, 1568 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Stars1" type="Sprite" parent="Stars/StarsLine3"]
+position = Vector2( 458.579, 897 )
+scale = Vector2( 1.45614, 1.45614 )
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Stars3" type="Sprite" parent="Stars/StarsLine3"]
+position = Vector2( 1683.16, 879.5 )
+scale = Vector2( 1.49248, 1.49248 )
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
+visible = false
+position = Vector2( 1112, 544 )
+scale = Vector2( 125.6, 53.6 )
+process_parent = true
+physics_process_parent = true
+__meta__ = {
+"_edit_lock_": true
+}

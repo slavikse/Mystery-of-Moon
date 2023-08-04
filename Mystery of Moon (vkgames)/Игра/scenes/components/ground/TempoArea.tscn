@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/components/ground/TempoArea.gd" type="Script" id=1]
+[ext_resource path="res://scenes/components/ground/Ground.tscn" type="PackedScene" id=3]
+
+[node name="TempoArea" type="Area2D"]
+z_index = 2
+collision_layer = 256
+collision_mask = 0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Collision" type="CollisionPolygon2D" parent="."]
+visible = false
+position = Vector2( -40, -48 )
+z_index = 4
+polygon = PoolVector2Array( 40, 25, 40, 176, 18640, 240, 18640, 104, 17248, 117, 16520, 79, 15827, 104, 13941, 69, 11747, 108, 11324, 35, 10698, 67, 9791, 33, 9135, 89, 7334, 101, 6878, 61, 6209, 59, 5739, 19, 4568, 21, 4037, -46, 3201, -57, 2422, 35, 1500, 11 )
+__meta__ = {
+"_edit_lock_": true,
+"_editor_description_": "Копировать коллизию у земли и поднимать на 4 квадратика."
+}
+
+[node name="Ground" parent="." instance=ExtResource( 3 )]
+position = Vector2( -3.55271e-15, 12 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_editor_description_": "Наметка для выравнивания."
+}

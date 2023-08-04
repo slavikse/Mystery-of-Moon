@@ -1,0 +1,896 @@
+[gd_scene load_steps=52 format=2]
+
+[ext_resource path="res://scenes/components/player/Player.gd" type="Script" id=1]
+[ext_resource path="res://scenes/components/player/control_manager/ControlManager.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/components/player/fuel/Fuel.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/components/player/textures/player_up_1.png" type="Texture" id=4]
+[ext_resource path="res://scenes/components/player/textures/player_down_1.png" type="Texture" id=5]
+[ext_resource path="res://scenes/components/player/textures/player_up_0.png" type="Texture" id=6]
+[ext_resource path="res://scenes/components/player/textures/player_down_0.png" type="Texture" id=7]
+[ext_resource path="res://scenes/components/player/fuel/textures/player_pusher.png" type="Texture" id=8]
+[ext_resource path="res://scenes/components/alien/textures/bubble.png" type="Texture" id=9]
+[ext_resource path="res://scenes/components/player/energy_shield/EnergyShield.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/components/player/menu/Menu.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/components/player/alert/Alert.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/components/player/laser_shot/LaserShot.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scenes/components/player/textures/ability.png" type="Texture" id=14]
+[ext_resource path="res://scenes/components/player/textures/captured_tentacle.png" type="Texture" id=15]
+[ext_resource path="res://scenes/components/player/audio/falled.wav" type="AudioStream" id=16]
+[ext_resource path="res://scenes/components/player/audio/glides.wav" type="AudioStream" id=17]
+[ext_resource path="res://scenes/components/player/laser_shot/audio/ray_dust.wav" type="AudioStream" id=18]
+[ext_resource path="res://scenes/components/player/audio/destroyed.wav" type="AudioStream" id=19]
+
+[sub_resource type="Animation" id=17]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=18]
+resource_name = "bumps"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -20 ) ]
+}
+
+[sub_resource type="Animation" id=15]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=20]
+resource_name = "low_shake"
+length = 0.2
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.04, 0.08, 0.12, 0.16, 0.2 ),
+"transitions": PoolRealArray( 0, 0, 0, 0, 0, 0 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 2, 10 ), Vector2( -8, 4 ), Vector2( 10, -6 ), Vector2( -10, 4 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=21]
+resource_name = "middle_shake"
+length = 0.3
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.06, 0.12, 0.18, 0.24, 0.3 ),
+"transitions": PoolRealArray( 0, 0, 0, 0, 0, 0 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 4, 14 ), Vector2( -14, 6 ), Vector2( 12, 4 ), Vector2( -12, 0 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=16]
+resource_name = "shake"
+length = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1 ),
+"transitions": PoolRealArray( 0, 0, 0 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 100 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:zoom")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "cosmos"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.2, 1.2 ) ]
+}
+
+[sub_resource type="Animation" id=38]
+resource_name = "final_tentacle"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.5, 1.5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -1200, -1000 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "meteor"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1 ),
+"transitions": PoolRealArray( 0, 0, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 100 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:zoom")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.1, 1.1 ) ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "sand_death"
+length = 0.5
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Pusher:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1e-05 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "push"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Pusher:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 2, 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1e-05 ), Vector2( 1, 2 ), Vector2( 1, 1e-05 ) ]
+}
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 7 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "down",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "up",
+"speed": 1.0
+} ]
+
+[sub_resource type="Curve" id=9]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -2.55682, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=29]
+curve = SubResource( 9 )
+
+[sub_resource type="ParticlesMaterial" id=7]
+emission_shape = 1
+emission_sphere_radius = 30.0
+flag_disable_z = true
+direction = Vector3( -1, 1, 0 )
+spread = 40.0
+gravity = Vector3( 100, 100, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+radial_accel = 600.0
+scale = 0.15
+scale_random = 0.1
+scale_curve = SubResource( 29 )
+color = Color( 0.568627, 0, 0, 0.796078 )
+
+[sub_resource type="ParticlesMaterial" id=4]
+trail_divisor = 4
+emission_shape = 5
+emission_ring_radius = 12.0
+emission_ring_inner_radius = 10.0
+emission_ring_height = 10.0
+emission_ring_axis = Vector3( 0, 0, 1 )
+flag_disable_z = true
+gravity = Vector3( 80, 0, 0 )
+orbit_velocity = 0.6
+orbit_velocity_random = 0.3
+scale = 0.15
+scale_random = 0.15
+color = Color( 1, 1, 0, 0.592157 )
+
+[sub_resource type="Gradient" id=25]
+offsets = PoolRealArray( 0, 0.0682594, 0.631399, 0.894198, 1 )
+colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0.948805, 0.948805, 0.948805, 0.0511945, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=24]
+gradient = SubResource( 25 )
+
+[sub_resource type="ParticlesMaterial" id=11]
+emission_shape = 2
+emission_box_extents = Vector3( 5, 35, 1 )
+flag_disable_z = true
+direction = Vector3( -1, 0, 0 )
+spread = 10.0
+gravity = Vector3( -80, 0, 0 )
+initial_velocity = 80.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 0.15
+scale_random = 0.1
+color = Color( 1, 0, 0, 0.568627 )
+color_ramp = SubResource( 24 )
+
+[sub_resource type="ParticlesMaterial" id=26]
+trail_divisor = 2
+emission_shape = 5
+emission_ring_radius = 12.0
+emission_ring_inner_radius = 10.0
+emission_ring_height = 10.0
+emission_ring_axis = Vector3( 0, 0, 1 )
+flag_disable_z = true
+gravity = Vector3( 80, 0, 0 )
+orbit_velocity = 0.6
+orbit_velocity_random = 0.3
+scale = 0.15
+scale_random = 0.15
+color = Color( 1, 0, 0, 0.788235 )
+color_ramp = SubResource( 24 )
+
+[sub_resource type="ParticlesMaterial" id=27]
+trail_divisor = 2
+emission_shape = 5
+emission_ring_radius = 12.0
+emission_ring_inner_radius = 10.0
+emission_ring_height = 10.0
+emission_ring_axis = Vector3( 0, 0, 1 )
+flag_disable_z = true
+gravity = Vector3( 80, 0, 0 )
+orbit_velocity = 0.6
+orbit_velocity_random = 0.3
+scale = 0.15
+scale_random = 0.15
+color = Color( 1, 0, 0, 0.788235 )
+color_ramp = SubResource( 24 )
+
+[sub_resource type="ParticlesMaterial" id=28]
+trail_divisor = 2
+emission_shape = 5
+emission_ring_radius = 12.0
+emission_ring_inner_radius = 10.0
+emission_ring_height = 10.0
+emission_ring_axis = Vector3( 0, 0, 1 )
+flag_disable_z = true
+gravity = Vector3( 80, 0, 0 )
+orbit_velocity = 0.6
+orbit_velocity_random = 0.3
+scale = 0.15
+scale_random = 0.15
+color = Color( 1, 0, 0, 0.788235 )
+color_ramp = SubResource( 24 )
+
+[sub_resource type="ParticlesMaterial" id=30]
+trail_divisor = 10
+emission_shape = 2
+emission_box_extents = Vector3( 28, 20, 1 )
+flag_disable_z = true
+direction = Vector3( 0, -1, 0 )
+gravity = Vector3( 0, -20, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 10.0
+color = Color( 0.627451, 0.627451, 0.627451, 0.627451 )
+
+[sub_resource type="Curve" id=36]
+_data = [ Vector2( 0, 0.222727 ), 0.0, 0.742122, 0, 0, Vector2( 1, 0.686364 ), -4.01591, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=37]
+curve = SubResource( 36 )
+
+[sub_resource type="Curve" id=32]
+_data = [ Vector2( 0, 0.419318 ), 0.0, 0.867133, 0, 0, Vector2( 1, 0.510227 ), -3.38182, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=33]
+curve = SubResource( 32 )
+
+[sub_resource type="ParticlesMaterial" id=31]
+emission_shape = 5
+emission_ring_radius = 20.0
+emission_ring_inner_radius = 50.0
+emission_ring_height = 10.0
+emission_ring_axis = Vector3( 0, 0, 1 )
+flag_disable_z = true
+direction = Vector3( 0, 0, 0 )
+spread = 0.0
+gravity = Vector3( 0, 0, 0 )
+orbit_velocity = -1.5
+orbit_velocity_random = 0.4
+orbit_velocity_curve = SubResource( 37 )
+angle = 10.0
+angle_random = 0.5
+scale = 0.15
+scale_random = 0.05
+scale_curve = SubResource( 33 )
+color = Color( 1, 1, 1, 0.627451 )
+
+[sub_resource type="Animation" id=34]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../../Fuel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 231.3, 681.2 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../../Fuel:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../../Body:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=35]
+resource_name = "absorb"
+length = 2.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 1.6, 2 ),
+"transitions": PoolRealArray( 0, 0.5, 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 1, 1 ), Vector2( 2, 2 ), Vector2( 1e-05, 1e-05 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../../Body:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.9, 2, 2.1 ),
+"transitions": PoolRealArray( 1, 1, 0.5, 2 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1.1, 1.1 ), Vector2( 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../../Fuel:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.9, 2, 2.1 ),
+"transitions": PoolRealArray( 1, 1, 0.5, 2 ),
+"update": 0,
+"values": [ Vector2( 231.3, 681.2 ), Vector2( 231.3, 681.2 ), Vector2( 234.3, 683.2 ), Vector2( 231.3, 681.2 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../../Fuel:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.9, 2, 2.1 ),
+"transitions": PoolRealArray( 1, 1, 0.5, 2 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1.1, 1.1 ), Vector2( 1, 1 ) ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath("../..")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "shake" ],
+"method": "ext_camera_shake"
+} ]
+}
+
+[node name="Player" type="Area2D"]
+collision_mask = 2973499390
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [  ],
+"_edit_lock_": true
+}
+
+[node name="Camera" type="Camera2D" parent="."]
+pause_mode = 2
+anchor_mode = 0
+current = true
+limit_smoothed = true
+smoothing_enabled = true
+editor_draw_limits = true
+editor_draw_drag_margin = true
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Bumps" type="AnimationPlayer" parent="Camera"]
+anims/RESET = SubResource( 17 )
+anims/bumps = SubResource( 18 )
+
+[node name="Shake" type="AnimationPlayer" parent="Camera"]
+anims/RESET = SubResource( 15 )
+anims/low_shake = SubResource( 20 )
+anims/middle_shake = SubResource( 21 )
+anims/shake = SubResource( 16 )
+
+[node name="Death" type="AnimationPlayer" parent="Camera"]
+anims/RESET = SubResource( 6 )
+anims/cosmos = SubResource( 8 )
+anims/final_tentacle = SubResource( 38 )
+anims/meteor = SubResource( 5 )
+anims/sand_death = SubResource( 14 )
+
+[node name="Body" type="Polygon2D" parent="."]
+position = Vector2( 202, 662 )
+rotation = 0.0349066
+z_index = 1
+color = Color( 1, 1, 1, 0 )
+offset = Vector2( 16, -128 )
+polygon = PoolVector2Array( 40, 154, 16, 186, 8, 186, -16, 154, -16, 122, 0, 106, 16, 106, 32, 114 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Pusher" type="Sprite" parent="Body"]
+position = Vector2( 26.8, 52 )
+rotation = 0.0785398
+scale = Vector2( 1, 1e-05 )
+texture = ExtResource( 8 )
+offset = Vector2( 1.98203, -22.7586 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="PusherAnim" type="AnimationPlayer" parent="Body"]
+anims/RESET = SubResource( 2 )
+anims/push = SubResource( 3 )
+
+[node name="Player" type="AnimatedSprite" parent="Body"]
+position = Vector2( 30.0692, 18.9639 )
+rotation = 0.0698132
+frames = SubResource( 1 )
+animation = "up"
+frame = 1
+playing = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CapturedTentacle" type="Sprite" parent="Body"]
+visible = false
+position = Vector2( 30.6448, 17.9413 )
+scale = Vector2( 0.95, 0.95 )
+z_index = 1
+texture = ExtResource( 15 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Destroy" type="Particles2D" parent="Body"]
+position = Vector2( 28.7507, 21.0093 )
+z_index = 1
+emitting = false
+amount = 100
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.6
+local_coords = false
+process_material = SubResource( 7 )
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Falled" type="AudioStreamPlayer" parent="Body"]
+stream = ExtResource( 16 )
+volume_db = -10.0
+pitch_scale = 0.6
+bus = "Effects"
+
+[node name="Glides" type="AudioStreamPlayer" parent="Body"]
+stream = ExtResource( 17 )
+volume_db = -5.0
+pitch_scale = 0.4
+bus = "Effects"
+
+[node name="Jump" type="AudioStreamPlayer" parent="Body"]
+stream = ExtResource( 18 )
+volume_db = -5.0
+pitch_scale = 8.0
+bus = "Effects"
+
+[node name="Destroyed" type="AudioStreamPlayer" parent="Body"]
+stream = ExtResource( 19 )
+volume_db = -10.0
+pitch_scale = 0.4
+bus = "Effects"
+
+[node name="Collision" type="CollisionPolygon2D" parent="."]
+visible = false
+position = Vector2( -152, 49 )
+z_index = 2
+polygon = PoolVector2Array( 378, 591, 386, 591, 402, 607, 408, 639, 378, 671, 354, 639, 362, 607 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Fuel" parent="." instance=ExtResource( 3 )]
+position = Vector2( 231.3, 681.2 )
+rotation = 0.10472
+polygon = PoolVector2Array( -5.71295, 15.482, -3.20425, 39.3505, 4.75192, 38.5143, 2.24323, 14.6458 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="RefillFront" type="Particles2D" parent="Fuel"]
+position = Vector2( -9.06386, 21.8672 )
+emitting = false
+amount = 20
+lifetime = 2.5
+one_shot = true
+speed_scale = 1.5
+process_material = SubResource( 4 )
+texture = ExtResource( 9 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="RefillBackLeft" type="Particles2D" parent="Fuel"]
+position = Vector2( -4.34697, 28.7711 )
+rotation = -0.10472
+scale = Vector2( -1, 1 )
+z_as_relative = false
+emitting = false
+amount = 16
+lifetime = 2.5
+one_shot = true
+speed_scale = 1.4
+process_material = SubResource( 4 )
+texture = ExtResource( 9 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="RefillBackRight" type="Particles2D" parent="Fuel"]
+position = Vector2( 7.16206, 23.1783 )
+rotation = -0.10472
+z_as_relative = false
+emitting = false
+amount = 18
+lifetime = 2.6
+one_shot = true
+speed_scale = 1.2
+process_material = SubResource( 4 )
+texture = ExtResource( 9 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Recovery" type="Node2D" parent="."]
+position = Vector2( 231.3, 681.2 )
+rotation = 0.10472
+z_index = 1
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="RecoverFront" type="Particles2D" parent="Recovery"]
+position = Vector2( 75.9454, -11.1998 )
+emitting = false
+amount = 40
+one_shot = true
+speed_scale = 1.5
+explosiveness = 0.2
+visibility_rect = Rect2( -72, -100, 150, 150 )
+local_coords = false
+process_material = SubResource( 11 )
+texture = ExtResource( 9 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="RecoverBack" type="Particles2D" parent="Recovery"]
+position = Vector2( 60.4391, 70.8706 )
+emitting = false
+amount = 40
+one_shot = true
+speed_scale = 1.5
+explosiveness = 0.2
+visibility_rect = Rect2( -72, -100, 150, 150 )
+local_coords = false
+process_material = SubResource( 11 )
+texture = ExtResource( 9 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="RefillFront" type="Particles2D" parent="Recovery"]
+position = Vector2( -9.06386, 21.8672 )
+emitting = false
+amount = 20
+lifetime = 2.0
+one_shot = true
+speed_scale = 1.5
+process_material = SubResource( 26 )
+texture = ExtResource( 9 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="RefillBackLeft" type="Particles2D" parent="Recovery"]
+position = Vector2( -4.34697, 28.7711 )
+rotation = -0.10472
+scale = Vector2( -1, 1 )
+z_as_relative = false
+emitting = false
+amount = 16
+lifetime = 2.0
+one_shot = true
+speed_scale = 1.4
+process_material = SubResource( 27 )
+texture = ExtResource( 9 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="RefillBackRight" type="Particles2D" parent="Recovery"]
+position = Vector2( 7.16206, 23.1783 )
+rotation = -0.10472
+z_as_relative = false
+emitting = false
+amount = 18
+lifetime = 2.0
+one_shot = true
+speed_scale = 1.2
+process_material = SubResource( 28 )
+texture = ExtResource( 9 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="EnergyShield" parent="." instance=ExtResource( 10 )]
+position = Vector2( 227, 679 )
+z_index = 1
+
+[node name="LaserShot" parent="." instance=ExtResource( 13 )]
+position = Vector2( 229, 682 )
+
+[node name="AddedAbility" type="Node2D" parent="."]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="AddedAbilityFront" type="Particles2D" parent="AddedAbility"]
+position = Vector2( 230, 696 )
+scale = Vector2( 1.5, 1.5 )
+z_index = 1
+emitting = false
+amount = 100
+lifetime = 1.2
+one_shot = true
+explosiveness = 0.5
+randomness = 0.5
+draw_order = 1
+process_material = SubResource( 30 )
+texture = ExtResource( 14 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="AddedAbilityBack" type="Particles2D" parent="AddedAbility"]
+position = Vector2( 230, 704 )
+scale = Vector2( 1.4, 1.4 )
+emitting = false
+amount = 100
+lifetime = 1.2
+one_shot = true
+explosiveness = 0.5
+randomness = 0.5
+draw_order = 1
+process_material = SubResource( 30 )
+texture = ExtResource( 14 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="AddedAbility" type="Particles2D" parent="AddedAbility"]
+position = Vector2( 230, 679 )
+z_index = 1
+emitting = false
+amount = 100
+lifetime = 2.0
+explosiveness = 0.2
+process_material = SubResource( 31 )
+texture = ExtResource( 9 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Absorb" type="AnimationPlayer" parent="AddedAbility/AddedAbility"]
+anims/RESET = SubResource( 34 )
+anims/absorb = SubResource( 35 )
+__meta__ = {
+"_editor_description_": "Время анимации основано на времени жизни частиц +0.1s"
+}
+
+[node name="ControlManager" parent="." instance=ExtResource( 2 )]
+
+[node name="Alert" parent="." instance=ExtResource( 12 )]
+visible = false
+
+[node name="Menu" parent="." instance=ExtResource( 11 )]
+visible = false
+
+[connection signal="area_entered" from="." to="." method="_on_Player_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_Player_area_exited"]
+[connection signal="body_entered" from="." to="." method="_on_Player_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_Player_body_exited"]
+[connection signal="animation_finished" from="Camera/Death" to="." method="_on_Death_animation_finished"]

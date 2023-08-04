@@ -1,0 +1,106 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://scenes/components/crater/lifting_beam/LiftingBeam.gd" type="Script" id=1]
+[ext_resource path="res://scenes/components/crater/lifting_particles/LiftingParticles.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/components/ground/textures/crater_3.png" type="Texture" id=3]
+[ext_resource path="res://scenes/components/crater/lifting_beam/textures/beam_crater_top.png" type="Texture" id=4]
+[ext_resource path="res://scenes/components/crater/lifting_beam/textures/beam_crater_bottom.png" type="Texture" id=5]
+[ext_resource path="res://scenes/components/crater/lifting_beam/CraterDeath.gd" type="Script" id=6]
+[ext_resource path="res://scenes/components/meteor/MeteorInCosmos.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/components/crater/lifting_beam/BubbleParticles.gd" type="Script" id=8]
+
+[node name="LiftingBeam" type="Area2D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Размеры кратера от 1.0 и не более 1.6"
+}
+is_crater_death = true
+
+[node name="Collision" type="CollisionPolygon2D" parent="."]
+visible = false
+z_index = 6
+polygon = PoolVector2Array( -96, 1144, 152, 1144, 152, 1024, -96, 1024 )
+__meta__ = {
+"_edit_lock_": true,
+"_editor_description_": "Должен быть выше коллизии земли, чтобы в кратер можно было упасть."
+}
+
+[node name="CraterDeath" type="Area2D" parent="."]
+visible = false
+collision_layer = 16777216
+collision_mask = 0
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Collision" type="CollisionPolygon2D" parent="CraterDeath"]
+position = Vector2( -16, 1158 )
+scale = Vector2( 3, 1 )
+z_index = 5
+polygon = PoolVector2Array( -32, 0, 149.333, 0, 149.333, 88, -32, 88 )
+disabled = true
+
+[node name="MeteorInCosmos" parent="." instance=ExtResource( 7 )]
+
+[node name="LaunchZone" type="Polygon2D" parent="."]
+position = Vector2( 24, 64 )
+color = Color( 0, 0, 0, 0 )
+polygon = PoolVector2Array( -120, 1016, -96, 952, -40, 968, 56, 968, 112, 952, 136, 1016 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="BeamCraterTop" type="Sprite" parent="LaunchZone"]
+position = Vector2( 16, 987 )
+scale = Vector2( 4, 3.3 )
+z_as_relative = false
+texture = ExtResource( 4 )
+offset = Vector2( 2, -16.5714 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BeamCraterBottom" type="Sprite" parent="LaunchZone"]
+position = Vector2( 16, 984 )
+scale = Vector2( 4, 4 )
+z_index = 5
+z_as_relative = false
+texture = ExtResource( 5 )
+offset = Vector2( 2, -16 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Cover" type="Sprite" parent="LaunchZone/BeamCraterBottom"]
+position = Vector2( -1, 31.75 )
+scale = Vector2( 0.609375, 0.398438 )
+z_index = 4
+z_as_relative = false
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true,
+"_editor_description_": ""
+}
+
+[node name="BubbleParticles" type="Node2D" parent="."]
+modulate = Color( 1, 1, 1, 0.705882 )
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="LiftingParticles2" parent="BubbleParticles" instance=ExtResource( 2 )]
+position = Vector2( -10, 1023 )
+
+[node name="LiftingParticles4" parent="BubbleParticles" instance=ExtResource( 2 )]
+position = Vector2( 67, 1016 )
+
+[connection signal="area_entered" from="CraterDeath" to="." method="_on_CraterDeath_area_entered"]

@@ -1,0 +1,3086 @@
+[gd_scene load_steps=67 format=2]
+
+[ext_resource path="res://scenes/components/boost/Fuel.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/components/cosmos/Cosmos.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/components/ground/Ground.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/components/crater/lifting_beam/LiftingBeam.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/components/ground/TempoArea.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/components/player/scraps/Scraps.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/components/hello_luna/ship/Ship.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/components/save_point/SavePoint.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/components/puzzles/Puzzle.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/components/hello_luna/HelloLuna.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/components/alien/AlienMob.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/components/player/Player.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/components/altar/Altar.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scenes/components/puzzles/images/image_part_5.png" type="Texture" id=14]
+[ext_resource path="res://scenes/levels/Level.gd" type="Script" id=15]
+[ext_resource path="res://scenes/components/meteor/Meteor.tscn" type="PackedScene" id=16]
+[ext_resource path="res://scenes/components/puzzles/images/image_part_7.png" type="Texture" id=17]
+[ext_resource path="res://scenes/components/puzzles/images/image_part_2.png" type="Texture" id=18]
+[ext_resource path="res://scenes/components/puzzles/images/image_part_1.png" type="Texture" id=19]
+[ext_resource path="res://scenes/components/puzzles/images/image_part_4.png" type="Texture" id=20]
+[ext_resource path="res://scenes/components/ground/SandDeath2.tscn" type="PackedScene" id=21]
+[ext_resource path="res://scenes/components/puzzles/images/image_part_8.png" type="Texture" id=22]
+[ext_resource path="res://scenes/components/puzzles/images/image_part_9.png" type="Texture" id=23]
+[ext_resource path="res://scenes/components/player/laser_shot/RayDust.tscn" type="PackedScene" id=24]
+[ext_resource path="res://scenes/components/final/Final.tscn" type="PackedScene" id=25]
+[ext_resource path="res://scenes/components/cosmos/textures/cosmos5.png" type="Texture" id=26]
+[ext_resource path="res://scenes/components/cosmos/textures/cosmos4.png" type="Texture" id=27]
+[ext_resource path="res://scenes/components/cosmos/textures/cosmos1.png" type="Texture" id=28]
+[ext_resource path="res://scenes/components/cosmos/textures/cosmos2.png" type="Texture" id=29]
+[ext_resource path="res://scenes/components/cosmos/textures/cosmos3.png" type="Texture" id=30]
+[ext_resource path="res://scenes/components/decorations/UFO.tscn" type="PackedScene" id=31]
+[ext_resource path="res://scenes/components/alien/Alien.tscn" type="PackedScene" id=32]
+[ext_resource path="res://scenes/components/player/control/KeyboardSpace.tscn" type="PackedScene" id=33]
+[ext_resource path="res://scenes/components/final/end_credits/EndCredits.tscn" type="PackedScene" id=34]
+[ext_resource path="res://fonts/intro.ttf" type="DynamicFontData" id=35]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 177.3 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "rotation"
+length = 180.0
+loop = true
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 180 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -170.0, 190.0 ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 177.3 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "rotation"
+length = 180.0
+loop = true
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 180 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -170.0, 190.0 ]
+}
+
+[sub_resource type="Animation" id=30]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 177.3 ]
+}
+
+[sub_resource type="Animation" id=31]
+resource_name = "rotation"
+length = 180.0
+loop = true
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 180 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -170.0, 190.0 ]
+}
+
+[sub_resource type="Animation" id=25]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 177.3 ]
+}
+
+[sub_resource type="Animation" id=26]
+resource_name = "rotation"
+length = 180.0
+loop = true
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 180 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -170.0, 190.0 ]
+}
+
+[sub_resource type="Animation" id=27]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 177.3 ]
+}
+
+[sub_resource type="Animation" id=28]
+resource_name = "rotation"
+length = 180.0
+loop = true
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 180 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -170.0, 190.0 ]
+}
+
+[sub_resource type="Animation" id=21]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 177.3 ]
+}
+
+[sub_resource type="Animation" id=22]
+resource_name = "rotation"
+length = 180.0
+loop = true
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 180 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -170.0, 190.0 ]
+}
+
+[sub_resource type="Animation" id=19]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 177.3 ]
+}
+
+[sub_resource type="Animation" id=20]
+resource_name = "rotation"
+length = 180.0
+loop = true
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 180 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -170.0, 190.0 ]
+}
+
+[sub_resource type="Animation" id=17]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 177.3 ]
+}
+
+[sub_resource type="Animation" id=18]
+resource_name = "rotation"
+length = 180.0
+loop = true
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 180 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -170.0, 190.0 ]
+}
+
+[sub_resource type="Animation" id=15]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 177.3 ]
+}
+
+[sub_resource type="Animation" id=16]
+resource_name = "rotation"
+length = 180.0
+loop = true
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 180 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -170.0, 190.0 ]
+}
+
+[sub_resource type="Animation" id=23]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 177.3 ]
+}
+
+[sub_resource type="Animation" id=24]
+resource_name = "rotation"
+length = 180.0
+loop = true
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 180 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -170.0, 190.0 ]
+}
+
+[sub_resource type="Animation" id=9]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 177.3 ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "rotation"
+length = 180.0
+loop = true
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 180 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -170.0, 190.0 ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 177.3 ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "rotation"
+length = 180.0
+loop = true
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 180 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -170.0, 190.0 ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 177.3 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "rotation"
+length = 180.0
+loop = true
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 180 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -170.0, 190.0 ]
+}
+
+[sub_resource type="Animation" id=13]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 177.3 ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "rotation"
+length = 180.0
+loop = true
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 180 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -170.0, 190.0 ]
+}
+
+[sub_resource type="Animation" id=11]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 177.3 ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "rotation"
+length = 180.0
+loop = true
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 180 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -170.0, 190.0 ]
+}
+
+[sub_resource type="DynamicFont" id=29]
+size = 60
+font_data = ExtResource( 35 )
+
+[node name="Level" type="Node2D"]
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="HelloLuna" parent="." instance=ExtResource( 10 )]
+visible = false
+
+[node name="Cosmos" type="Node2D" parent="."]
+position = Vector2( -64, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Backgrounds" type="Node2D" parent="Cosmos"]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Background1" type="Polygon2D" parent="Cosmos/Backgrounds"]
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( 0, -960, 0, 1672, 12352, 1616, 12352, -960 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Background2" type="Polygon2D" parent="Cosmos/Backgrounds"]
+position = Vector2( 12351, 0 )
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( 0, -960, 0, 1656, 12352, 1672, 12352, -960 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Background3" type="Polygon2D" parent="Cosmos/Backgrounds"]
+position = Vector2( 24703, 0 )
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( 0, -960, 0, 1760, 12352, 1760, 12352, -960 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Background4" type="Polygon2D" parent="Cosmos/Backgrounds"]
+position = Vector2( 37054, 0 )
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( 0, -960, 0, 1672, 12352, 1696, 12352, -960 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Background5" type="Polygon2D" parent="Cosmos/Backgrounds"]
+position = Vector2( 49400, 1 )
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( 0, -960, 0, 1672, 12352, 1696, 12352, -960 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Background6" type="Polygon2D" parent="Cosmos/Backgrounds"]
+position = Vector2( 61745, 1 )
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( 0, -960, 0, 1672, 12352, 1696, 12352, -960 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Background7" type="Polygon2D" parent="Cosmos/Backgrounds"]
+position = Vector2( 74090, 1 )
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( 0, -960, 0, 1672, 12352, 1696, 12352, -960 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Background8" type="Polygon2D" parent="Cosmos/Backgrounds"]
+position = Vector2( 86432, 1 )
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( 0, -960, 0, 1672, 12352, 1696, 12352, -960 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Background9" type="Polygon2D" parent="Cosmos/Backgrounds"]
+position = Vector2( 98781, 1 )
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( 0, -960, 0, 1672, 12352, 1696, 12352, -960 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Background10" type="Polygon2D" parent="Cosmos/Backgrounds"]
+position = Vector2( 111128, 1 )
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( 0, -960, 0, 1672, 12352, 1696, 12352, -960 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Stars" type="Node2D" parent="Cosmos"]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Cosmos1" parent="Cosmos/Stars" instance=ExtResource( 2 )]
+position = Vector2( 12, -192 )
+
+[node name="Cosmos2" parent="Cosmos/Stars" instance=ExtResource( 2 )]
+position = Vector2( 2464, -192 )
+
+[node name="Cosmos3" parent="Cosmos/Stars" instance=ExtResource( 2 )]
+position = Vector2( 4912, -192 )
+
+[node name="Cosmos4" parent="Cosmos/Stars" instance=ExtResource( 2 )]
+position = Vector2( 7360, -192 )
+
+[node name="Cosmos5" parent="Cosmos/Stars" instance=ExtResource( 2 )]
+position = Vector2( 9808, -192 )
+
+[node name="Stars2" type="Node2D" parent="Cosmos"]
+position = Vector2( 12248, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Cosmos1" parent="Cosmos/Stars2" instance=ExtResource( 2 )]
+position = Vector2( 12, -192 )
+
+[node name="Cosmos2" parent="Cosmos/Stars2" instance=ExtResource( 2 )]
+position = Vector2( 2464, -192 )
+
+[node name="Cosmos3" parent="Cosmos/Stars2" instance=ExtResource( 2 )]
+position = Vector2( 4912, -192 )
+
+[node name="Cosmos4" parent="Cosmos/Stars2" instance=ExtResource( 2 )]
+position = Vector2( 7360, -192 )
+
+[node name="Cosmos5" parent="Cosmos/Stars2" instance=ExtResource( 2 )]
+position = Vector2( 9808, -192 )
+
+[node name="Stars3" type="Node2D" parent="Cosmos"]
+position = Vector2( 24496, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Cosmos1" parent="Cosmos/Stars3" instance=ExtResource( 2 )]
+position = Vector2( 12, -192 )
+
+[node name="Cosmos2" parent="Cosmos/Stars3" instance=ExtResource( 2 )]
+position = Vector2( 2464, -192 )
+
+[node name="Cosmos3" parent="Cosmos/Stars3" instance=ExtResource( 2 )]
+position = Vector2( 4912, -192 )
+
+[node name="Cosmos4" parent="Cosmos/Stars3" instance=ExtResource( 2 )]
+position = Vector2( 7360, -192 )
+
+[node name="Cosmos5" parent="Cosmos/Stars3" instance=ExtResource( 2 )]
+position = Vector2( 9808, -192 )
+
+[node name="Stars4" type="Node2D" parent="Cosmos"]
+position = Vector2( 36744, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Cosmos1" parent="Cosmos/Stars4" instance=ExtResource( 2 )]
+position = Vector2( 12, -192 )
+
+[node name="Cosmos2" parent="Cosmos/Stars4" instance=ExtResource( 2 )]
+position = Vector2( 2464, -192 )
+
+[node name="Cosmos3" parent="Cosmos/Stars4" instance=ExtResource( 2 )]
+position = Vector2( 4912, -192 )
+
+[node name="Cosmos4" parent="Cosmos/Stars4" instance=ExtResource( 2 )]
+position = Vector2( 7360, -192 )
+
+[node name="Cosmos5" parent="Cosmos/Stars4" instance=ExtResource( 2 )]
+position = Vector2( 9808, -192 )
+
+[node name="Stars5" type="Node2D" parent="Cosmos"]
+position = Vector2( 48992, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Cosmos1" parent="Cosmos/Stars5" instance=ExtResource( 2 )]
+position = Vector2( 12, -192 )
+
+[node name="Cosmos2" parent="Cosmos/Stars5" instance=ExtResource( 2 )]
+position = Vector2( 2464, -192 )
+
+[node name="Cosmos3" parent="Cosmos/Stars5" instance=ExtResource( 2 )]
+position = Vector2( 4912, -192 )
+
+[node name="Cosmos4" parent="Cosmos/Stars5" instance=ExtResource( 2 )]
+position = Vector2( 7360, -192 )
+
+[node name="Cosmos5" parent="Cosmos/Stars5" instance=ExtResource( 2 )]
+position = Vector2( 9808, -192 )
+
+[node name="Stars6" type="Node2D" parent="Cosmos"]
+position = Vector2( 61240, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Cosmos1" parent="Cosmos/Stars6" instance=ExtResource( 2 )]
+position = Vector2( 12, -168 )
+
+[node name="Cosmos2" parent="Cosmos/Stars6" instance=ExtResource( 2 )]
+position = Vector2( 2464, -152 )
+
+[node name="Cosmos3" parent="Cosmos/Stars6" instance=ExtResource( 2 )]
+position = Vector2( 4912, -136 )
+
+[node name="Cosmos4" parent="Cosmos/Stars6" instance=ExtResource( 2 )]
+position = Vector2( 7360, -112 )
+
+[node name="Cosmos5" parent="Cosmos/Stars6" instance=ExtResource( 2 )]
+position = Vector2( 9808, -96 )
+
+[node name="Stars7" type="Node2D" parent="Cosmos"]
+position = Vector2( 73489, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Cosmos1" parent="Cosmos/Stars7" instance=ExtResource( 2 )]
+position = Vector2( 12, -80 )
+
+[node name="Cosmos2" parent="Cosmos/Stars7" instance=ExtResource( 2 )]
+position = Vector2( 2464, -80 )
+
+[node name="Cosmos3" parent="Cosmos/Stars7" instance=ExtResource( 2 )]
+position = Vector2( 4912, -56 )
+
+[node name="Cosmos4" parent="Cosmos/Stars7" instance=ExtResource( 2 )]
+position = Vector2( 7360, -32 )
+
+[node name="Cosmos5" parent="Cosmos/Stars7" instance=ExtResource( 2 )]
+position = Vector2( 9808, -8 )
+
+[node name="Stars8" type="Node2D" parent="Cosmos"]
+position = Vector2( 85736, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Cosmos1" parent="Cosmos/Stars8" instance=ExtResource( 2 )]
+position = Vector2( 12, 40 )
+
+[node name="Cosmos2" parent="Cosmos/Stars8" instance=ExtResource( 2 )]
+position = Vector2( 2464, 80 )
+
+[node name="Cosmos3" parent="Cosmos/Stars8" instance=ExtResource( 2 )]
+position = Vector2( 4912, 112 )
+
+[node name="Cosmos4" parent="Cosmos/Stars8" instance=ExtResource( 2 )]
+position = Vector2( 7360, 144 )
+
+[node name="Cosmos5" parent="Cosmos/Stars8" instance=ExtResource( 2 )]
+position = Vector2( 9808, 176 )
+
+[node name="Stars9" type="Node2D" parent="Cosmos"]
+position = Vector2( 97984, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Cosmos1" parent="Cosmos/Stars9" instance=ExtResource( 2 )]
+position = Vector2( 12, 208 )
+
+[node name="Cosmos2" parent="Cosmos/Stars9" instance=ExtResource( 2 )]
+position = Vector2( 2464, 240 )
+
+[node name="Cosmos3" parent="Cosmos/Stars9" instance=ExtResource( 2 )]
+position = Vector2( 4912, 272 )
+
+[node name="Cosmos4" parent="Cosmos/Stars9" instance=ExtResource( 2 )]
+position = Vector2( 7360, 296 )
+
+[node name="Cosmos5" parent="Cosmos/Stars9" instance=ExtResource( 2 )]
+position = Vector2( 9808, 320 )
+
+[node name="Stars10" type="Node2D" parent="Cosmos"]
+position = Vector2( 110264, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Cosmos1" parent="Cosmos/Stars10" instance=ExtResource( 2 )]
+position = Vector2( 12, 208 )
+
+[node name="Cosmos2" parent="Cosmos/Stars10" instance=ExtResource( 2 )]
+position = Vector2( 2464, 240 )
+
+[node name="Cosmos3" parent="Cosmos/Stars10" instance=ExtResource( 2 )]
+position = Vector2( 4912, 272 )
+
+[node name="Cosmos4" parent="Cosmos/Stars10" instance=ExtResource( 2 )]
+position = Vector2( 7360, 296 )
+
+[node name="Cosmos5" parent="Cosmos/Stars10" instance=ExtResource( 2 )]
+position = Vector2( 9808, 320 )
+
+[node name="Decorations" type="Node2D" parent="Cosmos"]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Cosmos19" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 0.12549, 0.854902, 0.752941, 0.686275 )
+position = Vector2( 27000, 142.002 )
+rotation = 2.20784
+scale = Vector2( 9.19136, 16.8666 )
+texture = ExtResource( 27 )
+
+[node name="Cosmos1" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 0.764706, 0.243137, 0.784314, 1 )
+position = Vector2( 5339.94, 542.831 )
+rotation = 0.785397
+scale = Vector2( 8.01002, 4.3932 )
+texture = ExtResource( 28 )
+
+[node name="Cosmos24" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 0.541176, 0.541176, 0.541176, 0.67451 )
+position = Vector2( 34208, 133 )
+rotation = 0.523598
+scale = Vector2( 22.9901, 10.6185 )
+texture = ExtResource( 27 )
+
+[node name="Cosmos33" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 0, 0.709804, 0.752941, 0.870588 )
+position = Vector2( 42400, 704 )
+rotation = 1.5708
+scale = Vector2( 4.39621, 14.2117 )
+texture = ExtResource( 26 )
+
+[node name="Cosmos12" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 0.980392, 0.368627, 1, 0.85098 )
+position = Vector2( 100149, -2624 )
+rotation = 1.06291
+scale = Vector2( 4.54866, 3.57396 )
+texture = ExtResource( 28 )
+
+[node name="Cosmos76" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 0.247059, 0.180392, 0.705882, 0.752941 )
+position = Vector2( 96248, 772.999 )
+rotation = 0.261799
+scale = Vector2( 9.86789, 9.91411 )
+texture = ExtResource( 28 )
+
+[node name="Cosmos53" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 0.980392, 0.368627, 1, 0.85098 )
+position = Vector2( 71984, 1405 )
+rotation = 1.0472
+scale = Vector2( 20.9304, 10.4512 )
+texture = ExtResource( 28 )
+
+[node name="Cosmos46" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 0.333333, 1, 0.321569, 0.74902 )
+position = Vector2( 63832, 618.997 )
+rotation = 0.523598
+scale = Vector2( 13.0565, 10.2587 )
+texture = ExtResource( 28 )
+
+[node name="Cosmos40" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 0.435294, 0.788235, 0.431373, 0.85098 )
+position = Vector2( 61660, 498.998 )
+rotation = 2.35619
+scale = Vector2( 9.99441, 9.34023 )
+texture = ExtResource( 28 )
+
+[node name="Cosmos35" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 0.984314, 0.113725, 0.113725, 0.858824 )
+position = Vector2( 50800, 464.002 )
+rotation = 2.61799
+scale = Vector2( 17.4632, 9.71366 )
+texture = ExtResource( 28 )
+
+[node name="Cosmos22" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 1, 0.0117647, 0.0823529, 0.803922 )
+position = Vector2( 25768, 319.998 )
+rotation = 0.785397
+scale = Vector2( 11.1983, 8.79871 )
+texture = ExtResource( 28 )
+
+[node name="Cosmos3" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 1, 0.345098, 0.8, 0.905882 )
+position = Vector2( 7608, 336 )
+rotation = 0.785397
+scale = Vector2( 5.38988, 5.16748 )
+texture = ExtResource( 28 )
+
+[node name="Cosmos2" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 1, 1, 1, 0.85098 )
+position = Vector2( 3992, 390 )
+rotation = 1.57079
+scale = Vector2( 10.546, 8.14587 )
+texture = ExtResource( 29 )
+
+[node name="Cosmos11" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 1, 1, 1, 0.85098 )
+position = Vector2( 99808, -2112 )
+rotation = 0.783653
+scale = Vector2( 6.41816, 4.95749 )
+texture = ExtResource( 29 )
+
+[node name="Cosmos77" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 1, 0.654902, 0.282353, 0.780392 )
+position = Vector2( 105072, 1221 )
+rotation = 1.83259
+scale = Vector2( 9.3378, 7.21267 )
+texture = ExtResource( 29 )
+
+[node name="Cosmos48" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 1, 1, 1, 0.85098 )
+position = Vector2( 77838, 1032 )
+rotation = 0.523598
+scale = Vector2( 16.0837, 12.167 )
+texture = ExtResource( 29 )
+
+[node name="Cosmos56" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 0.545098, 0, 1, 0.701961 )
+position = Vector2( 82216, 1051 )
+rotation = -2.09439
+scale = Vector2( 16.0837, 12.167 )
+texture = ExtResource( 29 )
+
+[node name="Cosmos57" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 0.545098, 0, 1, 0.721569 )
+position = Vector2( 80780, 899.999 )
+rotation = -0.785397
+scale = Vector2( 16.0837, 12.167 )
+texture = ExtResource( 29 )
+
+[node name="Cosmos50" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 1, 1, 1, 0.85098 )
+position = Vector2( 66713, 459 )
+rotation = -1.0472
+scale = Vector2( 14.7371, 9.05452 )
+texture = ExtResource( 29 )
+
+[node name="Cosmos42" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 0.501961, 0.321569, 0.321569, 0.65098 )
+position = Vector2( 60368, 92.0002 )
+rotation = -0.261799
+scale = Vector2( 12.7728, 9.86589 )
+texture = ExtResource( 29 )
+
+[node name="Cosmos51" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 0.313726, 1, 0.133333, 0.65098 )
+position = Vector2( 63677.2, 622.525 )
+rotation = -0.261799
+scale = Vector2( 9.03824, 10.7119 )
+texture = ExtResource( 29 )
+
+[node name="Cosmos43" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 0.501961, 0.321569, 0.321569, 0.65098 )
+position = Vector2( 48448, 731.002 )
+rotation = -0.523598
+scale = Vector2( 12.7728, 9.86589 )
+texture = ExtResource( 29 )
+
+[node name="Cosmos37" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 1, 1, 1, 0.690196 )
+position = Vector2( 38784, -118 )
+rotation = -1.57079
+scale = Vector2( 22.5154, 14.1347 )
+texture = ExtResource( 29 )
+
+[node name="Cosmos23" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 1, 1, 1, 0.682353 )
+position = Vector2( 40945, -198.915 )
+rotation = 1.57079
+scale = Vector2( 23.4639, 15.1109 )
+texture = ExtResource( 29 )
+
+[node name="Cosmos18" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 1, 0.439216, 0.439216, 0.796078 )
+position = Vector2( 23128, 406.001 )
+rotation = -1.02451
+scale = Vector2( 14.6935, 8.93985 )
+texture = ExtResource( 29 )
+
+[node name="Cosmos25" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 1, 0.439216, 0.439216, 0.796078 )
+position = Vector2( 23024, 379.001 )
+rotation = -1.02451
+scale = Vector2( 14.6935, 8.93985 )
+texture = ExtResource( 29 )
+
+[node name="Cosmos9" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 1, 1, 1, 0.85098 )
+position = Vector2( 8504, 749 )
+rotation = -0.785397
+scale = Vector2( 8.29915, 4.72385 )
+texture = ExtResource( 29 )
+
+[node name="Cosmos5" type="Sprite" parent="Cosmos/Decorations"]
+self_modulate = Color( 0.898039, 0.658824, 0.658824, 0.854902 )
+position = Vector2( 11848, 469 )
+rotation = 3.09447
+scale = Vector2( 5.91674, 5.92054 )
+texture = ExtResource( 30 )
+offset = Vector2( 13.2483, 5.29073 )
+
+[node name="Rotation" type="AnimationPlayer" parent="Cosmos/Decorations/Cosmos5"]
+autoplay = "rotation"
+anims/RESET = SubResource( 1 )
+anims/rotation = SubResource( 2 )
+
+[node name="Cosmos14" type="Sprite" parent="Cosmos/Decorations"]
+self_modulate = Color( 0.898039, 0.658824, 0.658824, 0.870588 )
+position = Vector2( 101205, -2405 )
+rotation = 3.09447
+scale = Vector2( 2.42221, 2.69732 )
+texture = ExtResource( 30 )
+offset = Vector2( 13.2483, 5.29073 )
+
+[node name="Rotation" type="AnimationPlayer" parent="Cosmos/Decorations/Cosmos14"]
+autoplay = "rotation"
+anims/RESET = SubResource( 3 )
+anims/rotation = SubResource( 4 )
+
+[node name="Cosmos82" type="Sprite" parent="Cosmos/Decorations"]
+self_modulate = Color( 0.25098, 0.498039, 0.917647, 0.541176 )
+position = Vector2( 27573, 729 )
+rotation = 3.09447
+scale = Vector2( 27.7672, 30.9209 )
+texture = ExtResource( 30 )
+offset = Vector2( 13.2483, 5.29073 )
+
+[node name="Rotation" type="AnimationPlayer" parent="Cosmos/Decorations/Cosmos82"]
+autoplay = "rotation"
+anims/RESET = SubResource( 30 )
+anims/rotation = SubResource( 31 )
+
+[node name="Cosmos78" type="Sprite" parent="Cosmos/Decorations"]
+self_modulate = Color( 0.34902, 0.815686, 0.85098, 0.870588 )
+position = Vector2( 104528, 1030 )
+rotation = 3.09447
+scale = Vector2( 6.8036, 7.57633 )
+texture = ExtResource( 30 )
+offset = Vector2( 13.2483, 5.29073 )
+
+[node name="Rotation" type="AnimationPlayer" parent="Cosmos/Decorations/Cosmos78"]
+autoplay = "rotation"
+anims/RESET = SubResource( 25 )
+anims/rotation = SubResource( 26 )
+
+[node name="Cosmos79" type="Sprite" parent="Cosmos/Decorations"]
+self_modulate = Color( 0.854902, 0.211765, 0.211765, 0.870588 )
+position = Vector2( 105544, 1085 )
+rotation = 3.09447
+scale = Vector2( 6.8036, 7.57633 )
+texture = ExtResource( 30 )
+offset = Vector2( 13.2483, 5.29073 )
+
+[node name="Rotation" type="AnimationPlayer" parent="Cosmos/Decorations/Cosmos79"]
+autoplay = "rotation"
+anims/RESET = SubResource( 27 )
+anims/rotation = SubResource( 28 )
+
+[node name="Cosmos69" type="Sprite" parent="Cosmos/Decorations"]
+self_modulate = Color( 1, 0.996078, 0, 1 )
+position = Vector2( 93272, 919 )
+rotation = 3.09447
+scale = Vector2( 10.0612, 11.2039 )
+texture = ExtResource( 30 )
+offset = Vector2( 13.2483, 5.29073 )
+
+[node name="Rotation" type="AnimationPlayer" parent="Cosmos/Decorations/Cosmos69"]
+autoplay = "rotation"
+anims/RESET = SubResource( 21 )
+anims/rotation = SubResource( 22 )
+
+[node name="Cosmos58" type="Sprite" parent="Cosmos/Decorations"]
+self_modulate = Color( 0.545098, 0, 1, 0.886275 )
+position = Vector2( 81680, 163 )
+rotation = 3.09447
+scale = Vector2( 8.55888, 8.38927 )
+texture = ExtResource( 30 )
+offset = Vector2( 13.2483, 5.29073 )
+
+[node name="Rotation" type="AnimationPlayer" parent="Cosmos/Decorations/Cosmos58"]
+autoplay = "rotation"
+anims/RESET = SubResource( 19 )
+anims/rotation = SubResource( 20 )
+
+[node name="Cosmos47" type="Sprite" parent="Cosmos/Decorations"]
+self_modulate = Color( 1, 0.717647, 0.996078, 0.827451 )
+position = Vector2( 68856, 623 )
+rotation = 3.09447
+scale = Vector2( 8.69994, 9.68806 )
+texture = ExtResource( 30 )
+offset = Vector2( 13.2483, 5.29073 )
+
+[node name="Rotation" type="AnimationPlayer" parent="Cosmos/Decorations/Cosmos47"]
+autoplay = "rotation"
+anims/RESET = SubResource( 17 )
+anims/rotation = SubResource( 18 )
+
+[node name="Cosmos41" type="Sprite" parent="Cosmos/Decorations"]
+self_modulate = Color( 0.533333, 0.909804, 0.862745, 0.647059 )
+position = Vector2( 61672, 485 )
+rotation = 3.09447
+scale = Vector2( 5.0713, 5.49364 )
+texture = ExtResource( 30 )
+offset = Vector2( 13.2483, 5.29073 )
+
+[node name="Rotation" type="AnimationPlayer" parent="Cosmos/Decorations/Cosmos41"]
+autoplay = "rotation"
+anims/RESET = SubResource( 15 )
+anims/rotation = SubResource( 16 )
+
+[node name="Cosmos70" type="Sprite" parent="Cosmos/Decorations"]
+self_modulate = Color( 0.247059, 0.431373, 0.254902, 0.552941 )
+position = Vector2( 34408, -366 )
+rotation = 3.09447
+scale = Vector2( -6.9, 7.748 )
+texture = ExtResource( 30 )
+offset = Vector2( 13.2483, 5.29073 )
+
+[node name="Rotation" type="AnimationPlayer" parent="Cosmos/Decorations/Cosmos70"]
+autoplay = "rotation"
+anims/RESET = SubResource( 23 )
+anims/rotation = SubResource( 24 )
+
+[node name="Cosmos26" type="Sprite" parent="Cosmos/Decorations"]
+self_modulate = Color( 1, 0, 0, 0.352941 )
+position = Vector2( 53501, 702 )
+rotation = 3.09447
+scale = Vector2( 28.1436, 31.3401 )
+texture = ExtResource( 30 )
+offset = Vector2( 13.2483, 5.29073 )
+
+[node name="Rotation" type="AnimationPlayer" parent="Cosmos/Decorations/Cosmos26"]
+autoplay = "rotation"
+anims/RESET = SubResource( 9 )
+anims/rotation = SubResource( 10 )
+
+[node name="Cosmos21" type="Sprite" parent="Cosmos/Decorations"]
+self_modulate = Color( 0.215686, 0.180392, 0.945098, 0.784314 )
+position = Vector2( 27573, 741 )
+rotation = 3.09447
+scale = Vector2( 5.79767, 6.45616 )
+texture = ExtResource( 30 )
+offset = Vector2( 13.2483, 5.29073 )
+
+[node name="Rotation" type="AnimationPlayer" parent="Cosmos/Decorations/Cosmos21"]
+autoplay = "rotation"
+anims/RESET = SubResource( 7 )
+anims/rotation = SubResource( 8 )
+
+[node name="Cosmos15" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 0.792157, 0.0901961, 0.862745, 0.772549 )
+self_modulate = Color( 1, 1, 1, 0.803922 )
+position = Vector2( 19371, 574 )
+rotation = 3.09447
+scale = Vector2( 6.17701, 6.87858 )
+texture = ExtResource( 30 )
+offset = Vector2( 13.2483, 5.29073 )
+
+[node name="Rotation" type="AnimationPlayer" parent="Cosmos/Decorations/Cosmos15"]
+autoplay = "rotation"
+anims/RESET = SubResource( 5 )
+anims/rotation = SubResource( 6 )
+
+[node name="Cosmos4" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 1, 0.376471, 0.376471, 0.803922 )
+position = Vector2( 11720, 915 )
+rotation = 1.78198
+scale = Vector2( 6.5459, 3.2743 )
+texture = ExtResource( 29 )
+
+[node name="Cosmos17" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 0.231373, 1, 0.890196, 0.815686 )
+position = Vector2( 20667.7, 877.501 )
+rotation = -2.07869
+scale = Vector2( 4.44013, 12.3497 )
+texture = ExtResource( 27 )
+
+[node name="Cosmos28" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 1, 0.376471, 0.376471, 0.803922 )
+position = Vector2( 12256, 893 )
+rotation = 0.785397
+scale = Vector2( 8.40834, -3.76074 )
+texture = ExtResource( 29 )
+
+[node name="Cosmos27" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 1, 0.376471, 0.376471, 0.803922 )
+position = Vector2( 11968, -303 )
+rotation = 1.78198
+scale = Vector2( -11.8388, 5.05743 )
+texture = ExtResource( 29 )
+
+[node name="Cosmos6" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 1, 0.662745, 0.662745, 0.854902 )
+position = Vector2( 2120, 402 )
+rotation = -1.89368
+scale = Vector2( -3.94686, -3.98776 )
+texture = ExtResource( 26 )
+
+[node name="Cosmos10" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 1, 0.662745, 0.662745, 0.854902 )
+position = Vector2( 99253.1, -2464 )
+rotation = -1.89368
+scale = Vector2( -2.27037, -2.29389 )
+texture = ExtResource( 26 )
+
+[node name="Cosmos74" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 0.701961, 0.231373, 0.231373, 0.752941 )
+position = Vector2( 99125, 1079.99 )
+rotation = -0.785397
+scale = Vector2( -4.13683, -4.45436 )
+texture = ExtResource( 26 )
+
+[node name="Cosmos34" type="Sprite" parent="Cosmos/Decorations"]
+self_modulate = Color( 0.988281, 0.182653, 0.182653, 0.784314 )
+position = Vector2( 53520, 714 )
+rotation = 3.09447
+scale = Vector2( 6.47185, 7.20691 )
+texture = ExtResource( 30 )
+offset = Vector2( 13.2483, 5.29073 )
+
+[node name="Rotation" type="AnimationPlayer" parent="Cosmos/Decorations/Cosmos34"]
+autoplay = "rotation"
+anims/RESET = SubResource( 13 )
+anims/rotation = SubResource( 14 )
+
+[node name="Cosmos59" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 0.568627, 0.113725, 1, 0.854902 )
+position = Vector2( 87408, 932.002 )
+rotation = -1.309
+scale = Vector2( -5.84147, -8.38745 )
+texture = ExtResource( 26 )
+
+[node name="Cosmos63" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 0.568627, 0.113725, 1, 0.854902 )
+position = Vector2( 87416, 1426 )
+rotation = -1.309
+scale = Vector2( -7.09344, -9.75387 )
+texture = ExtResource( 26 )
+
+[node name="Cosmos54" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 0.933333, 0.984314, 0.443137, 0.854902 )
+position = Vector2( 74136, 1290 )
+rotation = -1.309
+scale = Vector2( -3.18967, -3.19055 )
+texture = ExtResource( 26 )
+
+[node name="Cosmos60" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 0.933333, 0.984314, 0.443137, 0.854902 )
+position = Vector2( 74056, 1060 )
+rotation = -1.309
+scale = Vector2( -3.18967, -3.19055 )
+texture = ExtResource( 26 )
+
+[node name="Cosmos71" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 0.933333, 0.984314, 0.443137, 0.854902 )
+position = Vector2( 73976, 850 )
+rotation = -1.309
+scale = Vector2( -3.18967, -3.19055 )
+texture = ExtResource( 26 )
+
+[node name="Cosmos62" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 0.933333, 0.984314, 0.443137, 0.854902 )
+position = Vector2( 72704, 1702 )
+rotation = -1.83259
+scale = Vector2( -3.18967, -3.19055 )
+texture = ExtResource( 26 )
+
+[node name="Cosmos72" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 0.933333, 0.984314, 0.443137, 0.854902 )
+position = Vector2( 72624, 1468 )
+rotation = -1.83259
+scale = Vector2( -3.18967, -3.19055 )
+texture = ExtResource( 26 )
+
+[node name="Cosmos55" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 0.933333, 0.984314, 0.443137, 0.854902 )
+position = Vector2( 75552, 1414 )
+rotation = -0.785397
+scale = Vector2( -3.18967, -3.19055 )
+texture = ExtResource( 26 )
+
+[node name="Cosmos61" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 0.933333, 0.984314, 0.443137, 0.854902 )
+position = Vector2( 75528, 1186 )
+rotation = -0.785397
+scale = Vector2( -3.18967, -3.19055 )
+texture = ExtResource( 26 )
+
+[node name="Cosmos73" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 0.933333, 0.984314, 0.443137, 0.854902 )
+position = Vector2( 75472, 1000 )
+rotation = -0.785397
+scale = Vector2( -3.18967, -3.19055 )
+texture = ExtResource( 26 )
+
+[node name="Cosmos44" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 1, 0.631373, 0.984314, 0.752941 )
+position = Vector2( 69640, 496.002 )
+rotation = 0.308923
+scale = Vector2( -4.93966, -5.6544 )
+texture = ExtResource( 26 )
+
+[node name="Cosmos39" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 0.537255, 1, 0.556863, 0.854902 )
+position = Vector2( 58896, 805 )
+rotation = -1.309
+scale = Vector2( -4.46567, -4.57029 )
+texture = ExtResource( 26 )
+
+[node name="Cosmos52" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 0.898039, 1, 0, 0.854902 )
+position = Vector2( 56216, 302.001 )
+rotation = -2.61799
+scale = Vector2( -6.17738, -6.73489 )
+texture = ExtResource( 26 )
+
+[node name="Cosmos38" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 0.513726, 0.380392, 0.933333, 0.854902 )
+position = Vector2( 46384, 431.999 )
+rotation = -2.87979
+scale = Vector2( -4.35836, -3.41601 )
+texture = ExtResource( 26 )
+
+[node name="Cosmos20" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 0.372549, 1, 0.196078, 0.854902 )
+position = Vector2( 29916, 412.001 )
+rotation = -1.89368
+scale = Vector2( -5.65188, -3.87865 )
+texture = ExtResource( 26 )
+
+[node name="Cosmos16" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 0.619608, 0.0862745, 0.886275, 0.760784 )
+position = Vector2( 16608, 427 )
+rotation = -0.387463
+scale = Vector2( -4.28655, -4.26953 )
+texture = ExtResource( 26 )
+
+[node name="Cosmos7" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 0.937255, 0.513726, 0.701961, 0.843137 )
+position = Vector2( 14408, 504 )
+rotation = 1.309
+scale = Vector2( 3.7111, 7.69409 )
+texture = ExtResource( 27 )
+
+[node name="Cosmos8" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 0.858824, 0.85098, 0.862745, 0.815686 )
+position = Vector2( 6856, 511 )
+rotation = -0.785397
+scale = Vector2( 3.12291, 6.8863 )
+texture = ExtResource( 27 )
+
+[node name="Cosmos30" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 0.858824, 0.85098, 0.862745, 0.815686 )
+position = Vector2( 8232, 566 )
+rotation = 0.261799
+scale = Vector2( 3.45734, 6.96253 )
+texture = ExtResource( 27 )
+
+[node name="Cosmos29" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 0.858824, 0.85098, 0.862745, 0.815686 )
+position = Vector2( 7582.96, 695.222 )
+rotation = 2.87979
+scale = Vector2( 2.33454, 3.54365 )
+texture = ExtResource( 27 )
+
+[node name="Cosmos13" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 0.858824, 0.85098, 0.862745, 0.815686 )
+position = Vector2( 100701, -2400 )
+rotation = 0.0645772
+scale = Vector2( 2.12461, 3.89875 )
+texture = ExtResource( 27 )
+
+[node name="Cosmos75" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 0.878431, 0.921569, 0.12549, 0.752941 )
+position = Vector2( 102168, 899 )
+rotation = 0.785397
+scale = Vector2( 5.15659, 7.50676 )
+texture = ExtResource( 27 )
+
+[node name="Cosmos80" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 0.207843, 0.980392, 0.980392, 0.752941 )
+position = Vector2( 104272, 519.998 )
+rotation = 1.0472
+scale = Vector2( 1.63446, 2.77265 )
+texture = ExtResource( 27 )
+
+[node name="Cosmos81" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 0.603922, 0, 0.729412, 0.752941 )
+position = Vector2( 105552, 501.996 )
+rotation = 1.0472
+scale = Vector2( 1.63446, 2.77265 )
+texture = ExtResource( 27 )
+
+[node name="Cosmos64" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 0.858824, 0.85098, 0.862745, 0.815686 )
+position = Vector2( 92624, 931 )
+rotation = 0.0645772
+scale = Vector2( 2.22102, 5.01097 )
+texture = ExtResource( 27 )
+
+[node name="Cosmos65" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 0.858824, 0.85098, 0.862745, 0.815686 )
+position = Vector2( 92921.1, 944.256 )
+rotation = 0.0645772
+scale = Vector2( 2.26868, 5.23148 )
+texture = ExtResource( 27 )
+
+[node name="Cosmos66" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 0.858824, 0.85098, 0.862745, 0.815686 )
+position = Vector2( 93248, 924 )
+rotation = 0.0645772
+scale = Vector2( 2.31154, 5.24695 )
+texture = ExtResource( 27 )
+
+[node name="Cosmos32" type="Sprite" parent="Cosmos/Decorations"]
+self_modulate = Color( 0.807843, 0.207843, 0.207843, 0.694118 )
+position = Vector2( 35230.1, 504.137 )
+rotation = 3.09447
+scale = Vector2( 6.96165, 7.74813 )
+texture = ExtResource( 30 )
+offset = Vector2( 13.2483, 5.29073 )
+
+[node name="Rotation" type="AnimationPlayer" parent="Cosmos/Decorations/Cosmos32"]
+autoplay = "rotation"
+anims/RESET = SubResource( 11 )
+anims/rotation = SubResource( 12 )
+
+[node name="Cosmos67" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 0.858824, 0.85098, 0.862745, 0.815686 )
+position = Vector2( 93590, 906 )
+rotation = 0.0645772
+scale = Vector2( 2.60587, 5.30673 )
+texture = ExtResource( 27 )
+
+[node name="Cosmos68" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 0.858824, 0.85098, 0.862745, 0.815686 )
+position = Vector2( 93960, 881 )
+rotation = 0.0645772
+scale = Vector2( 3.09624, 5.2887 )
+texture = ExtResource( 27 )
+
+[node name="Cosmos49" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 0.858824, 0.85098, 0.862745, 0.815686 )
+position = Vector2( 78048, 327 )
+rotation = 0.0645772
+scale = Vector2( 5.58945, 6.91454 )
+texture = ExtResource( 27 )
+
+[node name="Cosmos45" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 0.854902, 0.145098, 0.352941, 0.647059 )
+position = Vector2( 66769, 609 )
+rotation = 0.0645772
+scale = Vector2( 4.74484, 8.70699 )
+texture = ExtResource( 27 )
+
+[node name="Cosmos31" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 0.843137, 0.466667, 0.92549, 0.729412 )
+position = Vector2( 33880, 522.998 )
+rotation = 2.09439
+scale = Vector2( 8.24355, 6.4771 )
+texture = ExtResource( 28 )
+
+[node name="Cosmos36" type="Sprite" parent="Cosmos/Decorations"]
+modulate = Color( 0.878431, 0.121569, 0.333333, 0.596078 )
+position = Vector2( 56064, -149.999 )
+rotation = -0.261799
+scale = Vector2( -11.3856, -11.0052 )
+texture = ExtResource( 27 )
+
+[node name="Ship" parent="." instance=ExtResource( 7 )]
+position = Vector2( -517, 216 )
+
+[node name="KeyboardSpace" parent="." instance=ExtResource( 33 )]
+position = Vector2( 249, 1126 )
+z_index = 3
+
+[node name="Fuels" type="Node2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Fuel1" parent="Fuels" instance=ExtResource( 1 )]
+position = Vector2( 2496, 787 )
+z_index = 1
+
+[node name="Fuel2" parent="Fuels" instance=ExtResource( 1 )]
+position = Vector2( 10596, 874 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Учитывать высоту прыжка."
+}
+
+[node name="Fuel3" parent="Fuels" instance=ExtResource( 1 )]
+position = Vector2( 13712, 838 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Учитывать высоту прыжка."
+}
+
+[node name="Fuel5" parent="Fuels" instance=ExtResource( 1 )]
+position = Vector2( 19643, 672 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Учитывать высоту прыжка."
+}
+_is_one_charge = true
+
+[node name="Fuel45" parent="Fuels" instance=ExtResource( 1 )]
+position = Vector2( 15984, 396 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Учитывать высоту прыжка."
+}
+_is_one_charge = true
+
+[node name="Fuel6" parent="Fuels" instance=ExtResource( 1 )]
+position = Vector2( 23115, 900 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Учитывать высоту прыжка."
+}
+
+[node name="Fuel44" parent="Fuels" instance=ExtResource( 1 )]
+position = Vector2( 21528, 209 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Учитывать высоту прыжка."
+}
+
+[node name="Fuel9" parent="Fuels" instance=ExtResource( 1 )]
+position = Vector2( 25752, 895 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Учитывать высоту прыжка."
+}
+_is_one_charge = true
+
+[node name="Fuel43" parent="Fuels" instance=ExtResource( 1 )]
+position = Vector2( 24599, 180 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Учитывать высоту прыжка."
+}
+_is_one_charge = true
+
+[node name="Fuel8" parent="Fuels" instance=ExtResource( 1 )]
+position = Vector2( 28390, 949 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Учитывать высоту прыжка."
+}
+_is_one_charge = true
+
+[node name="Fuel42" parent="Fuels" instance=ExtResource( 1 )]
+position = Vector2( 29926, 357 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Учитывать высоту прыжка."
+}
+
+[node name="Fuel11" parent="Fuels" instance=ExtResource( 1 )]
+position = Vector2( 26048, 1168 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Учитывать высоту прыжка."
+}
+_is_deactivated = true
+
+[node name="Fuel10" parent="Fuels" instance=ExtResource( 1 )]
+position = Vector2( 34630, 990 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Учитывать высоту прыжка."
+}
+
+[node name="Fuel30" parent="Fuels" instance=ExtResource( 1 )]
+position = Vector2( 31252, 1019 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Учитывать высоту прыжка."
+}
+
+[node name="Fuel41" parent="Fuels" instance=ExtResource( 1 )]
+position = Vector2( 33036, 672 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Учитывать высоту прыжка."
+}
+_is_one_charge = true
+
+[node name="Fuel12" parent="Fuels" instance=ExtResource( 1 )]
+position = Vector2( 37515, 954 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Учитывать высоту прыжка."
+}
+_is_one_charge = true
+
+[node name="Fuel29" parent="Fuels" instance=ExtResource( 1 )]
+position = Vector2( 41478, 957 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Учитывать высоту прыжка."
+}
+_is_one_charge = true
+
+[node name="Fuel40" parent="Fuels" instance=ExtResource( 1 )]
+position = Vector2( 39529, 365 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Учитывать высоту прыжка."
+}
+_is_one_charge = true
+
+[node name="Fuel13" parent="Fuels" instance=ExtResource( 1 )]
+position = Vector2( 43173, 983 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Учитывать высоту прыжка."
+}
+_is_one_charge = true
+
+[node name="Fuel16" parent="Fuels" instance=ExtResource( 1 )]
+position = Vector2( 49726, 1256 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Учитывать высоту прыжка."
+}
+_is_deactivated = true
+
+[node name="Fuel17" parent="Fuels" instance=ExtResource( 1 )]
+position = Vector2( 47296, 1228 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Учитывать высоту прыжка."
+}
+_is_deactivated = true
+
+[node name="Fuel14" parent="Fuels" instance=ExtResource( 1 )]
+position = Vector2( 54516, 1098 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Учитывать высоту прыжка."
+}
+_is_one_charge = true
+
+[node name="Fuel37" parent="Fuels" instance=ExtResource( 1 )]
+position = Vector2( 56232, 554 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Учитывать высоту прыжка."
+}
+
+[node name="Fuel33" parent="Fuels" instance=ExtResource( 1 )]
+position = Vector2( 57955, 1084 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Учитывать высоту прыжка."
+}
+
+[node name="Fuel32" parent="Fuels" instance=ExtResource( 1 )]
+position = Vector2( 59744, 920 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Учитывать высоту прыжка."
+}
+_is_one_charge = true
+
+[node name="Fuel19" parent="Fuels" instance=ExtResource( 1 )]
+position = Vector2( 60480, 1268 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Учитывать высоту прыжка."
+}
+_is_deactivated = true
+
+[node name="Fuel18" parent="Fuels" instance=ExtResource( 1 )]
+position = Vector2( 63096, 1079 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Учитывать высоту прыжка."
+}
+_is_one_charge = true
+
+[node name="Fuel47" parent="Fuels" instance=ExtResource( 1 )]
+position = Vector2( 61504, 877 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Учитывать высоту прыжка."
+}
+
+[node name="Fuel36" parent="Fuels" instance=ExtResource( 1 )]
+position = Vector2( 62408, 270 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Учитывать высоту прыжка."
+}
+_is_one_charge = true
+
+[node name="Fuel20" parent="Fuels" instance=ExtResource( 1 )]
+position = Vector2( 67342, 779 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Учитывать высоту прыжка."
+}
+_is_one_charge = true
+
+[node name="Fuel48" parent="Fuels" instance=ExtResource( 1 )]
+position = Vector2( 65384, 394 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Учитывать высоту прыжка."
+}
+
+[node name="Fuel21" parent="Fuels" instance=ExtResource( 1 )]
+position = Vector2( 71984, 1071 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Учитывать высоту прыжка."
+}
+
+[node name="Fuel53" parent="Fuels" instance=ExtResource( 1 )]
+position = Vector2( 69176, 1169 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Учитывать высоту прыжка."
+}
+
+[node name="Fuel52" parent="Fuels" instance=ExtResource( 1 )]
+position = Vector2( 73640, 1039 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Учитывать высоту прыжка."
+}
+_is_one_charge = true
+
+[node name="Fuel35" parent="Fuels" instance=ExtResource( 1 )]
+position = Vector2( 74912, 338 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Учитывать высоту прыжка."
+}
+
+[node name="Fuel22" parent="Fuels" instance=ExtResource( 1 )]
+position = Vector2( 77032, 1096 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Учитывать высоту прыжка."
+}
+
+[node name="Fuel24" parent="Fuels" instance=ExtResource( 1 )]
+position = Vector2( 80907, 1148 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Учитывать высоту прыжка."
+}
+_is_one_charge = true
+
+[node name="Fuel25" parent="Fuels" instance=ExtResource( 1 )]
+position = Vector2( 85448, 1254 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Учитывать высоту прыжка."
+}
+_is_one_charge = true
+
+[node name="Fuel49" parent="Fuels" instance=ExtResource( 1 )]
+position = Vector2( 83480, 832 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Учитывать высоту прыжка."
+}
+
+[node name="Fuel26" parent="Fuels" instance=ExtResource( 1 )]
+position = Vector2( 88820, 1262 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Учитывать высоту прыжка."
+}
+
+[node name="Fuel51" parent="Fuels" instance=ExtResource( 1 )]
+position = Vector2( 91250, 644 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Учитывать высоту прыжка."
+}
+_is_one_charge = true
+
+[node name="Fuel56" parent="Fuels" instance=ExtResource( 1 )]
+position = Vector2( 95759, 1148 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Учитывать высоту прыжка."
+}
+_is_one_charge = true
+
+[node name="Fuel57" parent="Fuels" instance=ExtResource( 1 )]
+position = Vector2( 98432, 914 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Учитывать высоту прыжка."
+}
+
+[node name="Fuel58" parent="Fuels" instance=ExtResource( 1 )]
+position = Vector2( 102556, 1333 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Учитывать высоту прыжка."
+}
+
+[node name="Fuel59" parent="Fuels" instance=ExtResource( 1 )]
+position = Vector2( 106526, 1376 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Учитывать высоту прыжка."
+}
+
+[node name="Fuel60" parent="Fuels" instance=ExtResource( 1 )]
+position = Vector2( 110414, 1119 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Учитывать высоту прыжка."
+}
+_is_one_charge = true
+
+[node name="Fuel55" parent="Fuels" instance=ExtResource( 1 )]
+position = Vector2( 92472, 1293 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Учитывать высоту прыжка."
+}
+
+[node name="Fuel50" parent="Fuels" instance=ExtResource( 1 )]
+position = Vector2( 87092, 506 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Учитывать высоту прыжка."
+}
+_is_one_charge = true
+
+[node name="Fuel54" parent="Fuels" instance=ExtResource( 1 )]
+position = Vector2( 87392, 1282 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Учитывать высоту прыжка."
+}
+_is_one_charge = true
+
+[node name="Fuel27" parent="Fuels" instance=ExtResource( 1 )]
+position = Vector2( 90664, 1445 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Учитывать высоту прыжка."
+}
+_is_deactivated = true
+
+[node name="Fuel23" parent="Fuels" instance=ExtResource( 1 )]
+position = Vector2( 75927, 1365 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Учитывать высоту прыжка."
+}
+_is_deactivated = true
+
+[node name="Fuel15" parent="Fuels" instance=ExtResource( 1 )]
+position = Vector2( 48536, 1015 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Учитывать высоту прыжка."
+}
+_is_one_charge = true
+
+[node name="Fuel38" parent="Fuels" instance=ExtResource( 1 )]
+position = Vector2( 50840, 1044 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Учитывать высоту прыжка."
+}
+_is_one_charge = true
+
+[node name="Fuel28" parent="Fuels" instance=ExtResource( 1 )]
+position = Vector2( 46651, 982 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Учитывать высоту прыжка."
+}
+_is_one_charge = true
+
+[node name="Fuel39" parent="Fuels" instance=ExtResource( 1 )]
+position = Vector2( 44757, 387 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Учитывать высоту прыжка."
+}
+_is_one_charge = true
+
+[node name="Fuel7" parent="Fuels" instance=ExtResource( 1 )]
+position = Vector2( 17944, 1093 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Учитывать высоту прыжка."
+}
+_is_deactivated = true
+
+[node name="Fuel4" parent="Fuels" instance=ExtResource( 1 )]
+position = Vector2( 5702, 783 )
+
+[node name="Fuel31" parent="Fuels" instance=ExtResource( 1 )]
+position = Vector2( 7521, 369 )
+
+[node name="Aliens" type="Node2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Bubbles" type="Node2D" parent="Aliens"]
+z_index = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Alien2" parent="Aliens" instance=ExtResource( 32 )]
+position = Vector2( 99701.1, -3760 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Когда IsMob - с кратером стоит самым левым. 
+НЕРАБОТАЕТ просто агрессивный..."
+}
+_is_agressive = true
+
+[node name="Alien38" parent="Aliens" instance=ExtResource( 32 )]
+position = Vector2( 94348, 1497 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Когда IsMob - с кратером стоит самым левым. "
+}
+_is_agressive = true
+
+[node name="Alien5" parent="Aliens" instance=ExtResource( 32 )]
+position = Vector2( 89581, 1486 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Когда IsMob - с кратером стоит самым левым. "
+}
+_is_agressive = true
+
+[node name="Alien4" parent="Aliens" instance=ExtResource( 32 )]
+position = Vector2( 71107, 1406 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Когда IsMob - с кратером стоит самым левым. "
+}
+_is_agressive = true
+
+[node name="Alien9" parent="Aliens" instance=ExtResource( 32 )]
+position = Vector2( 101005, -3768 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Когда IsMob - с кратером стоит самым левым. "
+}
+_is_agressive = true
+_is_fearful = true
+
+[node name="Alien39" parent="Aliens" instance=ExtResource( 32 )]
+position = Vector2( 97576, 1494 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Когда IsMob - с кратером стоит самым левым. "
+}
+_is_agressive = true
+_is_fearful = true
+
+[node name="Alien40" parent="Aliens" instance=ExtResource( 32 )]
+position = Vector2( 98840, 1527 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Когда IsMob - с кратером стоит самым левым. "
+}
+_is_agressive = true
+_is_fearful = true
+
+[node name="Alien41" parent="Aliens" instance=ExtResource( 32 )]
+position = Vector2( 100588, 1581 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Когда IsMob - с кратером стоит самым левым. "
+}
+_is_agressive = true
+
+[node name="Alien33" parent="Aliens" instance=ExtResource( 32 )]
+position = Vector2( 81488, 1486 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Когда IsMob - с кратером стоит самым левым. "
+}
+_is_agressive = true
+_is_fearful = true
+
+[node name="Alien34" parent="Aliens" instance=ExtResource( 32 )]
+position = Vector2( 84400, 1459 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Когда IsMob - с кратером стоит самым левым. "
+}
+_is_agressive = true
+_is_fearful = true
+
+[node name="Alien35" parent="Aliens" instance=ExtResource( 32 )]
+position = Vector2( 86088, 1489 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Когда IsMob - с кратером стоит самым левым. "
+}
+_is_agressive = true
+
+[node name="Alien36" parent="Aliens" instance=ExtResource( 32 )]
+position = Vector2( 86792, 1481 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Когда IsMob - с кратером стоит самым левым. "
+}
+_is_agressive = true
+
+[node name="Alien37" parent="Aliens" instance=ExtResource( 32 )]
+position = Vector2( 87560, 1465 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Когда IsMob - с кратером стоит самым левым. "
+}
+_is_agressive = true
+
+[node name="Alien27" parent="Aliens" instance=ExtResource( 32 )]
+position = Vector2( 72492, 1410 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Когда IsMob - с кратером стоит самым левым. "
+}
+_is_agressive = true
+_is_fearful = true
+
+[node name="Alien28" parent="Aliens" instance=ExtResource( 32 )]
+position = Vector2( 74258, 1403 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Когда IsMob - с кратером стоит самым левым. "
+}
+_is_agressive = true
+_is_fearful = true
+
+[node name="Alien29" parent="Aliens" instance=ExtResource( 32 )]
+position = Vector2( 75220, 1403 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Когда IsMob - с кратером стоит самым левым. "
+}
+_is_agressive = true
+_is_fearful = true
+
+[node name="Alien16" parent="Aliens" instance=ExtResource( 32 )]
+position = Vector2( 67121, 1371 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Когда IsMob - с кратером стоит самым левым. "
+}
+_is_agressive = true
+_is_fearful = true
+
+[node name="Alien20" parent="Aliens" instance=ExtResource( 32 )]
+position = Vector2( 60904, 1307 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Когда IsMob - с кратером стоит самым левым. "
+}
+_is_agressive = true
+_is_fearful = true
+
+[node name="Alien17" parent="Aliens" instance=ExtResource( 32 )]
+position = Vector2( 52507, 1313 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Когда IsMob - с кратером стоит самым левым. "
+}
+_is_agressive = true
+
+[node name="Alien18" parent="Aliens" instance=ExtResource( 32 )]
+position = Vector2( 56642, 1313 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Когда IsMob - с кратером стоит самым левым. "
+}
+_is_agressive = true
+
+[node name="Alien42" parent="Aliens" instance=ExtResource( 32 )]
+position = Vector2( 51537, 1285 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Когда IsMob - с кратером стоит самым левым. "
+}
+_is_agressive = true
+
+[node name="Alien19" parent="Aliens" instance=ExtResource( 32 )]
+position = Vector2( 58944, 1233 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Когда IsMob - с кратером стоит самым левым. "
+}
+_is_agressive = true
+
+[node name="Alien10" parent="Aliens" instance=ExtResource( 32 )]
+position = Vector2( 35185, 1219 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Когда IsMob - с кратером стоит самым левым. "
+}
+_is_agressive = true
+_is_fearful = true
+
+[node name="Alien14" parent="Aliens" instance=ExtResource( 32 )]
+position = Vector2( 32416, 1188 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Когда IsMob - с кратером стоит самым левым. "
+}
+_is_agressive = true
+_is_fearful = true
+
+[node name="Alien6" parent="Aliens" instance=ExtResource( 32 )]
+position = Vector2( 100309, -3752 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Когда IsMob - с кратером стоит самым левым. "
+}
+_is_fearful = true
+
+[node name="Alien7" parent="Aliens" instance=ExtResource( 32 )]
+position = Vector2( 100013, -3246 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Когда IsMob - с кратером стоит самым левым. "
+}
+_is_mob = true
+
+[node name="Alien21" parent="Aliens" instance=ExtResource( 32 )]
+position = Vector2( 62080, 1357 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Когда IsMob - с кратером стоит самым левым. "
+}
+_is_mob = true
+
+[node name="Alien23" parent="Aliens" instance=ExtResource( 32 )]
+position = Vector2( 62104, 1356 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Когда IsMob - с кратером стоит самым левым. "
+}
+_is_mob = true
+
+[node name="Alien24" parent="Aliens" instance=ExtResource( 32 )]
+position = Vector2( 62112, 1356 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Когда IsMob - с кратером стоит самым левым. "
+}
+_is_mob = true
+
+[node name="Alien25" parent="Aliens" instance=ExtResource( 32 )]
+position = Vector2( 62072, 1358 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Когда IsMob - с кратером стоит самым левым. "
+}
+_is_mob = true
+
+[node name="Alien22" parent="Aliens" instance=ExtResource( 32 )]
+position = Vector2( 62056, 1360 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Когда IsMob - с кратером стоит самым левым. "
+}
+_is_mob = true
+_is_mob_with_crater = true
+
+[node name="Alien11" parent="Aliens" instance=ExtResource( 32 )]
+position = Vector2( 100643, -3260 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Когда IsMob - с кратером стоит самым левым. "
+}
+_is_mob = true
+_is_mob_with_crater = true
+
+[node name="Alien30" parent="Aliens" instance=ExtResource( 32 )]
+position = Vector2( 77832, 1342 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Когда IsMob - с кратером стоит самым левым. "
+}
+_is_mob = true
+_is_mob_with_crater = true
+
+[node name="Alien31" parent="Aliens" instance=ExtResource( 32 )]
+position = Vector2( 77848, 1340 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Когда IsMob - с кратером стоит самым левым. "
+}
+_is_mob = true
+
+[node name="Alien32" parent="Aliens" instance=ExtResource( 32 )]
+position = Vector2( 77864, 1342 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Когда IsMob - с кратером стоит самым левым. "
+}
+_is_mob = true
+
+[node name="Alien26" parent="Aliens" instance=ExtResource( 32 )]
+position = Vector2( 63400, 1396 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Когда IsMob - с кратером стоит самым левым. "
+}
+_is_agressive = true
+
+[node name="Alien15" parent="Aliens" instance=ExtResource( 32 )]
+position = Vector2( 42432, 1219 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Когда IsMob - с кратером стоит самым левым. "
+}
+_is_agressive = true
+_is_fearful = true
+
+[node name="Alien43" parent="Aliens" instance=ExtResource( 32 )]
+position = Vector2( 43368, 1262 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Когда IsMob - с кратером стоит самым левым. "
+}
+_is_fearful = true
+
+[node name="Alien44" parent="Aliens" instance=ExtResource( 32 )]
+position = Vector2( 45711, 1299 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Когда IsMob - с кратером стоит самым левым. "
+}
+_is_agressive = true
+_is_fearful = true
+
+[node name="Alien12" parent="Aliens" instance=ExtResource( 32 )]
+position = Vector2( 26224, 1208 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Когда IsMob - с кратером стоит самым левым. "
+}
+_is_agressive = true
+_is_fearful = true
+
+[node name="Alien8" parent="Aliens" instance=ExtResource( 32 )]
+position = Vector2( 23688, 1125 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Когда IsMob - с кратером стоит самым левым. "
+}
+_is_agressive = true
+_is_fearful = true
+
+[node name="Alien3" parent="Aliens" instance=ExtResource( 32 )]
+position = Vector2( 14504, 1110 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Когда IsMob - с кратером стоит самым левым. "
+}
+_is_fearful = true
+
+[node name="AlienMob" parent="Aliens" instance=ExtResource( 11 )]
+position = Vector2( 101334, -3192 )
+__meta__ = {
+"_edit_group_": true
+}
+_is_agressive = true
+_is_without_raincoat = true
+
+[node name="AlienMob3" parent="Aliens" instance=ExtResource( 11 )]
+position = Vector2( 77568, 1323 )
+__meta__ = {
+"_edit_group_": true
+}
+_is_agressive = true
+_is_without_raincoat = true
+
+[node name="AlienMob12" parent="Aliens" instance=ExtResource( 11 )]
+position = Vector2( 77648, 1346 )
+__meta__ = {
+"_edit_group_": true
+}
+_is_agressive = true
+_is_without_raincoat = true
+
+[node name="AlienMob4" parent="Aliens" instance=ExtResource( 11 )]
+position = Vector2( 77600, 1325 )
+__meta__ = {
+"_edit_group_": true
+}
+_is_agressive = true
+_is_without_raincoat = true
+
+[node name="AlienMob13" parent="Aliens" instance=ExtResource( 11 )]
+position = Vector2( 77584, 1323 )
+__meta__ = {
+"_edit_group_": true
+}
+_is_agressive = true
+_is_without_raincoat = true
+
+[node name="AlienMob5" parent="Aliens" instance=ExtResource( 11 )]
+position = Vector2( 77632, 1342 )
+__meta__ = {
+"_edit_group_": true
+}
+_is_agressive = true
+_is_without_raincoat = true
+
+[node name="AlienMob6" parent="Aliens" instance=ExtResource( 11 )]
+position = Vector2( 77672, 1336 )
+__meta__ = {
+"_edit_group_": true
+}
+_is_agressive = true
+_is_without_raincoat = true
+
+[node name="AlienMob7" parent="Aliens" instance=ExtResource( 11 )]
+position = Vector2( 77536, 1323 )
+__meta__ = {
+"_edit_group_": true
+}
+_is_agressive = true
+_is_without_raincoat = true
+
+[node name="AlienMob8" parent="Aliens" instance=ExtResource( 11 )]
+position = Vector2( 77720, 1349 )
+__meta__ = {
+"_edit_group_": true
+}
+_is_agressive = true
+_is_without_raincoat = true
+
+[node name="AlienMob11" parent="Aliens" instance=ExtResource( 11 )]
+position = Vector2( 77696, 1336 )
+__meta__ = {
+"_edit_group_": true
+}
+_is_agressive = true
+_is_without_raincoat = true
+
+[node name="AlienMob9" parent="Aliens" instance=ExtResource( 11 )]
+position = Vector2( 77784, 1355 )
+__meta__ = {
+"_edit_group_": true
+}
+_is_agressive = true
+_is_without_raincoat = true
+
+[node name="AlienMob10" parent="Aliens" instance=ExtResource( 11 )]
+position = Vector2( 77760, 1347 )
+__meta__ = {
+"_edit_group_": true
+}
+_is_agressive = true
+_is_without_raincoat = true
+
+[node name="Altars" type="Node2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="AltarEnergyShield" parent="Altars" instance=ExtResource( 13 )]
+position = Vector2( 27464, 1151 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AltarLaserShot" parent="Altars" instance=ExtResource( 13 )]
+position = Vector2( 53416, 1241 )
+__meta__ = {
+"_edit_group_": true
+}
+altar_type = 1
+
+[node name="Player" parent="." instance=ExtResource( 12 )]
+visible = false
+
+[node name="Scraps" parent="." instance=ExtResource( 6 )]
+z_index = 1
+
+[node name="RayDust" parent="." instance=ExtResource( 24 )]
+
+[node name="SavePoints" type="Node2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="SavePoint1" parent="SavePoints" instance=ExtResource( 8 )]
+position = Vector2( 516, 0 )
+
+[node name="SavePoint2" parent="SavePoints" instance=ExtResource( 8 )]
+position = Vector2( 6784, 0 )
+
+[node name="SavePoint3" parent="SavePoints" instance=ExtResource( 8 )]
+position = Vector2( 11272, 0 )
+
+[node name="SavePoint4" parent="SavePoints" instance=ExtResource( 8 )]
+position = Vector2( 20816, 0 )
+
+[node name="SavePoint5" parent="SavePoints" instance=ExtResource( 8 )]
+position = Vector2( 37728, 0 )
+
+[node name="SavePoint12" parent="SavePoints" instance=ExtResource( 8 )]
+position = Vector2( 27955, 0 )
+
+[node name="SavePoint6" parent="SavePoints" instance=ExtResource( 8 )]
+position = Vector2( 47541, 0 )
+
+[node name="SavePoint7" parent="SavePoints" instance=ExtResource( 8 )]
+position = Vector2( 59920, 0 )
+
+[node name="SavePoint13" parent="SavePoints" instance=ExtResource( 8 )]
+position = Vector2( 53800, 0 )
+
+[node name="SavePoint8" parent="SavePoints" instance=ExtResource( 8 )]
+position = Vector2( 72184, 0 )
+
+[node name="SavePoint9" parent="SavePoints" instance=ExtResource( 8 )]
+position = Vector2( 82624, 0 )
+
+[node name="SavePoint10" parent="SavePoints" instance=ExtResource( 8 )]
+position = Vector2( 90688, 0 )
+
+[node name="SavePoint11" parent="SavePoints" instance=ExtResource( 8 )]
+position = Vector2( 96712, 0 )
+
+[node name="PuzzlesToCollect" type="Node2D" parent="."]
+__meta__ = {
+"_edit_lock_": true,
+"_editor_description_": "Пазл №3 в метеоре.
+Пазл №6 в метеоре."
+}
+
+[node name="Puzzle1" parent="PuzzlesToCollect" instance=ExtResource( 9 )]
+position = Vector2( 8263, 363 )
+__meta__ = {
+"_editor_description_": "Текстура устанавливается на уровне!"
+}
+number = 1
+_texture = ExtResource( 19 )
+
+[node name="Label" type="Label" parent="PuzzlesToCollect/Puzzle1"]
+visible = false
+margin_left = -10.0
+margin_top = -193.333
+margin_right = 16.0
+margin_bottom = -133.333
+custom_fonts/font = SubResource( 29 )
+text = "1"
+
+[node name="Puzzle2" parent="PuzzlesToCollect" instance=ExtResource( 9 )]
+position = Vector2( 19303, 570 )
+__meta__ = {
+"_editor_description_": "Текстура устанавливается на уровне!!"
+}
+number = 2
+_texture = ExtResource( 18 )
+
+[node name="Label" type="Label" parent="PuzzlesToCollect/Puzzle2"]
+visible = false
+margin_left = -13.332
+margin_top = -193.333
+margin_right = 19.668
+margin_bottom = -133.333
+custom_fonts/font = SubResource( 29 )
+text = "2"
+
+[node name="Puzzle4" parent="PuzzlesToCollect" instance=ExtResource( 9 )]
+position = Vector2( 89448, 754 )
+__meta__ = {
+"_editor_description_": "Текстура устанавливается на уровне!!"
+}
+number = 4
+_texture = ExtResource( 20 )
+
+[node name="Label" type="Label" parent="PuzzlesToCollect/Puzzle4"]
+visible = false
+margin_left = -16.6719
+margin_top = -193.333
+margin_right = 18.3281
+margin_bottom = -133.333
+custom_fonts/font = SubResource( 29 )
+text = "4"
+
+[node name="Puzzle5" parent="PuzzlesToCollect" instance=ExtResource( 9 )]
+position = Vector2( 55795, 823 )
+__meta__ = {
+"_editor_description_": "Текстура устанавливается на уровне!!"
+}
+number = 5
+_texture = ExtResource( 14 )
+
+[node name="Label" type="Label" parent="PuzzlesToCollect/Puzzle5"]
+visible = false
+margin_left = -13.3281
+margin_top = -193.333
+margin_right = 21.6719
+margin_bottom = -133.333
+custom_fonts/font = SubResource( 29 )
+text = "5"
+
+[node name="Puzzle7" parent="PuzzlesToCollect" instance=ExtResource( 9 )]
+position = Vector2( 78171, 741 )
+__meta__ = {
+"_editor_description_": "Текстура устанавливается на уровне!!"
+}
+number = 7
+_texture = ExtResource( 17 )
+
+[node name="Label" type="Label" parent="PuzzlesToCollect/Puzzle7"]
+visible = false
+margin_left = -13.3281
+margin_top = -193.333
+margin_right = 18.6719
+margin_bottom = -133.333
+custom_fonts/font = SubResource( 29 )
+text = "7"
+
+[node name="Puzzle8" parent="PuzzlesToCollect" instance=ExtResource( 9 )]
+position = Vector2( 69768, 770 )
+__meta__ = {
+"_editor_description_": "Текстура устанавливается на уровне!!"
+}
+number = 8
+_texture = ExtResource( 22 )
+
+[node name="Label" type="Label" parent="PuzzlesToCollect/Puzzle8"]
+visible = false
+margin_left = -13.3281
+margin_top = -193.333
+margin_right = 22.6719
+margin_bottom = -133.333
+custom_fonts/font = SubResource( 29 )
+text = "8"
+
+[node name="Puzzle9" parent="PuzzlesToCollect" instance=ExtResource( 9 )]
+position = Vector2( 104453, 1029 )
+__meta__ = {
+"_editor_description_": "Текстура устанавливается на уровне!!"
+}
+number = 9
+_texture = ExtResource( 23 )
+
+[node name="Label" type="Label" parent="PuzzlesToCollect/Puzzle9"]
+visible = false
+margin_left = -13.3438
+margin_top = -193.333
+margin_right = 23.6563
+margin_bottom = -133.333
+custom_fonts/font = SubResource( 29 )
+text = "9"
+
+[node name="LiftingBeams" type="Node2D" parent="."]
+z_index = 3
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Bubbles" type="Node2D" parent="LiftingBeams"]
+z_index = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="LiftingBeam1" parent="LiftingBeams" instance=ExtResource( 4 )]
+position = Vector2( 98764.1, -4432 )
+is_launch_meteor_in_cosmos = true
+
+[node name="LiftingBeam22" parent="LiftingBeams" instance=ExtResource( 4 )]
+position = Vector2( 96456, 382 )
+is_launch_meteor_in_cosmos = true
+
+[node name="LiftingBeam18" parent="LiftingBeams" instance=ExtResource( 4 )]
+position = Vector2( 79816, 353 )
+is_launch_meteor_in_cosmos = true
+
+[node name="LiftingBeam19" parent="LiftingBeams" instance=ExtResource( 4 )]
+position = Vector2( 88394, 409 )
+is_launch_meteor_in_cosmos = true
+
+[node name="LiftingBeam20" parent="LiftingBeams" instance=ExtResource( 4 )]
+position = Vector2( 89160, 434 )
+is_launch_meteor_in_cosmos = true
+
+[node name="LiftingBeam16" parent="LiftingBeams" instance=ExtResource( 4 )]
+position = Vector2( 70512, 342 )
+is_launch_meteor_in_cosmos = true
+
+[node name="LiftingBeam14" parent="LiftingBeams" instance=ExtResource( 4 )]
+position = Vector2( 66208, 320 )
+is_launch_meteor_in_cosmos = true
+
+[node name="LiftingBeam15" parent="LiftingBeams" instance=ExtResource( 4 )]
+position = Vector2( 64568, 344 )
+is_launch_meteor_in_cosmos = true
+
+[node name="LiftingBeam13" parent="LiftingBeams" instance=ExtResource( 4 )]
+position = Vector2( 47816, 219 )
+is_launch_meteor_in_cosmos = true
+
+[node name="LiftingBeam8" parent="LiftingBeams" instance=ExtResource( 4 )]
+position = Vector2( 17360, 96 )
+is_launch_meteor_in_cosmos = true
+
+[node name="LiftingBeam9" parent="LiftingBeams" instance=ExtResource( 4 )]
+position = Vector2( 36833, 174 )
+is_launch_meteor_in_cosmos = true
+
+[node name="LiftingBeam11" parent="LiftingBeams" instance=ExtResource( 4 )]
+position = Vector2( 34008, 160 )
+is_launch_meteor_in_cosmos = true
+
+[node name="LiftingBeam7" parent="LiftingBeams" instance=ExtResource( 4 )]
+position = Vector2( 29183, 133 )
+scale = Vector2( 1.2, 1 )
+is_launch_meteor_in_cosmos = true
+
+[node name="LiftingBeam6" parent="LiftingBeams" instance=ExtResource( 4 )]
+position = Vector2( 99292, -4392 )
+
+[node name="LiftingBeam21" parent="LiftingBeams" instance=ExtResource( 4 )]
+position = Vector2( 91224, 460 )
+is_launch_meteor_in_cosmos = true
+
+[node name="LiftingBeam17" parent="LiftingBeams" instance=ExtResource( 4 )]
+position = Vector2( 69168, 320 )
+is_launch_meteor_in_cosmos = true
+
+[node name="LiftingBeam12" parent="LiftingBeams" instance=ExtResource( 4 )]
+position = Vector2( 57360, 261 )
+is_launch_meteor_in_cosmos = true
+
+[node name="LiftingBeam10" parent="LiftingBeams" instance=ExtResource( 4 )]
+position = Vector2( 38768, 176 )
+
+[node name="LiftingBeam2" parent="LiftingBeams" instance=ExtResource( 4 )]
+position = Vector2( 3272, -705 )
+scale = Vector2( 1.6, 1.6 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Будет только единстенный кратер, который не поднимает, а спускает вниз.
+Размеры кратера не более 1.6"
+}
+
+[node name="LiftingBeam5" parent="LiftingBeams" instance=ExtResource( 4 )]
+position = Vector2( 9992, -589 )
+scale = Vector2( 1.2, 1.6 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Будет только единстенный кратер, который не поднимает, а спускает вниз.
+Размеры кратера не более 1.6"
+}
+
+[node name="LiftingBeam3" parent="LiftingBeams" instance=ExtResource( 4 )]
+position = Vector2( 40748, 108 )
+is_puzzle_inside = true
+is_launch_meteor_in_cosmos = true
+
+[node name="Label" type="Label" parent="LiftingBeams/LiftingBeam3"]
+visible = false
+margin_left = 14.0
+margin_top = 877.0
+margin_right = 51.0
+margin_bottom = 937.0
+custom_fonts/font = SubResource( 29 )
+text = "6"
+
+[node name="LiftingBeam4" parent="LiftingBeams" instance=ExtResource( 4 )]
+position = Vector2( 7469, -137 )
+scale = Vector2( 1.2, 1.2 )
+is_launch_meteor_in_cosmos = true
+
+[node name="Meteors" type="Node2D" parent="."]
+z_index = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Meteor1" parent="Meteors" instance=ExtResource( 16 )]
+position = Vector2( 23880, -359 )
+
+[node name="Meteor5" parent="Meteors" instance=ExtResource( 16 )]
+position = Vector2( 32240, -160 )
+is_puzzle_inside = true
+
+[node name="Label" type="Label" parent="Meteors/Meteor5"]
+visible = false
+margin_left = -19.0
+margin_top = -166.333
+margin_right = 15.0
+margin_bottom = -106.333
+custom_fonts/font = SubResource( 29 )
+text = "3"
+
+[node name="Meteor2" parent="Meteors" instance=ExtResource( 16 )]
+position = Vector2( 6004, -279 )
+
+[node name="Meteor3" parent="Meteors" instance=ExtResource( 16 )]
+position = Vector2( 13449, -153 )
+
+[node name="Meteor4" parent="Meteors" instance=ExtResource( 16 )]
+position = Vector2( 32808, 10 )
+
+[node name="Meteor6" parent="Meteors" instance=ExtResource( 16 )]
+position = Vector2( 99069.1, -3888 )
+
+[node name="Meteor21" parent="Meteors" instance=ExtResource( 16 )]
+position = Vector2( 104824, 195 )
+
+[node name="Meteor22" parent="Meteors" instance=ExtResource( 16 )]
+position = Vector2( 106568, 312 )
+
+[node name="Meteor19" parent="Meteors" instance=ExtResource( 16 )]
+position = Vector2( 93488, -23 )
+
+[node name="Meteor20" parent="Meteors" instance=ExtResource( 16 )]
+position = Vector2( 94448, 4 )
+
+[node name="Meteor16" parent="Meteors" instance=ExtResource( 16 )]
+position = Vector2( 80868, -306 )
+
+[node name="Meteor17" parent="Meteors" instance=ExtResource( 16 )]
+position = Vector2( 82776, -206 )
+
+[node name="Meteor18" parent="Meteors" instance=ExtResource( 16 )]
+position = Vector2( 84728, -235 )
+
+[node name="Meteor15" parent="Meteors" instance=ExtResource( 16 )]
+position = Vector2( 71735, -316 )
+
+[node name="Meteor13" parent="Meteors" instance=ExtResource( 16 )]
+position = Vector2( 64696, -201 )
+
+[node name="Meteor14" parent="Meteors" instance=ExtResource( 16 )]
+position = Vector2( 69720, -203 )
+
+[node name="Meteor7" parent="Meteors" instance=ExtResource( 16 )]
+position = Vector2( 46904, -213 )
+
+[node name="Meteor8" parent="Meteors" instance=ExtResource( 16 )]
+position = Vector2( 51728, -262 )
+
+[node name="Meteor9" parent="Meteors" instance=ExtResource( 16 )]
+position = Vector2( 53718, -49 )
+
+[node name="Meteor10" parent="Meteors" instance=ExtResource( 16 )]
+position = Vector2( 52752, -350 )
+
+[node name="Meteor11" parent="Meteors" instance=ExtResource( 16 )]
+position = Vector2( 57480, -268 )
+
+[node name="Meteor12" parent="Meteors" instance=ExtResource( 16 )]
+position = Vector2( 56616, -460 )
+
+[node name="Grounds" type="Node2D" parent="."]
+position = Vector2( -64, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="TempoArea1" parent="Grounds" instance=ExtResource( 5 )]
+position = Vector2( 0, 1044 )
+
+[node name="TempoArea2" parent="Grounds" instance=ExtResource( 5 )]
+position = Vector2( 18592, 1133 )
+
+[node name="TempoArea3" parent="Grounds" instance=ExtResource( 5 )]
+position = Vector2( 37189, 1225 )
+
+[node name="TempoArea4" parent="Grounds" instance=ExtResource( 5 )]
+position = Vector2( 55784, 1317 )
+
+[node name="TempoArea5" parent="Grounds" instance=ExtResource( 5 )]
+position = Vector2( 74376, 1408 )
+
+[node name="TempoArea6" parent="Grounds" instance=ExtResource( 5 )]
+position = Vector2( 92968, 1502 )
+
+[node name="TempoArea7" parent="Grounds" instance=ExtResource( 5 )]
+position = Vector2( 111560, 1593 )
+
+[node name="Ground1" parent="Grounds" instance=ExtResource( 3 )]
+position = Vector2( 0, 1056 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Ground2" parent="Grounds" instance=ExtResource( 3 )]
+position = Vector2( 18592, 1145 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Ground3" parent="Grounds" instance=ExtResource( 3 )]
+position = Vector2( 37189, 1237 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Ground4" parent="Grounds" instance=ExtResource( 3 )]
+position = Vector2( 55784, 1329 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Ground5" parent="Grounds" instance=ExtResource( 3 )]
+position = Vector2( 74376, 1420 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Ground6" parent="Grounds" instance=ExtResource( 3 )]
+position = Vector2( 92968, 1512 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Ground7" parent="Grounds" instance=ExtResource( 3 )]
+position = Vector2( 111560, 1605 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Decorations" type="Node2D" parent="Grounds"]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="UFO" parent="Grounds/Decorations" instance=ExtResource( 31 )]
+position = Vector2( 18263, 1092 )
+
+[node name="CratersDeaths" type="Node2D" parent="Grounds"]
+visible = false
+z_index = 5
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="SandDeath2" parent="Grounds/CratersDeaths" instance=ExtResource( 21 )]
+position = Vector2( 2960, 1073 )
+
+[node name="SandDeath6" parent="Grounds/CratersDeaths" instance=ExtResource( 21 )]
+position = Vector2( 4016, 1154 )
+
+[node name="SandDeath3" parent="Grounds/CratersDeaths" instance=ExtResource( 21 )]
+position = Vector2( 7376, 1221 )
+
+[node name="SandDeath4" parent="Grounds/CratersDeaths" instance=ExtResource( 21 )]
+position = Vector2( 9656, 1221 )
+
+[node name="SandDeath5" parent="Grounds/CratersDeaths" instance=ExtResource( 21 )]
+position = Vector2( 11720, 1270 )
+
+[node name="SandDeath7" parent="Grounds/CratersDeaths" instance=ExtResource( 21 )]
+position = Vector2( 14624, 1236 )
+
+[node name="SandDeath8" parent="Grounds/CratersDeaths" instance=ExtResource( 21 )]
+position = Vector2( 17248, 1255 )
+
+[node name="SandDeath9" parent="Grounds/CratersDeaths" instance=ExtResource( 21 )]
+position = Vector2( 18568, 1256 )
+
+[node name="SandDeath10" parent="Grounds/CratersDeaths" instance=ExtResource( 21 )]
+position = Vector2( 22016, 1234 )
+
+[node name="SandDeath11" parent="Grounds/CratersDeaths" instance=ExtResource( 21 )]
+position = Vector2( 23782, 1249 )
+
+[node name="SandDeath12" parent="Grounds/CratersDeaths" instance=ExtResource( 21 )]
+position = Vector2( 26360, 1313 )
+
+[node name="SandDeath13" parent="Grounds/CratersDeaths" instance=ExtResource( 21 )]
+position = Vector2( 29064, 1274 )
+
+[node name="SandDeath14" parent="Grounds/CratersDeaths" instance=ExtResource( 21 )]
+position = Vector2( 30384, 1319 )
+
+[node name="SandDeath15" parent="Grounds/CratersDeaths" instance=ExtResource( 21 )]
+position = Vector2( 31280, 1399 )
+
+[node name="SandDeath16" parent="Grounds/CratersDeaths" instance=ExtResource( 21 )]
+position = Vector2( 32576, 1284 )
+
+[node name="SandDeath17" parent="Grounds/CratersDeaths" instance=ExtResource( 21 )]
+position = Vector2( 33888, 1293 )
+
+[node name="SandDeath18" parent="Grounds/CratersDeaths" instance=ExtResource( 21 )]
+position = Vector2( 35246, 1313 )
+
+[node name="SandDeath19" parent="Grounds/CratersDeaths" instance=ExtResource( 21 )]
+position = Vector2( 36648, 1320 )
+
+[node name="SandDeath20" parent="Grounds/CratersDeaths" instance=ExtResource( 21 )]
+position = Vector2( 38624, 1312 )
+
+[node name="SandDeath21" parent="Grounds/CratersDeaths" instance=ExtResource( 21 )]
+position = Vector2( 40592, 1277 )
+
+[node name="SandDeath22" parent="Grounds/CratersDeaths" instance=ExtResource( 21 )]
+position = Vector2( 42502, 1326 )
+
+[node name="SandDeath23" parent="Grounds/CratersDeaths" instance=ExtResource( 21 )]
+position = Vector2( 45000, 1401 )
+
+[node name="SandDeath24" parent="Grounds/CratersDeaths" instance=ExtResource( 21 )]
+position = Vector2( 47704, 1375 )
+
+[node name="SandDeath25" parent="Grounds/CratersDeaths" instance=ExtResource( 21 )]
+position = Vector2( 49696, 1400 )
+
+[node name="SandDeath26" parent="Grounds/CratersDeaths" instance=ExtResource( 21 )]
+position = Vector2( 50664, 1478 )
+
+[node name="SandDeath27" parent="Grounds/CratersDeaths" instance=ExtResource( 21 )]
+position = Vector2( 51696, 1407 )
+
+[node name="SandDeath28" parent="Grounds/CratersDeaths" instance=ExtResource( 21 )]
+position = Vector2( 52564, 1481 )
+
+[node name="SandDeath29" parent="Grounds/CratersDeaths" instance=ExtResource( 21 )]
+position = Vector2( 53864, 1410 )
+
+[node name="SandDeath30" parent="Grounds/CratersDeaths" instance=ExtResource( 21 )]
+position = Vector2( 54800, 1485 )
+
+[node name="SandDeath31" parent="Grounds/CratersDeaths" instance=ExtResource( 21 )]
+position = Vector2( 55592, 1414 )
+
+[node name="SandDeath32" parent="Grounds/CratersDeaths" instance=ExtResource( 21 )]
+position = Vector2( 57208, 1401 )
+
+[node name="SandDeath33" parent="Grounds/CratersDeaths" instance=ExtResource( 21 )]
+position = Vector2( 59005, 1348 )
+
+[node name="SandDeath34" parent="Grounds/CratersDeaths" instance=ExtResource( 21 )]
+position = Vector2( 60960, 1416 )
+
+[node name="SandDeath35" parent="Grounds/CratersDeaths" instance=ExtResource( 21 )]
+position = Vector2( 62192, 1476 )
+
+[node name="SandDeath36" parent="Grounds/CratersDeaths" instance=ExtResource( 21 )]
+position = Vector2( 63292, 1479 )
+
+[node name="SandDeath37" parent="Grounds/CratersDeaths" instance=ExtResource( 21 )]
+position = Vector2( 64420, 1473 )
+
+[node name="SandDeath38" parent="Grounds/CratersDeaths" instance=ExtResource( 21 )]
+position = Vector2( 66072, 1443 )
+
+[node name="SandDeath39" parent="Grounds/CratersDeaths" instance=ExtResource( 21 )]
+position = Vector2( 67280, 1477 )
+
+[node name="SandDeath40" parent="Grounds/CratersDeaths" instance=ExtResource( 21 )]
+position = Vector2( 69056, 1450 )
+
+[node name="SandDeath41" parent="Grounds/CratersDeaths" instance=ExtResource( 21 )]
+position = Vector2( 70152, 1484 )
+
+[node name="SandDeath42" parent="Grounds/CratersDeaths" instance=ExtResource( 21 )]
+position = Vector2( 71248, 1511 )
+
+[node name="SandDeath43" parent="Grounds/CratersDeaths" instance=ExtResource( 21 )]
+position = Vector2( 72658, 1515 )
+
+[node name="SandDeath44" parent="Grounds/CratersDeaths" instance=ExtResource( 21 )]
+position = Vector2( 74392, 1502 )
+
+[node name="SandDeath45" parent="Grounds/CratersDeaths" instance=ExtResource( 21 )]
+position = Vector2( 75488, 1506 )
+
+[node name="SandDeath46" parent="Grounds/CratersDeaths" instance=ExtResource( 21 )]
+position = Vector2( 77958, 1476 )
+
+[node name="SandDeath47" parent="Grounds/CratersDeaths" instance=ExtResource( 21 )]
+position = Vector2( 79064, 1483 )
+
+[node name="SandDeath48" parent="Grounds/CratersDeaths" instance=ExtResource( 21 )]
+position = Vector2( 80160, 1513 )
+
+[node name="SandDeath49" parent="Grounds/CratersDeaths" instance=ExtResource( 21 )]
+position = Vector2( 81264, 1567 )
+
+[node name="SandDeath50" parent="Grounds/CratersDeaths" instance=ExtResource( 21 )]
+position = Vector2( 82472, 1587 )
+
+[node name="SandDeath51" parent="Grounds/CratersDeaths" instance=ExtResource( 21 )]
+position = Vector2( 84575, 1554 )
+
+[node name="SandDeath52" parent="Grounds/CratersDeaths" instance=ExtResource( 21 )]
+position = Vector2( 86208, 1581 )
+
+[node name="SandDeath53" parent="Grounds/CratersDeaths" instance=ExtResource( 21 )]
+position = Vector2( 87304, 1574 )
+
+[node name="SandDeath54" parent="Grounds/CratersDeaths" instance=ExtResource( 21 )]
+position = Vector2( 88407, 1578 )
+
+[node name="SandDeath55" parent="Grounds/CratersDeaths" instance=ExtResource( 21 )]
+position = Vector2( 89514, 1578 )
+
+[node name="SandDeath56" parent="Grounds/CratersDeaths" instance=ExtResource( 21 )]
+position = Vector2( 91168, 1584 )
+
+[node name="SandDeath57" parent="Grounds/CratersDeaths" instance=ExtResource( 21 )]
+position = Vector2( 92272, 1590 )
+
+[node name="Final" parent="." instance=ExtResource( 25 )]
+position = Vector2( 105992, 488 )
+__meta__ = {
+"_editor_description_": "Сэйв должен быть ДО линии финала.
+"
+}
+
+[node name="EndCredits" parent="." instance=ExtResource( 34 )]

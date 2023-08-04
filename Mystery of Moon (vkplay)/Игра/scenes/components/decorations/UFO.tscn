@@ -1,0 +1,116 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://scenes/components/decorations/textures/ufo.png" type="Texture" id=1]
+[ext_resource path="res://scenes/components/alien/Alien.tscn" type="PackedScene" id=2]
+
+[sub_resource type="Gradient" id=12]
+offsets = PoolRealArray( 0, 0.463023, 0.59164, 1 )
+colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 0.705882, 1, 1, 1, 0.74902, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=13]
+gradient = SubResource( 12 )
+
+[sub_resource type="Curve" id=2]
+_data = [ Vector2( 0, 0.175 ), 0.0, 0.305609, 0, 0, Vector2( 0.994012, 0.829545 ), 0.37799, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=3]
+curve = SubResource( 2 )
+
+[sub_resource type="ParticlesMaterial" id=8]
+lifetime_randomness = 0.2
+emission_shape = 1
+emission_sphere_radius = 2.0
+flag_disable_z = true
+direction = Vector3( 0, -1, 0 )
+gravity = Vector3( 0, -15, 0 )
+initial_velocity = 5.0
+initial_velocity_random = 0.4
+angular_velocity = -1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 5.0
+linear_accel_random = 0.4
+scale = 0.3
+scale_random = 0.4
+scale_curve = SubResource( 3 )
+color = Color( 0.886275, 0.886275, 0.886275, 0.898039 )
+color_ramp = SubResource( 13 )
+
+[sub_resource type="StreamTexture" id=9]
+load_path = "res://.import/smoke.png-8fd3629d9b0a96b29f857b921140df49.stex"
+
+[node name="UFO" type="Node2D"]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Texture" type="Sprite" parent="."]
+modulate = Color( 0.819608, 0.819608, 0.819608, 1 )
+position = Vector2( 16, 16 )
+rotation = 0.436332
+scale = Vector2( 4, 4 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Smoke1" type="Particles2D" parent="."]
+modulate = Color( 1, 1, 1, 0.705882 )
+position = Vector2( 139, 32 )
+scale = Vector2( 4, 4 )
+amount = 15
+lifetime = 3.0
+process_material = SubResource( 8 )
+texture = SubResource( 9 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Smoke2" type="Particles2D" parent="."]
+modulate = Color( 1, 1, 1, 0.705882 )
+position = Vector2( 147, 24 )
+scale = Vector2( 4, 4 )
+amount = 15
+lifetime = 3.0
+process_material = SubResource( 8 )
+texture = SubResource( 9 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Smoke3" type="Particles2D" parent="."]
+modulate = Color( 1, 1, 1, 0.705882 )
+position = Vector2( 131, 24 )
+scale = Vector2( 4, 4 )
+amount = 15
+lifetime = 3.0
+process_material = SubResource( 8 )
+texture = SubResource( 9 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Smoke4" type="Particles2D" parent="."]
+modulate = Color( 1, 1, 1, 0.705882 )
+position = Vector2( 139, 16 )
+scale = Vector2( 4, 4 )
+amount = 15
+lifetime = 3.0
+process_material = SubResource( 8 )
+texture = SubResource( 9 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Alien1" parent="." instance=ExtResource( 2 )]
+position = Vector2( 216, 40 )
+_is_mob = true
+_is_mob_with_crater = true
+
+[node name="Alien2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 256, 40 )
+_is_mob = true
+
+[node name="Alien3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 296, 40 )
+_is_mob = true

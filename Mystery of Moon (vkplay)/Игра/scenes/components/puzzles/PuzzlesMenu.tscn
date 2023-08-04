@@ -1,0 +1,82 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://scenes/components/puzzles/PuzzleMenu.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/components/puzzles/PuzzlesMenu.gd" type="Script" id=2]
+[ext_resource path="res://scenes/components/puzzles/images/image_part_1.png" type="Texture" id=3]
+[ext_resource path="res://scenes/components/puzzles/images/image_part_3.png" type="Texture" id=4]
+[ext_resource path="res://scenes/components/puzzles/images/image_part_7.png" type="Texture" id=5]
+[ext_resource path="res://scenes/components/puzzles/images/image_part_2.png" type="Texture" id=6]
+[ext_resource path="res://scenes/components/puzzles/images/image_part_4.png" type="Texture" id=7]
+[ext_resource path="res://scenes/components/puzzles/images/image_part_6.png" type="Texture" id=8]
+[ext_resource path="res://scenes/components/puzzles/images/image_part_5.png" type="Texture" id=9]
+[ext_resource path="res://scenes/components/puzzles/images/image_part_8.png" type="Texture" id=10]
+[ext_resource path="res://scenes/components/puzzles/images/image_part_9.png" type="Texture" id=11]
+
+[node name="PuzzlesMenu" type="Node2D"]
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="PuzzleMenu1" parent="." instance=ExtResource( 1 )]
+position = Vector2( 48, 48 )
+__meta__ = {
+"_editor_description_": "Текстура устанавливается в меню!"
+}
+_texture = ExtResource( 3 )
+
+[node name="PuzzleMenu2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 136, 48 )
+__meta__ = {
+"_editor_description_": "Текстура устанавливается в меню!"
+}
+_texture = ExtResource( 6 )
+
+[node name="PuzzleMenu3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 224, 48 )
+__meta__ = {
+"_editor_description_": "Текстура устанавливается в меню!"
+}
+_texture = ExtResource( 4 )
+
+[node name="PuzzleMenu4" parent="." instance=ExtResource( 1 )]
+position = Vector2( 48, 136 )
+__meta__ = {
+"_editor_description_": "Текстура устанавливается в меню!"
+}
+_texture = ExtResource( 7 )
+
+[node name="PuzzleMenu5" parent="." instance=ExtResource( 1 )]
+position = Vector2( 136, 136 )
+__meta__ = {
+"_editor_description_": "Текстура устанавливается в меню!"
+}
+_texture = ExtResource( 9 )
+
+[node name="PuzzleMenu6" parent="." instance=ExtResource( 1 )]
+position = Vector2( 224, 136 )
+__meta__ = {
+"_editor_description_": "Текстура устанавливается в меню!"
+}
+_texture = ExtResource( 8 )
+
+[node name="PuzzleMenu7" parent="." instance=ExtResource( 1 )]
+position = Vector2( 48, 224 )
+__meta__ = {
+"_editor_description_": "Текстура устанавливается в меню!"
+}
+_texture = ExtResource( 5 )
+
+[node name="PuzzleMenu8" parent="." instance=ExtResource( 1 )]
+position = Vector2( 136, 224 )
+__meta__ = {
+"_editor_description_": "Текстура устанавливается в меню!"
+}
+_texture = ExtResource( 10 )
+
+[node name="PuzzleMenu9" parent="." instance=ExtResource( 1 )]
+position = Vector2( 224, 224 )
+__meta__ = {
+"_editor_description_": "Текстура устанавливается в меню!"
+}
+_texture = ExtResource( 11 )

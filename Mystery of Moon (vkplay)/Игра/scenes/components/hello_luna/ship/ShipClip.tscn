@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/components/hello_luna/ship/textures/ship_jaw.png" type="Texture" id=1]
+[ext_resource path="res://scenes/components/hello_luna/ship/textures/ship.png" type="Texture" id=2]
+
+[node name="ShipClip" type="Node2D"]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Desk" type="Polygon2D" parent="."]
+position = Vector2( -16, -24 )
+color = Color( 0, 0, 0, 0 )
+polygon = PoolVector2Array( 32, 72, 32, 96, 40, 104, 64, 112, 88, 112, 152, 104, 160, 96, 184, 88, 168, 80, 80, 64, 64, 56, 48, 32, 16, 24, 40, 64 )
+
+[node name="Ship" type="Sprite" parent="Desk"]
+position = Vector2( 88, 96 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="Chamber" type="Polygon2D" parent="Desk"]
+position = Vector2( 88, 112 )
+z_index = -1
+color = Color( 0, 0, 0, 0 )
+offset = Vector2( -56, -112 )
+polygon = PoolVector2Array( 56, 112, 64, 120, 88, 128, 128, 136, 96, 112 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="ShipJaw" type="Sprite" parent="Desk/Chamber"]
+position = Vector2( 40, -16 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 1 )
+offset = Vector2( -20.9662, 3.8147e-06 )

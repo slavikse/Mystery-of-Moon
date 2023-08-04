@@ -1,0 +1,345 @@
+[gd_scene load_steps=27 format=2]
+
+[ext_resource path="res://scenes/components/alien/Bubble.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/components/alien/Alien.gd" type="Script" id=2]
+[ext_resource path="res://scenes/components/alien/textures/alien_idle1.png" type="Texture" id=3]
+[ext_resource path="res://scenes/components/alien/textures/alien_idle2.png" type="Texture" id=4]
+[ext_resource path="res://scenes/components/alien/textures/alien_shot1.png" type="Texture" id=5]
+[ext_resource path="res://scenes/components/alien/textures/alien_shot2.png" type="Texture" id=6]
+[ext_resource path="res://scenes/components/crater/lifting_beam/LiftingBeam.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/components/alien/textures/grab/alien_grab3.png" type="Texture" id=8]
+[ext_resource path="res://scenes/components/alien/textures/grab/alien_grab5.png" type="Texture" id=9]
+[ext_resource path="res://scenes/components/alien/textures/grab/alien_grab1.png" type="Texture" id=10]
+[ext_resource path="res://scenes/components/alien/textures/grab/alien_grab4.png" type="Texture" id=11]
+[ext_resource path="res://scenes/components/alien/textures/grab/alien_grab2.png" type="Texture" id=12]
+[ext_resource path="res://scenes/components/alien/textures/alien_rotated1.png" type="Texture" id=15]
+[ext_resource path="res://scenes/components/alien/textures/alien_rotated2.png" type="Texture" id=16]
+[ext_resource path="res://scenes/components/alien/audio/help.wav" type="AudioStream" id=18]
+[ext_resource path="res://scenes/components/alien/AlienBody.gd" type="Script" id=19]
+[ext_resource path="res://scenes/components/alien/AlienCloak.gd" type="Script" id=20]
+[ext_resource path="res://scenes/components/alien/audio/raincoat.wav" type="AudioStream" id=21]
+[ext_resource path="res://scenes/components/alien/audio/jump_takeoff.wav" type="AudioStream" id=22]
+[ext_resource path="res://scenes/components/alien/AlienMob.tscn" type="PackedScene" id=24]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "idle_left",
+"speed": 1.2
+}, {
+"frames": [ ExtResource( 15 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "idle_right",
+"speed": 1.6
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "shot",
+"speed": 1.0
+} ]
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+
+[sub_resource type="Animation" id=2]
+resource_name = "shot"
+length = 0.4
+step = 0.15
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "_create_bubble_anim"
+}, {
+"args": [  ],
+"method": "_create_bubble_anim"
+}, {
+"args": [  ],
+"method": "_create_bubble_anim"
+} ]
+}
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ ExtResource( 10 ), ExtResource( 12 ), ExtResource( 8 ), ExtResource( 11 ), ExtResource( 9 ) ],
+"loop": false,
+"name": "lurk",
+"speed": 10.0
+} ]
+
+[sub_resource type="Animation" id=7]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("AlienMob:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AlienMob:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "lurk_crater"
+length = 0.7
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("AlienMob:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.4, 0.7 ),
+"transitions": PoolRealArray( 0.5, 2, 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 80, 0 ), Vector2( 160, -60 ), Vector2( 240, 56 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AlienMob:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.01 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AlienMob:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.4, 0.42 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 2.0, -2.0, 2.0, -2.0, -2.0, 4.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("AlienMob:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+
+[node name="Alien" type="Area2D"]
+z_index = 1
+collision_layer = 65536
+collision_mask = 0
+script = ExtResource( 2 )
+__meta__ = {
+"_editor_description_": "Когда IsMob, то с кратером стоит самым левым.
+Должен стоять по дальше точки сохранения (коллизия поворота)."
+}
+_BubbleScene = ExtResource( 1 )
+
+[node name="AlienLeft" type="Area2D" parent="."]
+visible = false
+collision_layer = 1048576
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Collision" type="CollisionPolygon2D" parent="AlienLeft"]
+position = Vector2( -1064, -48 )
+scale = Vector2( 2, 2 )
+polygon = PoolVector2Array( -12, -552, 0, -552, 0, 24, -12, 24 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="AlienRight" type="Area2D" parent="."]
+visible = false
+collision_layer = 524288
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Collision" type="CollisionPolygon2D" parent="AlienRight"]
+position = Vector2( 104, -48 )
+scale = Vector2( 2, 2 )
+polygon = PoolVector2Array( -12, -552, 0, -552, 0, 24, -12, 24 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Sprites" type="AnimatedSprite" parent="."]
+scale = Vector2( 2, 2 )
+z_index = -1
+frames = SubResource( 1 )
+animation = "idle_left"
+frame = 1
+playing = true
+offset = Vector2( 0, -58 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="AlienBody" type="Area2D" parent="."]
+visible = false
+collision_layer = 8388608
+collision_mask = 0
+script = ExtResource( 19 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Collision" type="CollisionPolygon2D" parent="AlienBody"]
+polygon = PoolVector2Array( -24, -232, -24, 0, 32, 0, 32, -232 )
+
+[node name="AlienCloak" type="Area2D" parent="."]
+visible = false
+collision_layer = 67108864
+collision_mask = 131072
+script = ExtResource( 20 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Collision" type="CollisionPolygon2D" parent="AlienCloak"]
+position = Vector2( 4, 0 )
+scale = Vector2( 2, 2 )
+polygon = PoolVector2Array( -26, -32, 14, -32, 26, 0, -30, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="AlienLurk" type="Area2D" parent="."]
+visible = false
+position = Vector2( -160, 0 )
+collision_layer = 262144
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Collision" type="CollisionPolygon2D" parent="AlienLurk"]
+polygon = PoolVector2Array( 160, -576, -32, -384, -96, 64, -80, 64, -16, -376, 160, -552 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ShotCollision" type="CollisionPolygon2D" parent="."]
+visible = false
+position = Vector2( -704, 64 )
+polygon = PoolVector2Array( -320, 192, -344, 192, -344, -1216, -320, -1216 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Shot" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 3 )
+anims/shot = SubResource( 2 )
+
+[node name="ShotHelp" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( 0, -184 )
+stream = ExtResource( 18 )
+volume_db = 10.0
+pitch_scale = 0.5
+max_distance = 1500.0
+bus = "Effects"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BubbleSpawn" type="Position2D" parent="."]
+visible = false
+position = Vector2( -7, -168 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="AlienJumped" type="AnimatedSprite" parent="."]
+visible = false
+position = Vector2( 6, 0 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 5 )
+animation = "lurk"
+offset = Vector2( -4, -57.5 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="TakeOffRaincoat" type="AudioStreamPlayer2D" parent="AlienJumped"]
+stream = ExtResource( 21 )
+pitch_scale = 0.8
+max_distance = 1500.0
+bus = "Effects"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="LurkCrater" type="AnimationPlayer" parent="AlienJumped"]
+root_node = NodePath("../..")
+anims/RESET = SubResource( 7 )
+anims/lurk_crater = SubResource( 6 )
+
+[node name="IntoCrater" type="AudioStreamPlayer2D" parent="AlienJumped"]
+stream = ExtResource( 22 )
+volume_db = 2.0
+pitch_scale = 0.5
+max_distance = 1000.0
+bus = "Effects"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="AlienMob" parent="." instance=ExtResource( 24 )]
+visible = false
+z_index = 1
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="LiftingBeam" parent="." instance=ExtResource( 7 )]
+position = Vector2( 272, -1040 )
+z_index = 1
+__meta__ = {
+"_edit_lock_": true,
+"_editor_description_": "Будет только единстенный кратер, который не поднимает, а спускает вниз."
+}
+
+[connection signal="area_entered" from="." to="." method="_on_Alien_area_entered"]
+[connection signal="area_entered" from="AlienLeft" to="." method="_on_AlienLeft_area_entered"]
+[connection signal="area_entered" from="AlienRight" to="." method="_on_AlienRight_area_entered"]
+[connection signal="animation_finished" from="Sprites" to="." method="_on_Sprites_animation_finished"]
+[connection signal="area_entered" from="AlienLurk" to="." method="_on_AlienLurk_area_entered"]
+[connection signal="animation_finished" from="Shot" to="." method="_on_Shot_animation_finished"]
+[connection signal="animation_finished" from="AlienJumped" to="." method="_on_Jumped_animation_finished"]
+[connection signal="animation_finished" from="AlienJumped/LurkCrater" to="." method="_on_Crater_animation_finished"]
+[connection signal="alien_destroy" from="AlienMob" to="." method="_on_AlienMob_alien_destroy"]

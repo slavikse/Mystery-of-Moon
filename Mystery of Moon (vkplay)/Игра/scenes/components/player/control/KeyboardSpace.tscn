@@ -1,0 +1,82 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scenes/components/player/control/textures/keyboard2.png" type="Texture" id=1]
+[ext_resource path="res://scenes/components/player/control/textures/keyboard1.png" type="Texture" id=2]
+[ext_resource path="res://scenes/components/player/control/KeyboardSpace.gd" type="Script" id=3]
+[ext_resource path="res://fonts/intro.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 1 ), ExtResource( 1 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "space",
+"speed": 3.0
+} ]
+
+[sub_resource type="Animation" id=2]
+resource_name = "show"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 3 ), Vector2( 3, 3 ) ]
+}
+
+[sub_resource type="DynamicFont" id=3]
+size = 12
+outline_size = 2
+outline_color = Color( 0.133333, 0.133333, 0.133333, 1 )
+font_data = ExtResource( 4 )
+
+[node name="KeyboardSpace" type="Area2D"]
+z_index = 2
+collision_layer = 536870912
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Collision" type="CollisionPolygon2D" parent="."]
+visible = false
+position = Vector2( 0, -24 )
+polygon = PoolVector2Array( -56, -64, -56, -48, 128, -48, 128, -64 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Textures" type="AnimatedSprite" parent="."]
+scale = Vector2( 3, 3 )
+frames = SubResource( 1 )
+animation = "space"
+frame = 3
+playing = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Show" type="AnimationPlayer" parent="Textures"]
+anims/show = SubResource( 2 )
+
+[node name="Description" type="Label" parent="Textures"]
+margin_left = -21.0
+margin_top = 8.0
+margin_right = 120.0
+margin_bottom = 35.0
+rect_scale = Vector2( 0.3, 0.3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Зажать пробел"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[connection signal="area_entered" from="." to="." method="_on_KeyboardSpace_area_entered"]

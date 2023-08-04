@@ -1,0 +1,726 @@
+[gd_scene load_steps=42 format=2]
+
+[ext_resource path="res://scenes/components/player/laser_shot/LaserShot.gd" type="Script" id=1]
+[ext_resource path="res://scenes/components/player/laser_shot/textures/dotted/laser_shot1.png" type="Texture" id=2]
+[ext_resource path="res://scenes/components/player/laser_shot/textures/ring/laser_shot2.png" type="Texture" id=3]
+[ext_resource path="res://scenes/components/player/laser_shot/textures/ring/laser_shot1.png" type="Texture" id=4]
+[ext_resource path="res://scenes/components/player/laser_shot/LaserShotRay.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/components/player/laser_shot/textures/charge/laser_shot1.png" type="Texture" id=6]
+[ext_resource path="res://scenes/components/player/laser_shot/textures/charge/laser_shot4.png" type="Texture" id=7]
+[ext_resource path="res://scenes/components/player/laser_shot/textures/charge/laser_shot5.png" type="Texture" id=8]
+[ext_resource path="res://scenes/components/player/laser_shot/textures/charge/laser_shot3.png" type="Texture" id=9]
+[ext_resource path="res://scenes/components/player/laser_shot/audio/charging.wav" type="AudioStream" id=10]
+[ext_resource path="res://scenes/components/player/laser_shot/textures/dotted/3.png" type="Texture" id=11]
+[ext_resource path="res://scenes/components/player/laser_shot/textures/dotted/5.png" type="Texture" id=12]
+[ext_resource path="res://scenes/components/player/laser_shot/textures/dotted/2.png" type="Texture" id=13]
+[ext_resource path="res://scenes/components/player/laser_shot/textures/dotted/1.png" type="Texture" id=14]
+[ext_resource path="res://scenes/components/player/laser_shot/textures/dotted/4.png" type="Texture" id=15]
+[ext_resource path="res://scenes/components/player/laser_shot/audio/shooting.wav" type="AudioStream" id=16]
+[ext_resource path="res://scenes/components/player/laser_shot/textures/charge/laser_shot2.png" type="Texture" id=17]
+[ext_resource path="res://scenes/components/player/laser_shot/audio/discharging.wav" type="AudioStream" id=18]
+
+[sub_resource type="Animation" id=22]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=23]
+resource_name = "hide"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=24]
+resource_name = "show"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=13]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "pulse"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.588235, 0, 0.858824, 1 ), Color( 1, 0, 0, 1 ), Color( 0.588235, 0, 0.87451, 1 ) ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "shot"
+length = 0.3
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 2, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0.784314 ), Color( 1, 0, 0, 1 ) ]
+}
+
+[sub_resource type="Animation" id=16]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=17]
+resource_name = "rotation"
+length = 6.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=18]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=19]
+resource_name = "rotation"
+length = 5.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 0.5 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+
+[sub_resource type="Animation" id=20]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=21]
+resource_name = "rotation"
+length = 4.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 0.5 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+
+[sub_resource type="Animation" id=11]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "pulse"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.588235, 0, 0.858824, 1 ), Color( 1, 0, 0, 1 ), Color( 0.588235, 0, 0.87451, 1 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "shot"
+length = 0.3
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 2, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0.784314 ), Color( 1, 0, 0, 1 ) ]
+}
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "rotation"
+length = 6.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 360.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "rotation"
+length = 5.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 0.5 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "rotation"
+length = 4.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 0.5 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [ ExtResource( 4 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 2.0
+} ]
+
+[sub_resource type="SpriteFrames" id=8]
+animations = [ {
+"frames": [ ExtResource( 8 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 17 ), ExtResource( 6 ) ],
+"loop": false,
+"name": "cooling",
+"speed": 6.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 17 ), ExtResource( 9 ), ExtResource( 7 ), ExtResource( 8 ) ],
+"loop": false,
+"name": "heating",
+"speed": 10.0
+} ]
+
+[node name="LaserShot" type="Node2D"]
+scale = Vector2( 1e-05, 1e-05 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="ToggleShowing" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 22 )
+anims/hide = SubResource( 23 )
+anims/show = SubResource( 24 )
+
+[node name="DottedLine" type="Node2D" parent="."]
+position = Vector2( -2, -3 )
+scale = Vector2( 1.3, 1.3 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="DottedLine2" type="Node2D" parent="DottedLine"]
+rotation = 2.44346
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Pulse" type="AnimationPlayer" parent="DottedLine/DottedLine2"]
+autoplay = "pulse"
+anims/RESET = SubResource( 13 )
+anims/pulse = SubResource( 14 )
+anims/shot = SubResource( 15 )
+
+[node name="Texture" type="Sprite" parent="DottedLine/DottedLine2"]
+self_modulate = Color( 1, 1, 1, 0.317647 )
+scale = Vector2( 2.15, 2.15 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Rotation" type="AnimationPlayer" parent="DottedLine/DottedLine2/Texture"]
+autoplay = "rotation"
+anims/RESET = SubResource( 16 )
+anims/rotation = SubResource( 17 )
+
+[node name="Text" type="Node2D" parent="DottedLine/DottedLine2/Texture"]
+scale = Vector2( 0.3, 0.3 )
+z_index = 1
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="1" type="Sprite" parent="DottedLine/DottedLine2/Texture/Text"]
+position = Vector2( 40.5486, -72.749 )
+texture = ExtResource( 14 )
+
+[node name="2" type="Sprite" parent="DottedLine/DottedLine2/Texture/Text"]
+position = Vector2( 78.712, 13.1187 )
+texture = ExtResource( 13 )
+
+[node name="3" type="Sprite" parent="DottedLine/DottedLine2/Texture/Text"]
+position = Vector2( 21.4669, 79.9046 )
+texture = ExtResource( 11 )
+
+[node name="4" type="Sprite" parent="DottedLine/DottedLine2/Texture/Text"]
+position = Vector2( -64.4007, 51.2821 )
+texture = ExtResource( 15 )
+
+[node name="5" type="Sprite" parent="DottedLine/DottedLine2/Texture/Text"]
+position = Vector2( -64.4007, -44.1264 )
+texture = ExtResource( 12 )
+
+[node name="Texture2" type="Sprite" parent="DottedLine/DottedLine2"]
+self_modulate = Color( 1, 1, 1, 0.443137 )
+scale = Vector2( 2.1, 2.1 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Rotation" type="AnimationPlayer" parent="DottedLine/DottedLine2/Texture2"]
+autoplay = "rotation"
+anims/RESET = SubResource( 18 )
+anims/rotation = SubResource( 19 )
+
+[node name="Text" type="Node2D" parent="DottedLine/DottedLine2/Texture2"]
+rotation = 0.342085
+scale = Vector2( 0.3, 0.3 )
+z_index = 1
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="1" type="Sprite" parent="DottedLine/DottedLine2/Texture2/Text"]
+position = Vector2( 51.56, -66.3154 )
+texture = ExtResource( 14 )
+
+[node name="2" type="Sprite" parent="DottedLine/DottedLine2/Texture2/Text"]
+position = Vector2( 81.0502, 16.5028 )
+texture = ExtResource( 13 )
+
+[node name="3" type="Sprite" parent="DottedLine/DottedLine2/Texture2/Text"]
+position = Vector2( 2.13674, 86.0779 )
+texture = ExtResource( 11 )
+
+[node name="4" type="Sprite" parent="DottedLine/DottedLine2/Texture2/Text"]
+position = Vector2( -66.8103, 38.0472 )
+texture = ExtResource( 15 )
+
+[node name="5" type="Sprite" parent="DottedLine/DottedLine2/Texture2/Text"]
+position = Vector2( -50.2904, -61.1545 )
+texture = ExtResource( 12 )
+
+[node name="Texture3" type="Sprite" parent="DottedLine/DottedLine2"]
+self_modulate = Color( 1, 1, 1, 0.235294 )
+scale = Vector2( 2.05, 2.05 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Rotation" type="AnimationPlayer" parent="DottedLine/DottedLine2/Texture3"]
+autoplay = "rotation"
+anims/RESET = SubResource( 20 )
+anims/rotation = SubResource( 21 )
+
+[node name="Text" type="Node2D" parent="DottedLine/DottedLine2/Texture3"]
+rotation = 0.682424
+scale = Vector2( 0.3, 0.3 )
+z_index = 1
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="1" type="Sprite" parent="DottedLine/DottedLine2/Texture3/Text"]
+position = Vector2( 53.809, -64.6819 )
+texture = ExtResource( 14 )
+
+[node name="2" type="Sprite" parent="DottedLine/DottedLine2/Texture3/Text"]
+position = Vector2( 87.3094, 24.138 )
+texture = ExtResource( 13 )
+
+[node name="3" type="Sprite" parent="DottedLine/DottedLine2/Texture3/Text"]
+position = Vector2( 9.65617, 87.2451 )
+texture = ExtResource( 11 )
+
+[node name="4" type="Sprite" parent="DottedLine/DottedLine2/Texture3/Text"]
+position = Vector2( -70.4361, 36.2893 )
+texture = ExtResource( 15 )
+
+[node name="5" type="Sprite" parent="DottedLine/DottedLine2/Texture3/Text"]
+position = Vector2( -54.4298, -66.9759 )
+texture = ExtResource( 12 )
+
+[node name="Pulse" type="AnimationPlayer" parent="DottedLine"]
+autoplay = "pulse"
+anims/RESET = SubResource( 11 )
+anims/pulse = SubResource( 10 )
+anims/shot = SubResource( 12 )
+
+[node name="Texture" type="Sprite" parent="DottedLine"]
+self_modulate = Color( 1, 1, 1, 0.317647 )
+scale = Vector2( 2.15, 2.15 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Rotation" type="AnimationPlayer" parent="DottedLine/Texture"]
+autoplay = "rotation"
+anims/RESET = SubResource( 1 )
+anims/rotation = SubResource( 2 )
+
+[node name="Text" type="Node2D" parent="DottedLine/Texture"]
+scale = Vector2( 0.3, 0.3 )
+z_index = 1
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="1" type="Sprite" parent="DottedLine/Texture/Text"]
+position = Vector2( 40.5486, -72.749 )
+texture = ExtResource( 14 )
+
+[node name="2" type="Sprite" parent="DottedLine/Texture/Text"]
+position = Vector2( 78.712, 13.1187 )
+texture = ExtResource( 13 )
+
+[node name="3" type="Sprite" parent="DottedLine/Texture/Text"]
+position = Vector2( 21.4669, 79.9046 )
+texture = ExtResource( 11 )
+
+[node name="4" type="Sprite" parent="DottedLine/Texture/Text"]
+position = Vector2( -64.4007, 51.2821 )
+texture = ExtResource( 15 )
+
+[node name="5" type="Sprite" parent="DottedLine/Texture/Text"]
+position = Vector2( -64.4007, -44.1264 )
+texture = ExtResource( 12 )
+
+[node name="Texture2" type="Sprite" parent="DottedLine"]
+self_modulate = Color( 1, 1, 1, 0.443137 )
+scale = Vector2( 2.1, 2.1 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Rotation" type="AnimationPlayer" parent="DottedLine/Texture2"]
+autoplay = "rotation"
+anims/RESET = SubResource( 3 )
+anims/rotation = SubResource( 4 )
+
+[node name="Text" type="Node2D" parent="DottedLine/Texture2"]
+rotation = 0.342085
+scale = Vector2( 0.3, 0.3 )
+z_index = 1
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="1" type="Sprite" parent="DottedLine/Texture2/Text"]
+position = Vector2( 51.56, -66.3154 )
+texture = ExtResource( 14 )
+
+[node name="2" type="Sprite" parent="DottedLine/Texture2/Text"]
+position = Vector2( 81.0502, 16.5028 )
+texture = ExtResource( 13 )
+
+[node name="3" type="Sprite" parent="DottedLine/Texture2/Text"]
+position = Vector2( 2.13674, 86.0779 )
+texture = ExtResource( 11 )
+
+[node name="4" type="Sprite" parent="DottedLine/Texture2/Text"]
+position = Vector2( -66.8103, 38.0472 )
+texture = ExtResource( 15 )
+
+[node name="5" type="Sprite" parent="DottedLine/Texture2/Text"]
+position = Vector2( -50.2904, -61.1545 )
+texture = ExtResource( 12 )
+
+[node name="Texture3" type="Sprite" parent="DottedLine"]
+self_modulate = Color( 1, 1, 1, 0.235294 )
+scale = Vector2( 2.05, 2.05 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Rotation" type="AnimationPlayer" parent="DottedLine/Texture3"]
+autoplay = "rotation"
+anims/RESET = SubResource( 5 )
+anims/rotation = SubResource( 6 )
+
+[node name="Text" type="Node2D" parent="DottedLine/Texture3"]
+rotation = 0.682424
+scale = Vector2( 0.3, 0.3 )
+z_index = 1
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="1" type="Sprite" parent="DottedLine/Texture3/Text"]
+position = Vector2( 53.809, -64.6819 )
+texture = ExtResource( 14 )
+
+[node name="2" type="Sprite" parent="DottedLine/Texture3/Text"]
+position = Vector2( 87.3094, 24.138 )
+texture = ExtResource( 13 )
+
+[node name="3" type="Sprite" parent="DottedLine/Texture3/Text"]
+position = Vector2( 9.65617, 87.2451 )
+texture = ExtResource( 11 )
+
+[node name="4" type="Sprite" parent="DottedLine/Texture3/Text"]
+position = Vector2( -70.4361, 36.2893 )
+texture = ExtResource( 15 )
+
+[node name="5" type="Sprite" parent="DottedLine/Texture3/Text"]
+position = Vector2( -54.4298, -66.9759 )
+texture = ExtResource( 12 )
+
+[node name="Weapon" type="Node2D" parent="."]
+rotation = 0.610865
+scale = Vector2( 2, 2 )
+z_index = 1
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Ring" type="AnimatedSprite" parent="Weapon"]
+modulate = Color( 0.784314, 0.784314, 0.784314, 1 )
+position = Vector2( 34, 9 )
+rotation = 0.314159
+frames = SubResource( 7 )
+frame = 1
+playing = true
+offset = Vector2( -24, -8 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Charge" type="AnimatedSprite" parent="Weapon"]
+position = Vector2( 34, 9 )
+rotation = 0.314159
+frames = SubResource( 8 )
+animation = "heating"
+offset = Vector2( -24, -8 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Fire" type="Timer" parent="Weapon/Charge"]
+wait_time = 2.0
+one_shot = true
+
+[node name="LaserShotRay" parent="Weapon/Charge" instance=ExtResource( 5 )]
+
+[node name="Charging" type="AudioStreamPlayer" parent="Weapon/Charge"]
+stream = ExtResource( 10 )
+volume_db = -5.0
+pitch_scale = 1.6
+bus = "Effects"
+
+[node name="Shooting" type="AudioStreamPlayer" parent="Weapon/Charge"]
+stream = ExtResource( 16 )
+volume_db = -5.0
+pitch_scale = 0.8
+bus = "Effects"
+
+[node name="Discharging" type="AudioStreamPlayer" parent="Weapon/Charge"]
+stream = ExtResource( 18 )
+volume_db = -15.0
+bus = "Effects"
+
+[connection signal="animation_finished" from="Weapon/Charge" to="." method="_on_Charge_animation_finished"]
+[connection signal="frame_changed" from="Weapon/Charge" to="." method="_on_Charge_frame_changed"]
+[connection signal="timeout" from="Weapon/Charge/Fire" to="." method="_on_Charge_Fire_timeout"]

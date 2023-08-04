@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/components/cosmos/stars/textures/star_0.png" type="Texture" id=4]
+
+[sub_resource type="GDScript" id=1]
+
+[node name="Stars" type="Node2D"]
+pause_mode = 2
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Star0" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.709804 )
+position = Vector2( 72, 16 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 4 )
+script = SubResource( 1 )
+
+[node name="Star2" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.615686 )
+position = Vector2( 56, 56 )
+scale = Vector2( 1.2, 1.2 )
+texture = ExtResource( 4 )
+script = SubResource( 1 )
+
+[node name="Star6" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.615686 )
+scale = Vector2( 1.2, 1.2 )
+texture = ExtResource( 4 )
+script = SubResource( 1 )

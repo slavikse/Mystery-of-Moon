@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/components/puzzles/PuzzleMenu.gd" type="Script" id=1]
+[ext_resource path="res://scenes/components/puzzles/images/image_part_1.png" type="Texture" id=5]
+
+[node name="PuzzleMenu" type="Node2D"]
+scale = Vector2( 0.5, 0.5 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Текстура устанавливается в меню!"
+}
+
+[node name="Texture" type="Sprite" parent="."]
+modulate = Color( 0.196078, 0, 0.341176, 0.313726 )
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_lock_": true,
+"_editor_description_": "Текстура устанавливается в меню!"
+}

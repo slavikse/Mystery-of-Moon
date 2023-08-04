@@ -1,0 +1,96 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://scenes/components/alien/AlienMob.gd" type="Script" id=1]
+[ext_resource path="res://scenes/components/alien/textures/mob/alien_texture.png" type="Texture" id=2]
+[ext_resource path="res://scenes/components/alien/textures/mob/alien_texture2.png" type="Texture" id=3]
+[ext_resource path="res://scenes/components/alien/textures/mob/alien_texture3.png" type="Texture" id=4]
+[ext_resource path="res://scenes/components/alien/audio/splitting.wav" type="AudioStream" id=5]
+
+[sub_resource type="SpriteFrames" id=13]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 2 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "all",
+"speed": 2.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "jump",
+"speed": 3.0
+} ]
+
+[sub_resource type="Curve" id=11]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.0136364 ), -2.05689, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=10]
+curve = SubResource( 11 )
+
+[sub_resource type="ParticlesMaterial" id=12]
+emission_shape = 1
+emission_sphere_radius = 15.0
+flag_disable_z = true
+direction = Vector3( -1, 1, 0 )
+spread = 30.0
+gravity = Vector3( 100, 100, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+radial_accel = 600.0
+scale = 0.3
+scale_random = 0.1
+scale_curve = SubResource( 10 )
+color = Color( 0, 1, 0.0470588, 0.796078 )
+
+[node name="AlienMob" type="Area2D"]
+scale = Vector2( -1, 1 )
+z_as_relative = false
+collision_layer = 134217728
+collision_mask = 0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Чудики будут стоять (_is_mob:true) ДО выдачи луча.
+"
+}
+
+[node name="Collision" type="CollisionPolygon2D" parent="."]
+visible = false
+scale = Vector2( 2, 2 )
+polygon = PoolVector2Array( -4, -26, -8, 0, 0, 0, 0, 0, 7, -12, 4, -26 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="SpriteAnim" type="AnimatedSprite" parent="."]
+scale = Vector2( 2, 2 )
+frames = SubResource( 13 )
+animation = "jump"
+playing = true
+offset = Vector2( 0, -13 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Destroy" type="Particles2D" parent="."]
+z_index = 1
+emitting = false
+amount = 100
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.6
+local_coords = false
+process_material = SubResource( 12 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Delay" type="Timer" parent="Destroy"]
+wait_time = 0.6
+
+[node name="Splitting" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
+pitch_scale = 0.6
+max_distance = 1000.0
+bus = "Effects"
+
+[connection signal="timeout" from="Destroy/Delay" to="." method="_on_Destroy_Delay_timeout"]

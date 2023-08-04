@@ -1,0 +1,78 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scenes/components/alien/textures/bubble.png" type="Texture" id=1]
+[ext_resource path="res://scenes/components/alien/Bubble.gd" type="Script" id=2]
+[ext_resource path="res://scenes/components/alien/audio/inflating.wav" type="AudioStream" id=3]
+[ext_resource path="res://scenes/components/alien/audio/bursting.wav" type="AudioStream" id=4]
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 17.6011
+
+[node name="Bubble" type="RigidBody2D"]
+z_index = 1
+collision_layer = 131072
+collision_mask = 75628544
+mass = 0.204082
+gravity_scale = -1.0
+angular_damp = 9999.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Реагируют только на то, что пересекает игрок."
+}
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Increase" type="Tween" parent="."]
+
+[node name="Inflate" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+volume_db = -20.0
+pitch_scale = 2.0
+max_distance = 1000.0
+bus = "Effects"
+
+[node name="TextureResize" type="Node2D" parent="."]
+scale = Vector2( 1e-05, 1e-05 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Texture" type="Sprite" parent="TextureResize"]
+modulate = Color( 1, 1, 1, 0.470588 )
+scale = Vector2( 0.65, 0.65 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Burst" type="Node2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Delay" type="Timer" parent="Burst"]
+wait_time = 0.8
+__meta__ = {
+"_editor_description_": "Время ожидания завершения взрыва частиц."
+}
+
+[node name="Destroy" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="Bursting" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+volume_db = -12.0
+pitch_scale = 2.0
+max_distance = 1000.0
+bus = "Effects"
+
+[connection signal="timeout" from="Burst/Delay" to="." method="_on_Burst_Delay_timeout"]
+[connection signal="timeout" from="Destroy" to="." method="_on_Destroy_timeout"]

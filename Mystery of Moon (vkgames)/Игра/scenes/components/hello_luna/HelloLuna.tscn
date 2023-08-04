@@ -1,0 +1,1955 @@
+[gd_scene load_steps=40 format=2]
+
+[ext_resource path="res://scenes/components/hello_luna/HelloLuna.gd" type="Script" id=1]
+[ext_resource path="res://fonts/intro.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://scenes/components/cosmos/textures/cosmos1.png" type="Texture" id=3]
+[ext_resource path="res://scenes/components/cosmos/Moon.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/components/cosmos/stars/Stars.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/components/hello_luna/ship/ShipClip.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/components/hello_luna/textures/cabin.png" type="Texture" id=7]
+[ext_resource path="res://scenes/components/hello_luna/textures/cabin_panel_1.png" type="Texture" id=8]
+[ext_resource path="res://scenes/components/hello_luna/textures/cabin_panel_2.png" type="Texture" id=9]
+[ext_resource path="res://scenes/components/hello_luna/textures/cabin_player_1.png" type="Texture" id=10]
+[ext_resource path="res://scenes/components/hello_luna/textures/cabin_player_2.png" type="Texture" id=11]
+[ext_resource path="res://scenes/components/hello_luna/textures/cabin_panel_3.png" type="Texture" id=12]
+[ext_resource path="res://scenes/components/cosmos/textures/earth.png" type="Texture" id=13]
+[ext_resource path="res://scenes/components/cosmos/textures/cosmos3.png" type="Texture" id=14]
+[ext_resource path="res://scenes/components/cosmos/textures/cosmos2.png" type="Texture" id=15]
+[ext_resource path="res://scenes/components/hello_luna/audio/landing_ship.ogg" type="AudioStream" id=16]
+[ext_resource path="res://scenes/components/hello_luna/audio/click.wav" type="AudioStream" id=17]
+[ext_resource path="res://scenes/components/player/menu/textures/volume2.png" type="Texture" id=18]
+[ext_resource path="res://scenes/components/player/menu/textures/volume1.png" type="Texture" id=19]
+
+[sub_resource type="DynamicFont" id=21]
+size = 40
+outline_size = 3
+outline_color = Color( 0.164706, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="Animation" id=15]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:custom_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.568627, 0, 0, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:mouse_filter")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "started"
+length = 0.3
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:custom_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.568627, 0, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 0.568627, 0, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 0.568627, 0, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 0.568627, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="DynamicFont" id=13]
+outline_size = 2
+outline_color = Color( 0.133333, 0.133333, 0.133333, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=20]
+size = 30
+outline_size = 2
+outline_color = Color( 0.133333, 0.133333, 0.133333, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="Animation" id=16]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 177.3 ]
+}
+
+[sub_resource type="Animation" id=17]
+resource_name = "rotation"
+length = 180.0
+loop = true
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 180 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -170.0, 170.0 ]
+}
+
+[sub_resource type="Animation" id=11]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "shake"
+length = 0.4
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 1, 2 ), Vector2( 2, -1 ), Vector2( -1, 2 ), Vector2( 0, 1 ), Vector2( 1, -1 ), Vector2( 2, 0 ), Vector2( 1, -2 ), Vector2( 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("CabinPanel1:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CabinPanel2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CabinPanel3:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "move"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("CabinPanel1:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CabinPanel2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CabinPanel3:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("CabinPlayer1:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CabinPlayer2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "move"
+length = 1.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("CabinPlayer1:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CabinPlayer2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.9, 1.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "Landing"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Luna/Moon:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3.5, 5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.2, 0.2 ), Vector2( 1.5, 1.5 ), Vector2( 3.5, 3.5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Luna/Moon:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2.5, 5 ),
+"transitions": PoolRealArray( 1, 2, 0.5 ),
+"update": 0,
+"values": [ Vector2( 792, 56 ), Vector2( 923, 952 ), Vector2( 992, 1240 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Luna/StarsContainer:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.05, 1.05 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Luna/StarsContainer:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 48, -48 ), Vector2( -26, 16 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Luna/Moon:offset")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -362.258, -262.75 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Luna/Earth:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 3.8, 4.5 ),
+"transitions": PoolRealArray( 1, 2, 1 ),
+"update": 0,
+"values": [ Vector2( 1584, -72 ), Vector2( 1876, 616 ), Vector2( 2272, 821 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Luna/Earth:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 4.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 5, 5 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Luna/StarsContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Luna/Moon:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1368, 120 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Luna/Moon:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.01, 0.01 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Luna/StarsContainer:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Luna/Moon:offset")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -362.258, -262.75 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Luna/Earth:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1584, -72 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Luna/Earth:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 5, 5 ) ]
+}
+
+[sub_resource type="Animation" id=18]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 177.3 ]
+}
+
+[sub_resource type="Animation" id=19]
+resource_name = "rotation"
+length = 60.0
+loop = true
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 60 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -170.0, 170.0 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Landing"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("ShipClip:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -320, 730 ), Vector2( 1974, 1000 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Moon:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 2, 2 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Moon:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1896, 1080 ) ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("..")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "" ],
+"method": "_on_Landing2_animation_finished"
+} ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("ShipClip:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -192, 664 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Luna/Moon:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.2, 0.2 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Moon:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Moon:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 2744, 672 ) ]
+}
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 2 )
+
+[node name="HelloLuna" type="Node2D"]
+pause_mode = 2
+z_index = 1000
+z_as_relative = false
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Background" type="Polygon2D" parent="."]
+position = Vector2( -800, -400 )
+scale = Vector2( 2, 2 )
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( -256, -384, 2176, -384, 2176, 1408, -256, 1408 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Polygon2D" type="Polygon2D" parent="Background"]
+z_index = 1
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( 1092, 196, 1092, 204, 1268, 204, 1268, 196 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="LandingShip" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 16 )
+pitch_scale = 1.2
+bus = "Ambient"
+
+[node name="FirstStartGame" type="Polygon2D" parent="."]
+z_index = 1
+color = Color( 0, 0, 0, 0.705882 )
+polygon = PoolVector2Array( -848, -816, 2912, -816, 2912, 2000, -864, 2000 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ButtonBackground" type="Polygon2D" parent="FirstStartGame"]
+position = Vector2( 831, 544 )
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( -90, 49, 94, 3, 167, 3, 365, 57, 399, 135, 293, 133, 244, 98, 174, 74, 84, 74, 15, 99, -39, 135, -151, 134 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Start" type="Button" parent="FirstStartGame/ButtonBackground"]
+margin_left = 41.0
+margin_top = 24.0
+margin_right = 217.0
+margin_bottom = 70.0
+focus_mode = 0
+custom_colors/font_color = Color( 0.568627, 0, 0, 1 )
+custom_fonts/font = SubResource( 21 )
+enabled_focus_mode = 0
+text = "Начать"
+flat = true
+icon_align = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Started" type="AnimationPlayer" parent="FirstStartGame/ButtonBackground/Start"]
+anims/RESET = SubResource( 15 )
+anims/started = SubResource( 14 )
+
+[node name="Click" type="AudioStreamPlayer" parent="FirstStartGame/ButtonBackground/Start"]
+stream = ExtResource( 17 )
+volume_db = 5.0
+bus = "Effects"
+
+[node name="Exit" type="Button" parent="FirstStartGame/ButtonBackground"]
+visible = false
+margin_left = 313.0
+margin_top = 96.0
+margin_right = 400.0
+margin_bottom = 124.0
+rect_scale = Vector2( 0.5, 0.5 )
+focus_mode = 0
+custom_colors/font_color = Color( 0.345098, 0.345098, 0.345098, 1 )
+custom_colors/font_color_hover = Color( 0.941176, 0.941176, 0.941176, 1 )
+custom_fonts/font = SubResource( 13 )
+enabled_focus_mode = 0
+text = "Выход"
+flat = true
+icon_align = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="AudiosPlayingContainer" type="Node2D" parent="FirstStartGame/ButtonBackground"]
+modulate = Color( 0.345098, 0.345098, 0.345098, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="AudiosPlaying" type="Button" parent="FirstStartGame/ButtonBackground/AudiosPlayingContainer"]
+margin_left = -72.0
+margin_top = 72.0
+margin_right = -40.0
+margin_bottom = 109.0
+focus_mode = 0
+enabled_focus_mode = 0
+flat = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="VolumeBase" type="Sprite" parent="FirstStartGame/ButtonBackground/AudiosPlayingContainer/AudiosPlaying"]
+position = Vector2( 20, 19 )
+texture = ExtResource( 19 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="VolumeOn" type="Sprite" parent="FirstStartGame/ButtonBackground/AudiosPlayingContainer/AudiosPlaying"]
+position = Vector2( 20, 19 )
+texture = ExtResource( 18 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="HoverClick" type="AudioStreamPlayer" parent="FirstStartGame/ButtonBackground"]
+stream = ExtResource( 17 )
+volume_db = -5.0
+bus = "Effects"
+
+[node name="CallFriends" type="Button" parent="FirstStartGame/ButtonBackground"]
+margin_left = -343.0
+margin_top = 416.0
+margin_right = -57.0
+margin_bottom = 453.0
+focus_mode = 0
+custom_colors/font_color = Color( 0.941176, 0.941176, 0.941176, 1 )
+custom_colors/font_color_hover = Color( 0.941176, 0.941176, 0.941176, 1 )
+custom_fonts/font = SubResource( 20 )
+enabled_focus_mode = 0
+text = "позвать друзей"
+flat = true
+icon_align = 1
+
+[node name="ShareFriends" type="Button" parent="FirstStartGame/ButtonBackground"]
+margin_left = 313.0
+margin_top = 416.0
+margin_right = 690.0
+margin_bottom = 453.0
+focus_mode = 0
+custom_colors/font_color = Color( 0.941176, 0.941176, 0.941176, 1 )
+custom_colors/font_color_hover = Color( 0.941176, 0.941176, 0.941176, 1 )
+custom_fonts/font = SubResource( 20 )
+enabled_focus_mode = 0
+text = "рассказать друзьям"
+flat = true
+icon_align = 1
+
+[node name="Luna" type="Node2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="StarsContainer" type="Node2D" parent="Luna"]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="StarsContainer" type="Node2D" parent="Luna/StarsContainer"]
+position = Vector2( 4, -728 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StarsGroup" type="Node2D" parent="Luna/StarsContainer/StarsContainer"]
+position = Vector2( 4, 7 )
+
+[node name="Stars" parent="Luna/StarsContainer/StarsContainer/StarsGroup" instance=ExtResource( 5 )]
+position = Vector2( 42, 1530 )
+
+[node name="Stars8" parent="Luna/StarsContainer/StarsContainer/StarsGroup" instance=ExtResource( 5 )]
+position = Vector2( 274, 1394 )
+rotation = -3.14159
+
+[node name="Stars10" parent="Luna/StarsContainer/StarsContainer/StarsGroup" instance=ExtResource( 5 )]
+position = Vector2( 194, 1491 )
+
+[node name="Stars11" parent="Luna/StarsContainer/StarsContainer/StarsGroup" instance=ExtResource( 5 )]
+position = Vector2( 450, 1222 )
+
+[node name="StarsGroup2" type="Node2D" parent="Luna/StarsContainer/StarsContainer"]
+position = Vector2( 636, -18 )
+
+[node name="Stars5" parent="Luna/StarsContainer/StarsContainer/StarsGroup2" instance=ExtResource( 5 )]
+position = Vector2( -22, 1621 )
+rotation = -1.5708
+
+[node name="Stars6" parent="Luna/StarsContainer/StarsContainer/StarsGroup2" instance=ExtResource( 5 )]
+position = Vector2( -294, 1626 )
+rotation = -1.5708
+
+[node name="Stars8" parent="Luna/StarsContainer/StarsContainer/StarsGroup2" instance=ExtResource( 5 )]
+position = Vector2( 298, 1309 )
+rotation = -3.14159
+
+[node name="Stars9" parent="Luna/StarsContainer/StarsContainer/StarsGroup2" instance=ExtResource( 5 )]
+position = Vector2( 322, 1607 )
+rotation = 1.74533
+
+[node name="StarsGroup3" type="Node2D" parent="Luna/StarsContainer/StarsContainer"]
+position = Vector2( 1152, -38 )
+
+[node name="Stars" parent="Luna/StarsContainer/StarsContainer/StarsGroup3" instance=ExtResource( 5 )]
+position = Vector2( -170, 1366 )
+
+[node name="Stars6" parent="Luna/StarsContainer/StarsContainer/StarsGroup3" instance=ExtResource( 5 )]
+position = Vector2( -322, 1462 )
+rotation = -1.5708
+
+[node name="Stars8" parent="Luna/StarsContainer/StarsContainer/StarsGroup3" instance=ExtResource( 5 )]
+position = Vector2( 854, 1702 )
+rotation = -3.14159
+
+[node name="Stars9" parent="Luna/StarsContainer/StarsContainer/StarsGroup3" instance=ExtResource( 5 )]
+position = Vector2( 6, 1609 )
+rotation = 1.74533
+
+[node name="StarsGroup4" type="Node2D" parent="Luna/StarsContainer/StarsContainer"]
+position = Vector2( 1608, -23 )
+
+[node name="Stars2" parent="Luna/StarsContainer/StarsContainer/StarsGroup4" instance=ExtResource( 5 )]
+position = Vector2( -442, 1279 )
+rotation = 0.785398
+
+[node name="Stars5" parent="Luna/StarsContainer/StarsContainer/StarsGroup4" instance=ExtResource( 5 )]
+position = Vector2( -498, 1499 )
+rotation = -1.5708
+
+[node name="Stars8" parent="Luna/StarsContainer/StarsContainer/StarsGroup4" instance=ExtResource( 5 )]
+position = Vector2( 441, 1454 )
+rotation = -3.14159
+
+[node name="Stars10" parent="Luna/StarsContainer/StarsContainer/StarsGroup4" instance=ExtResource( 5 )]
+position = Vector2( -66, 1655 )
+rotation = -3.14159
+
+[node name="Stars9" parent="Luna/StarsContainer/StarsContainer/StarsGroup4" instance=ExtResource( 5 )]
+position = Vector2( -290, 1241 )
+rotation = 1.74533
+
+[node name="StarsGroup5" type="Node2D" parent="Luna/StarsContainer/StarsContainer"]
+position = Vector2( 2045, -9 )
+
+[node name="Stars" parent="Luna/StarsContainer/StarsContainer/StarsGroup5" instance=ExtResource( 5 )]
+position = Vector2( -1034, 1193 )
+
+[node name="Stars8" parent="Luna/StarsContainer/StarsContainer/StarsGroup5" instance=ExtResource( 5 )]
+position = Vector2( -463, 1337 )
+rotation = -3.14159
+
+[node name="Stars9" parent="Luna/StarsContainer/StarsContainer/StarsGroup5" instance=ExtResource( 5 )]
+position = Vector2( -567, 1374 )
+rotation = 1.74533
+
+[node name="StarsGroup6" type="Node2D" parent="Luna/StarsContainer/StarsContainer"]
+position = Vector2( 2513, 10 )
+
+[node name="Stars2" parent="Luna/StarsContainer/StarsContainer/StarsGroup6" instance=ExtResource( 5 )]
+position = Vector2( -667, 1337 )
+rotation = 0.785398
+
+[node name="Stars5" parent="Luna/StarsContainer/StarsContainer/StarsGroup6" instance=ExtResource( 5 )]
+position = Vector2( -1179, 1654 )
+rotation = -1.5708
+
+[node name="Stars8" parent="Luna/StarsContainer/StarsContainer/StarsGroup6" instance=ExtResource( 5 )]
+position = Vector2( -739, 1499 )
+rotation = -3.14159
+
+[node name="Stars9" parent="Luna/StarsContainer/StarsContainer/StarsGroup6" instance=ExtResource( 5 )]
+position = Vector2( -811, 1398 )
+rotation = -3.14159
+
+[node name="Stars10" parent="Luna/StarsContainer/StarsContainer/StarsGroup6" instance=ExtResource( 5 )]
+position = Vector2( -379, 1614 )
+rotation = -3.14159
+
+[node name="StarsGroup7" type="Node2D" parent="Luna/StarsContainer/StarsContainer"]
+position = Vector2( -11, -195 )
+
+[node name="Stars" parent="Luna/StarsContainer/StarsContainer/StarsGroup7" instance=ExtResource( 5 )]
+position = Vector2( 65, 1559 )
+
+[node name="Stars3" parent="Luna/StarsContainer/StarsContainer/StarsGroup7" instance=ExtResource( 5 )]
+position = Vector2( 209, 1413 )
+rotation = 1.5708
+
+[node name="Stars5" parent="Luna/StarsContainer/StarsContainer/StarsGroup7" instance=ExtResource( 5 )]
+position = Vector2( 377, 1644 )
+rotation = -1.5708
+
+[node name="Stars6" parent="Luna/StarsContainer/StarsContainer/StarsGroup7" instance=ExtResource( 5 )]
+position = Vector2( 321, 1475 )
+rotation = -1.5708
+
+[node name="StarsGroup8" type="Node2D" parent="Luna/StarsContainer/StarsContainer"]
+position = Vector2( 596, -233 )
+
+[node name="Stars" parent="Luna/StarsContainer/StarsContainer/StarsGroup8" instance=ExtResource( 5 )]
+position = Vector2( -86, 1604 )
+
+[node name="Stars2" parent="Luna/StarsContainer/StarsContainer/StarsGroup8" instance=ExtResource( 5 )]
+position = Vector2( -590, 1417 )
+rotation = 0.785398
+
+[node name="Stars5" parent="Luna/StarsContainer/StarsContainer/StarsGroup8" instance=ExtResource( 5 )]
+position = Vector2( -102, 1817 )
+rotation = -1.5708
+
+[node name="Stars6" parent="Luna/StarsContainer/StarsContainer/StarsGroup8" instance=ExtResource( 5 )]
+position = Vector2( 10, 1553 )
+rotation = -1.5708
+
+[node name="Stars10" parent="Luna/StarsContainer/StarsContainer/StarsGroup8" instance=ExtResource( 5 )]
+position = Vector2( 71, 1630 )
+
+[node name="StarsGroup9" type="Node2D" parent="Luna/StarsContainer/StarsContainer"]
+position = Vector2( 1331, -207 )
+
+[node name="Stars" parent="Luna/StarsContainer/StarsContainer/StarsGroup9" instance=ExtResource( 5 )]
+position = Vector2( -373, 1676 )
+
+[node name="Stars3" parent="Luna/StarsContainer/StarsContainer/StarsGroup9" instance=ExtResource( 5 )]
+position = Vector2( -541, 1463 )
+rotation = 1.5708
+
+[node name="Stars6" parent="Luna/StarsContainer/StarsContainer/StarsGroup9" instance=ExtResource( 5 )]
+position = Vector2( -573, 1783 )
+rotation = -1.5708
+
+[node name="Stars8" parent="Luna/StarsContainer/StarsContainer/StarsGroup9" instance=ExtResource( 5 )]
+position = Vector2( -13, 1638 )
+rotation = -3.14159
+
+[node name="StarsGroup10" type="Node2D" parent="Luna/StarsContainer/StarsContainer"]
+position = Vector2( 1865, -203 )
+
+[node name="Stars" parent="Luna/StarsContainer/StarsContainer/StarsGroup10" instance=ExtResource( 5 )]
+position = Vector2( 69, 1435 )
+
+[node name="Stars6" parent="Luna/StarsContainer/StarsContainer/StarsGroup10" instance=ExtResource( 5 )]
+position = Vector2( -643, 1803 )
+rotation = -1.5708
+
+[node name="Stars8" parent="Luna/StarsContainer/StarsContainer/StarsGroup10" instance=ExtResource( 5 )]
+position = Vector2( -155, 1488 )
+rotation = -3.14159
+
+[node name="StarsGroup11" type="Node2D" parent="Luna/StarsContainer/StarsContainer"]
+position = Vector2( 2273, -189 )
+
+[node name="Stars" parent="Luna/StarsContainer/StarsContainer/StarsGroup11" instance=ExtResource( 5 )]
+position = Vector2( -923, 1669 )
+
+[node name="Stars10" parent="Luna/StarsContainer/StarsContainer/StarsGroup11" instance=ExtResource( 5 )]
+position = Vector2( -194, 1450 )
+
+[node name="StarsGroup12" type="Node2D" parent="Luna/StarsContainer/StarsContainer"]
+position = Vector2( 2916, -201 )
+
+[node name="Stars4" parent="Luna/StarsContainer/StarsContainer/StarsGroup12" instance=ExtResource( 5 )]
+position = Vector2( -1006, 1686 )
+
+[node name="Stars5" parent="Luna/StarsContainer/StarsContainer/StarsGroup12" instance=ExtResource( 5 )]
+position = Vector2( -1294, 1821 )
+rotation = -1.5708
+
+[node name="Stars6" parent="Luna/StarsContainer/StarsContainer/StarsGroup12" instance=ExtResource( 5 )]
+position = Vector2( -1398, 1713 )
+rotation = -1.5708
+
+[node name="Stars9" parent="Luna/StarsContainer/StarsContainer/StarsGroup12" instance=ExtResource( 5 )]
+position = Vector2( -1458, 1441 )
+rotation = 1.74533
+
+[node name="StarsGroup13" type="Node2D" parent="Luna/StarsContainer/StarsContainer"]
+position = Vector2( 2832, -20 )
+
+[node name="Stars" parent="Luna/StarsContainer/StarsContainer/StarsGroup13" instance=ExtResource( 5 )]
+position = Vector2( -723, 1444 )
+
+[node name="Stars4" parent="Luna/StarsContainer/StarsContainer/StarsGroup13" instance=ExtResource( 5 )]
+position = Vector2( -1058, 1266 )
+
+[node name="Stars9" parent="Luna/StarsContainer/StarsContainer/StarsGroup13" instance=ExtResource( 5 )]
+position = Vector2( -994, 1601 )
+rotation = 1.74533
+
+[node name="StarsContainer2" type="Node2D" parent="Luna/StarsContainer"]
+position = Vector2( -88, 1648 )
+scale = Vector2( 1, -1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StarsGroup" type="Node2D" parent="Luna/StarsContainer/StarsContainer2"]
+position = Vector2( 4, 7 )
+
+[node name="Stars" parent="Luna/StarsContainer/StarsContainer2/StarsGroup" instance=ExtResource( 5 )]
+position = Vector2( 42, 1530 )
+
+[node name="Stars8" parent="Luna/StarsContainer/StarsContainer2/StarsGroup" instance=ExtResource( 5 )]
+position = Vector2( 274, 1394 )
+rotation = -3.14159
+
+[node name="Stars10" parent="Luna/StarsContainer/StarsContainer2/StarsGroup" instance=ExtResource( 5 )]
+position = Vector2( 194, 1491 )
+
+[node name="Stars11" parent="Luna/StarsContainer/StarsContainer2/StarsGroup" instance=ExtResource( 5 )]
+position = Vector2( 450, 1222 )
+
+[node name="StarsGroup2" type="Node2D" parent="Luna/StarsContainer/StarsContainer2"]
+position = Vector2( 636, -18 )
+
+[node name="Stars5" parent="Luna/StarsContainer/StarsContainer2/StarsGroup2" instance=ExtResource( 5 )]
+position = Vector2( -22, 1621 )
+rotation = -1.5708
+
+[node name="Stars6" parent="Luna/StarsContainer/StarsContainer2/StarsGroup2" instance=ExtResource( 5 )]
+position = Vector2( -294, 1626 )
+rotation = -1.5708
+
+[node name="Stars8" parent="Luna/StarsContainer/StarsContainer2/StarsGroup2" instance=ExtResource( 5 )]
+position = Vector2( 298, 1309 )
+rotation = -3.14159
+
+[node name="Stars9" parent="Luna/StarsContainer/StarsContainer2/StarsGroup2" instance=ExtResource( 5 )]
+position = Vector2( 322, 1607 )
+rotation = 1.74533
+
+[node name="StarsGroup3" type="Node2D" parent="Luna/StarsContainer/StarsContainer2"]
+position = Vector2( 1152, -38 )
+
+[node name="Stars" parent="Luna/StarsContainer/StarsContainer2/StarsGroup3" instance=ExtResource( 5 )]
+position = Vector2( -170, 1366 )
+
+[node name="Stars6" parent="Luna/StarsContainer/StarsContainer2/StarsGroup3" instance=ExtResource( 5 )]
+position = Vector2( -322, 1462 )
+rotation = -1.5708
+
+[node name="Stars8" parent="Luna/StarsContainer/StarsContainer2/StarsGroup3" instance=ExtResource( 5 )]
+position = Vector2( 854, 1702 )
+rotation = -3.14159
+
+[node name="Stars9" parent="Luna/StarsContainer/StarsContainer2/StarsGroup3" instance=ExtResource( 5 )]
+position = Vector2( 6, 1609 )
+rotation = 1.74533
+
+[node name="StarsGroup4" type="Node2D" parent="Luna/StarsContainer/StarsContainer2"]
+position = Vector2( 1608, -23 )
+
+[node name="Stars2" parent="Luna/StarsContainer/StarsContainer2/StarsGroup4" instance=ExtResource( 5 )]
+position = Vector2( -442, 1279 )
+rotation = 0.785398
+
+[node name="Stars5" parent="Luna/StarsContainer/StarsContainer2/StarsGroup4" instance=ExtResource( 5 )]
+position = Vector2( -498, 1499 )
+rotation = -1.5708
+
+[node name="Stars8" parent="Luna/StarsContainer/StarsContainer2/StarsGroup4" instance=ExtResource( 5 )]
+position = Vector2( 441, 1454 )
+rotation = -3.14159
+
+[node name="Stars10" parent="Luna/StarsContainer/StarsContainer2/StarsGroup4" instance=ExtResource( 5 )]
+position = Vector2( -66, 1655 )
+rotation = -3.14159
+
+[node name="Stars9" parent="Luna/StarsContainer/StarsContainer2/StarsGroup4" instance=ExtResource( 5 )]
+position = Vector2( -290, 1241 )
+rotation = 1.74533
+
+[node name="StarsGroup5" type="Node2D" parent="Luna/StarsContainer/StarsContainer2"]
+position = Vector2( 2045, -9 )
+
+[node name="Stars" parent="Luna/StarsContainer/StarsContainer2/StarsGroup5" instance=ExtResource( 5 )]
+position = Vector2( -1034, 1193 )
+
+[node name="Stars8" parent="Luna/StarsContainer/StarsContainer2/StarsGroup5" instance=ExtResource( 5 )]
+position = Vector2( -463, 1337 )
+rotation = -3.14159
+
+[node name="Stars9" parent="Luna/StarsContainer/StarsContainer2/StarsGroup5" instance=ExtResource( 5 )]
+position = Vector2( -567, 1374 )
+rotation = 1.74533
+
+[node name="StarsGroup6" type="Node2D" parent="Luna/StarsContainer/StarsContainer2"]
+position = Vector2( 2513, 10 )
+
+[node name="Stars2" parent="Luna/StarsContainer/StarsContainer2/StarsGroup6" instance=ExtResource( 5 )]
+position = Vector2( -667, 1337 )
+rotation = 0.785398
+
+[node name="Stars5" parent="Luna/StarsContainer/StarsContainer2/StarsGroup6" instance=ExtResource( 5 )]
+position = Vector2( -1179, 1654 )
+rotation = -1.5708
+
+[node name="Stars8" parent="Luna/StarsContainer/StarsContainer2/StarsGroup6" instance=ExtResource( 5 )]
+position = Vector2( -739, 1499 )
+rotation = -3.14159
+
+[node name="Stars9" parent="Luna/StarsContainer/StarsContainer2/StarsGroup6" instance=ExtResource( 5 )]
+position = Vector2( -811, 1398 )
+rotation = -3.14159
+
+[node name="Stars10" parent="Luna/StarsContainer/StarsContainer2/StarsGroup6" instance=ExtResource( 5 )]
+position = Vector2( -379, 1614 )
+rotation = -3.14159
+
+[node name="StarsGroup7" type="Node2D" parent="Luna/StarsContainer/StarsContainer2"]
+position = Vector2( -11, -195 )
+
+[node name="Stars" parent="Luna/StarsContainer/StarsContainer2/StarsGroup7" instance=ExtResource( 5 )]
+position = Vector2( 65, 1559 )
+
+[node name="Stars3" parent="Luna/StarsContainer/StarsContainer2/StarsGroup7" instance=ExtResource( 5 )]
+position = Vector2( 209, 1413 )
+rotation = 1.5708
+
+[node name="Stars5" parent="Luna/StarsContainer/StarsContainer2/StarsGroup7" instance=ExtResource( 5 )]
+position = Vector2( 377, 1644 )
+rotation = -1.5708
+
+[node name="Stars6" parent="Luna/StarsContainer/StarsContainer2/StarsGroup7" instance=ExtResource( 5 )]
+position = Vector2( 321, 1475 )
+rotation = -1.5708
+
+[node name="StarsGroup8" type="Node2D" parent="Luna/StarsContainer/StarsContainer2"]
+position = Vector2( 596, -233 )
+
+[node name="Stars" parent="Luna/StarsContainer/StarsContainer2/StarsGroup8" instance=ExtResource( 5 )]
+position = Vector2( -86, 1604 )
+
+[node name="Stars2" parent="Luna/StarsContainer/StarsContainer2/StarsGroup8" instance=ExtResource( 5 )]
+position = Vector2( -590, 1417 )
+rotation = 0.785398
+
+[node name="Stars5" parent="Luna/StarsContainer/StarsContainer2/StarsGroup8" instance=ExtResource( 5 )]
+position = Vector2( -102, 1817 )
+rotation = -1.5708
+
+[node name="Stars6" parent="Luna/StarsContainer/StarsContainer2/StarsGroup8" instance=ExtResource( 5 )]
+position = Vector2( 10, 1553 )
+rotation = -1.5708
+
+[node name="Stars10" parent="Luna/StarsContainer/StarsContainer2/StarsGroup8" instance=ExtResource( 5 )]
+position = Vector2( 71, 1630 )
+
+[node name="StarsGroup9" type="Node2D" parent="Luna/StarsContainer/StarsContainer2"]
+position = Vector2( 1331, -207 )
+
+[node name="Stars" parent="Luna/StarsContainer/StarsContainer2/StarsGroup9" instance=ExtResource( 5 )]
+position = Vector2( -373, 1676 )
+
+[node name="Stars3" parent="Luna/StarsContainer/StarsContainer2/StarsGroup9" instance=ExtResource( 5 )]
+position = Vector2( -541, 1463 )
+rotation = 1.5708
+
+[node name="Stars6" parent="Luna/StarsContainer/StarsContainer2/StarsGroup9" instance=ExtResource( 5 )]
+position = Vector2( -573, 1783 )
+rotation = -1.5708
+
+[node name="Stars8" parent="Luna/StarsContainer/StarsContainer2/StarsGroup9" instance=ExtResource( 5 )]
+position = Vector2( -13, 1638 )
+rotation = -3.14159
+
+[node name="StarsGroup10" type="Node2D" parent="Luna/StarsContainer/StarsContainer2"]
+position = Vector2( 1865, -203 )
+
+[node name="Stars" parent="Luna/StarsContainer/StarsContainer2/StarsGroup10" instance=ExtResource( 5 )]
+position = Vector2( 69, 1435 )
+
+[node name="Stars6" parent="Luna/StarsContainer/StarsContainer2/StarsGroup10" instance=ExtResource( 5 )]
+position = Vector2( -643, 1803 )
+rotation = -1.5708
+
+[node name="Stars8" parent="Luna/StarsContainer/StarsContainer2/StarsGroup10" instance=ExtResource( 5 )]
+position = Vector2( -155, 1488 )
+rotation = -3.14159
+
+[node name="StarsGroup11" type="Node2D" parent="Luna/StarsContainer/StarsContainer2"]
+position = Vector2( 2273, -189 )
+
+[node name="Stars" parent="Luna/StarsContainer/StarsContainer2/StarsGroup11" instance=ExtResource( 5 )]
+position = Vector2( -923, 1669 )
+
+[node name="Stars10" parent="Luna/StarsContainer/StarsContainer2/StarsGroup11" instance=ExtResource( 5 )]
+position = Vector2( -194, 1450 )
+
+[node name="StarsGroup12" type="Node2D" parent="Luna/StarsContainer/StarsContainer2"]
+position = Vector2( 2916, -201 )
+
+[node name="Stars4" parent="Luna/StarsContainer/StarsContainer2/StarsGroup12" instance=ExtResource( 5 )]
+position = Vector2( -1006, 1686 )
+
+[node name="Stars5" parent="Luna/StarsContainer/StarsContainer2/StarsGroup12" instance=ExtResource( 5 )]
+position = Vector2( -1294, 1821 )
+rotation = -1.5708
+
+[node name="Stars6" parent="Luna/StarsContainer/StarsContainer2/StarsGroup12" instance=ExtResource( 5 )]
+position = Vector2( -1398, 1713 )
+rotation = -1.5708
+
+[node name="Stars9" parent="Luna/StarsContainer/StarsContainer2/StarsGroup12" instance=ExtResource( 5 )]
+position = Vector2( -1458, 1441 )
+rotation = 1.74533
+
+[node name="StarsGroup13" type="Node2D" parent="Luna/StarsContainer/StarsContainer2"]
+position = Vector2( 2832, -20 )
+
+[node name="Stars" parent="Luna/StarsContainer/StarsContainer2/StarsGroup13" instance=ExtResource( 5 )]
+position = Vector2( -723, 1444 )
+
+[node name="Stars4" parent="Luna/StarsContainer/StarsContainer2/StarsGroup13" instance=ExtResource( 5 )]
+position = Vector2( -1058, 1266 )
+
+[node name="Stars9" parent="Luna/StarsContainer/StarsContainer2/StarsGroup13" instance=ExtResource( 5 )]
+position = Vector2( -994, 1601 )
+rotation = 1.74533
+
+[node name="Cosmos" type="Sprite" parent="Luna/StarsContainer"]
+modulate = Color( 0.705882, 0.498039, 0.498039, 0.792157 )
+position = Vector2( 336, 142 )
+scale = Vector2( 2.0625, 2.0625 )
+texture = ExtResource( 3 )
+
+[node name="Cosmos2" type="Sprite" parent="Luna/StarsContainer"]
+modulate = Color( 1, 1, 1, 0.803922 )
+position = Vector2( 1656, 592 )
+rotation = 3.14159
+scale = Vector2( 3.63287, -2.4106 )
+texture = ExtResource( 3 )
+
+[node name="Cosmos3" type="Sprite" parent="Luna/StarsContainer"]
+modulate = Color( 0.937255, 0.321569, 0.882353, 0.74902 )
+position = Vector2( 696, 448 )
+rotation = 3.14159
+scale = Vector2( 2.899, 3 )
+texture = ExtResource( 3 )
+
+[node name="Cosmos4" type="Sprite" parent="Luna/StarsContainer"]
+modulate = Color( 0.760784, 0.443137, 0.92549, 0.741176 )
+position = Vector2( 160, 703 )
+scale = Vector2( 2.36719, -3.55078 )
+texture = ExtResource( 3 )
+
+[node name="Cosmos5" type="Sprite" parent="Luna/StarsContainer"]
+modulate = Color( 0.639216, 0.203922, 0.639216, 0.807843 )
+position = Vector2( 1688, 202 )
+rotation = -1.37532
+scale = Vector2( 2.4375, 2.4375 )
+texture = ExtResource( 15 )
+
+[node name="Cosmos6" type="Sprite" parent="Luna/StarsContainer"]
+modulate = Color( 0.666667, 0.411765, 0.686275, 0.843137 )
+position = Vector2( 1069, 258 )
+rotation = 3.09447
+scale = Vector2( 0.742188, 0.742188 )
+texture = ExtResource( 14 )
+offset = Vector2( 12.6475, 5.1593 )
+
+[node name="Rotation" type="AnimationPlayer" parent="Luna/StarsContainer/Cosmos6"]
+autoplay = "rotation"
+anims/RESET = SubResource( 16 )
+anims/rotation = SubResource( 17 )
+
+[node name="Moon" parent="Luna" instance=ExtResource( 4 )]
+position = Vector2( 1368, 120 )
+scale = Vector2( 0.2, 0.2 )
+offset = Vector2( -362.258, -262.75 )
+polygon = PoolVector2Array( 352, 144, 288, 160, 248, 200, 232, 256, 248, 312, 280, 352, 320, 376, 368, 384, 416, 376, 456, 352, 472, 296, 472, 248, 456, 200, 416, 160 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Earth" type="Sprite" parent="Luna"]
+position = Vector2( 1584, -72 )
+scale = Vector2( 5, 5 )
+texture = ExtResource( 13 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="PlayerShip" type="Node2D" parent="Luna"]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Shaking" type="AnimationPlayer" parent="Luna/PlayerShip"]
+anims/RESET = SubResource( 11 )
+anims/shake = SubResource( 10 )
+
+[node name="CabinBackgroundTop" type="Polygon2D" parent="Luna/PlayerShip"]
+position = Vector2( 1216, -1200 )
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( 1608, 368, 1608, 1200, -2176, 1200, -2176, 368 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CabinBackgroundLeft" type="Polygon2D" parent="Luna/PlayerShip"]
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( 160, -664, 160, 1672, -840, 1672, -840, -664 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CabinBackgroundRight" type="Polygon2D" parent="Luna/PlayerShip"]
+position = Vector2( 2600, -40 )
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( 160, -664, 160, 1672, -840, 1672, -840, -664 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CabinBackgroundBottom" type="Polygon2D" parent="Luna/PlayerShip"]
+position = Vector2( 1176, 712 )
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( 1608, 368, 1608, 1200, -2176, 1200, -2176, 368 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Cabin" type="Sprite" parent="Luna/PlayerShip"]
+position = Vector2( 160, 0 )
+scale = Vector2( 5, 4.5 )
+texture = ExtResource( 7 )
+offset = Vector2( 160.053, 120.663 )
+
+[node name="CabinPanel1" type="Sprite" parent="Luna/PlayerShip"]
+visible = false
+position = Vector2( 960, 540 )
+scale = Vector2( 5, 4.5 )
+texture = ExtResource( 8 )
+
+[node name="CabinPanel2" type="Sprite" parent="Luna/PlayerShip"]
+visible = false
+position = Vector2( 960, 540 )
+scale = Vector2( 5, 4.5 )
+texture = ExtResource( 9 )
+
+[node name="CabinPanel3" type="Sprite" parent="Luna/PlayerShip"]
+position = Vector2( 960, 540 )
+scale = Vector2( 5, 4.5 )
+texture = ExtResource( 12 )
+
+[node name="PanelShaking" type="AnimationPlayer" parent="Luna/PlayerShip"]
+anims/RESET = SubResource( 9 )
+anims/move = SubResource( 8 )
+
+[node name="CabinPlayer1" type="Sprite" parent="Luna/PlayerShip"]
+visible = false
+position = Vector2( 960, 540 )
+scale = Vector2( 5, 4.5 )
+texture = ExtResource( 10 )
+
+[node name="CabinPlayer2" type="Sprite" parent="Luna/PlayerShip"]
+position = Vector2( 960, 540 )
+scale = Vector2( 5, 4.5 )
+texture = ExtResource( 11 )
+
+[node name="PlayerMoving" type="AnimationPlayer" parent="Luna/PlayerShip"]
+anims/RESET = SubResource( 6 )
+anims/move = SubResource( 7 )
+
+[node name="Landing" type="AnimationPlayer" parent="Luna"]
+root_node = NodePath("../..")
+anims/Landing = SubResource( 1 )
+anims/RESET = SubResource( 3 )
+
+[node name="Landing" type="Node2D" parent="."]
+visible = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="StarsContainer" type="Node2D" parent="Landing"]
+position = Vector2( -504, 384 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="StarsContainer" type="Node2D" parent="Landing/StarsContainer"]
+position = Vector2( 536, -1040 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StarsGroup" type="Node2D" parent="Landing/StarsContainer/StarsContainer"]
+position = Vector2( 4, 7 )
+
+[node name="Stars" parent="Landing/StarsContainer/StarsContainer/StarsGroup" instance=ExtResource( 5 )]
+position = Vector2( 42, 1530 )
+
+[node name="Stars8" parent="Landing/StarsContainer/StarsContainer/StarsGroup" instance=ExtResource( 5 )]
+position = Vector2( 274, 1394 )
+rotation = -3.14159
+
+[node name="Stars10" parent="Landing/StarsContainer/StarsContainer/StarsGroup" instance=ExtResource( 5 )]
+position = Vector2( 194, 1491 )
+
+[node name="Stars11" parent="Landing/StarsContainer/StarsContainer/StarsGroup" instance=ExtResource( 5 )]
+position = Vector2( 450, 1222 )
+
+[node name="StarsGroup2" type="Node2D" parent="Landing/StarsContainer/StarsContainer"]
+position = Vector2( 636, -18 )
+
+[node name="Stars5" parent="Landing/StarsContainer/StarsContainer/StarsGroup2" instance=ExtResource( 5 )]
+position = Vector2( -22, 1621 )
+rotation = -1.5708
+
+[node name="Stars6" parent="Landing/StarsContainer/StarsContainer/StarsGroup2" instance=ExtResource( 5 )]
+position = Vector2( -294, 1626 )
+rotation = -1.5708
+
+[node name="Stars8" parent="Landing/StarsContainer/StarsContainer/StarsGroup2" instance=ExtResource( 5 )]
+position = Vector2( 298, 1309 )
+rotation = -3.14159
+
+[node name="Stars9" parent="Landing/StarsContainer/StarsContainer/StarsGroup2" instance=ExtResource( 5 )]
+position = Vector2( 322, 1607 )
+rotation = 1.74533
+
+[node name="StarsGroup3" type="Node2D" parent="Landing/StarsContainer/StarsContainer"]
+position = Vector2( 1152, -38 )
+
+[node name="Stars" parent="Landing/StarsContainer/StarsContainer/StarsGroup3" instance=ExtResource( 5 )]
+position = Vector2( -170, 1366 )
+
+[node name="Stars6" parent="Landing/StarsContainer/StarsContainer/StarsGroup3" instance=ExtResource( 5 )]
+position = Vector2( -322, 1462 )
+rotation = -1.5708
+
+[node name="Stars8" parent="Landing/StarsContainer/StarsContainer/StarsGroup3" instance=ExtResource( 5 )]
+position = Vector2( 854, 1702 )
+rotation = -3.14159
+
+[node name="Stars9" parent="Landing/StarsContainer/StarsContainer/StarsGroup3" instance=ExtResource( 5 )]
+position = Vector2( 6, 1609 )
+rotation = 1.74533
+
+[node name="StarsGroup4" type="Node2D" parent="Landing/StarsContainer/StarsContainer"]
+position = Vector2( 1608, -23 )
+
+[node name="Stars2" parent="Landing/StarsContainer/StarsContainer/StarsGroup4" instance=ExtResource( 5 )]
+position = Vector2( -442, 1279 )
+rotation = 0.785398
+
+[node name="Stars5" parent="Landing/StarsContainer/StarsContainer/StarsGroup4" instance=ExtResource( 5 )]
+position = Vector2( -498, 1499 )
+rotation = -1.5708
+
+[node name="Stars8" parent="Landing/StarsContainer/StarsContainer/StarsGroup4" instance=ExtResource( 5 )]
+position = Vector2( 441, 1454 )
+rotation = -3.14159
+
+[node name="Stars10" parent="Landing/StarsContainer/StarsContainer/StarsGroup4" instance=ExtResource( 5 )]
+position = Vector2( -66, 1655 )
+rotation = -3.14159
+
+[node name="Stars9" parent="Landing/StarsContainer/StarsContainer/StarsGroup4" instance=ExtResource( 5 )]
+position = Vector2( -290, 1241 )
+rotation = 1.74533
+
+[node name="StarsGroup5" type="Node2D" parent="Landing/StarsContainer/StarsContainer"]
+position = Vector2( 2045, -9 )
+
+[node name="Stars" parent="Landing/StarsContainer/StarsContainer/StarsGroup5" instance=ExtResource( 5 )]
+position = Vector2( -1034, 1193 )
+
+[node name="Stars8" parent="Landing/StarsContainer/StarsContainer/StarsGroup5" instance=ExtResource( 5 )]
+position = Vector2( -463, 1337 )
+rotation = -3.14159
+
+[node name="Stars9" parent="Landing/StarsContainer/StarsContainer/StarsGroup5" instance=ExtResource( 5 )]
+position = Vector2( -567, 1374 )
+rotation = 1.74533
+
+[node name="StarsGroup6" type="Node2D" parent="Landing/StarsContainer/StarsContainer"]
+position = Vector2( 2513, 10 )
+
+[node name="Stars2" parent="Landing/StarsContainer/StarsContainer/StarsGroup6" instance=ExtResource( 5 )]
+position = Vector2( -667, 1337 )
+rotation = 0.785398
+
+[node name="Stars5" parent="Landing/StarsContainer/StarsContainer/StarsGroup6" instance=ExtResource( 5 )]
+position = Vector2( -1179, 1654 )
+rotation = -1.5708
+
+[node name="Stars8" parent="Landing/StarsContainer/StarsContainer/StarsGroup6" instance=ExtResource( 5 )]
+position = Vector2( -739, 1499 )
+rotation = -3.14159
+
+[node name="Stars9" parent="Landing/StarsContainer/StarsContainer/StarsGroup6" instance=ExtResource( 5 )]
+position = Vector2( -811, 1398 )
+rotation = -3.14159
+
+[node name="Stars10" parent="Landing/StarsContainer/StarsContainer/StarsGroup6" instance=ExtResource( 5 )]
+position = Vector2( -379, 1614 )
+rotation = -3.14159
+
+[node name="StarsGroup7" type="Node2D" parent="Landing/StarsContainer/StarsContainer"]
+position = Vector2( -11, -195 )
+
+[node name="Stars" parent="Landing/StarsContainer/StarsContainer/StarsGroup7" instance=ExtResource( 5 )]
+position = Vector2( 65, 1559 )
+
+[node name="Stars3" parent="Landing/StarsContainer/StarsContainer/StarsGroup7" instance=ExtResource( 5 )]
+position = Vector2( 209, 1413 )
+rotation = 1.5708
+
+[node name="Stars5" parent="Landing/StarsContainer/StarsContainer/StarsGroup7" instance=ExtResource( 5 )]
+position = Vector2( 377, 1644 )
+rotation = -1.5708
+
+[node name="Stars6" parent="Landing/StarsContainer/StarsContainer/StarsGroup7" instance=ExtResource( 5 )]
+position = Vector2( 321, 1475 )
+rotation = -1.5708
+
+[node name="StarsGroup8" type="Node2D" parent="Landing/StarsContainer/StarsContainer"]
+position = Vector2( 596, -233 )
+
+[node name="Stars" parent="Landing/StarsContainer/StarsContainer/StarsGroup8" instance=ExtResource( 5 )]
+position = Vector2( -86, 1604 )
+
+[node name="Stars2" parent="Landing/StarsContainer/StarsContainer/StarsGroup8" instance=ExtResource( 5 )]
+position = Vector2( -590, 1417 )
+rotation = 0.785398
+
+[node name="Stars5" parent="Landing/StarsContainer/StarsContainer/StarsGroup8" instance=ExtResource( 5 )]
+position = Vector2( -102, 1817 )
+rotation = -1.5708
+
+[node name="Stars6" parent="Landing/StarsContainer/StarsContainer/StarsGroup8" instance=ExtResource( 5 )]
+position = Vector2( 10, 1553 )
+rotation = -1.5708
+
+[node name="Stars10" parent="Landing/StarsContainer/StarsContainer/StarsGroup8" instance=ExtResource( 5 )]
+position = Vector2( 71, 1630 )
+
+[node name="StarsGroup9" type="Node2D" parent="Landing/StarsContainer/StarsContainer"]
+position = Vector2( 1331, -207 )
+
+[node name="Stars" parent="Landing/StarsContainer/StarsContainer/StarsGroup9" instance=ExtResource( 5 )]
+position = Vector2( -373, 1676 )
+
+[node name="Stars3" parent="Landing/StarsContainer/StarsContainer/StarsGroup9" instance=ExtResource( 5 )]
+position = Vector2( -541, 1463 )
+rotation = 1.5708
+
+[node name="Stars6" parent="Landing/StarsContainer/StarsContainer/StarsGroup9" instance=ExtResource( 5 )]
+position = Vector2( -573, 1783 )
+rotation = -1.5708
+
+[node name="Stars8" parent="Landing/StarsContainer/StarsContainer/StarsGroup9" instance=ExtResource( 5 )]
+position = Vector2( -13, 1638 )
+rotation = -3.14159
+
+[node name="StarsGroup10" type="Node2D" parent="Landing/StarsContainer/StarsContainer"]
+position = Vector2( 1865, -203 )
+
+[node name="Stars" parent="Landing/StarsContainer/StarsContainer/StarsGroup10" instance=ExtResource( 5 )]
+position = Vector2( 69, 1435 )
+
+[node name="Stars6" parent="Landing/StarsContainer/StarsContainer/StarsGroup10" instance=ExtResource( 5 )]
+position = Vector2( -643, 1803 )
+rotation = -1.5708
+
+[node name="Stars8" parent="Landing/StarsContainer/StarsContainer/StarsGroup10" instance=ExtResource( 5 )]
+position = Vector2( -155, 1488 )
+rotation = -3.14159
+
+[node name="StarsGroup11" type="Node2D" parent="Landing/StarsContainer/StarsContainer"]
+position = Vector2( 2273, -189 )
+
+[node name="Stars" parent="Landing/StarsContainer/StarsContainer/StarsGroup11" instance=ExtResource( 5 )]
+position = Vector2( -923, 1669 )
+
+[node name="Stars10" parent="Landing/StarsContainer/StarsContainer/StarsGroup11" instance=ExtResource( 5 )]
+position = Vector2( -194, 1450 )
+
+[node name="StarsGroup12" type="Node2D" parent="Landing/StarsContainer/StarsContainer"]
+position = Vector2( 2916, -201 )
+
+[node name="Stars4" parent="Landing/StarsContainer/StarsContainer/StarsGroup12" instance=ExtResource( 5 )]
+position = Vector2( -1006, 1686 )
+
+[node name="Stars5" parent="Landing/StarsContainer/StarsContainer/StarsGroup12" instance=ExtResource( 5 )]
+position = Vector2( -1294, 1821 )
+rotation = -1.5708
+
+[node name="Stars6" parent="Landing/StarsContainer/StarsContainer/StarsGroup12" instance=ExtResource( 5 )]
+position = Vector2( -1398, 1713 )
+rotation = -1.5708
+
+[node name="Stars9" parent="Landing/StarsContainer/StarsContainer/StarsGroup12" instance=ExtResource( 5 )]
+position = Vector2( -1458, 1441 )
+rotation = 1.74533
+
+[node name="StarsGroup13" type="Node2D" parent="Landing/StarsContainer/StarsContainer"]
+position = Vector2( 2832, -20 )
+
+[node name="Stars" parent="Landing/StarsContainer/StarsContainer/StarsGroup13" instance=ExtResource( 5 )]
+position = Vector2( -723, 1444 )
+
+[node name="Stars4" parent="Landing/StarsContainer/StarsContainer/StarsGroup13" instance=ExtResource( 5 )]
+position = Vector2( -1058, 1266 )
+
+[node name="Stars9" parent="Landing/StarsContainer/StarsContainer/StarsGroup13" instance=ExtResource( 5 )]
+position = Vector2( -994, 1601 )
+rotation = 1.74533
+
+[node name="StarsContainer2" type="Node2D" parent="Landing/StarsContainer"]
+position = Vector2( 2615, 1336 )
+rotation = 3.14159
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StarsGroup" type="Node2D" parent="Landing/StarsContainer/StarsContainer2"]
+position = Vector2( 4, 7 )
+
+[node name="Stars" parent="Landing/StarsContainer/StarsContainer2/StarsGroup" instance=ExtResource( 5 )]
+position = Vector2( 42, 1530 )
+
+[node name="Stars8" parent="Landing/StarsContainer/StarsContainer2/StarsGroup" instance=ExtResource( 5 )]
+position = Vector2( 274, 1394 )
+rotation = -3.14159
+
+[node name="Stars10" parent="Landing/StarsContainer/StarsContainer2/StarsGroup" instance=ExtResource( 5 )]
+position = Vector2( 194, 1491 )
+
+[node name="Stars11" parent="Landing/StarsContainer/StarsContainer2/StarsGroup" instance=ExtResource( 5 )]
+position = Vector2( 450, 1222 )
+
+[node name="StarsGroup2" type="Node2D" parent="Landing/StarsContainer/StarsContainer2"]
+position = Vector2( 636, -18 )
+
+[node name="Stars5" parent="Landing/StarsContainer/StarsContainer2/StarsGroup2" instance=ExtResource( 5 )]
+position = Vector2( -22, 1621 )
+rotation = -1.5708
+
+[node name="Stars6" parent="Landing/StarsContainer/StarsContainer2/StarsGroup2" instance=ExtResource( 5 )]
+position = Vector2( -294, 1626 )
+rotation = -1.5708
+
+[node name="Stars8" parent="Landing/StarsContainer/StarsContainer2/StarsGroup2" instance=ExtResource( 5 )]
+position = Vector2( 298, 1309 )
+rotation = -3.14159
+
+[node name="Stars9" parent="Landing/StarsContainer/StarsContainer2/StarsGroup2" instance=ExtResource( 5 )]
+position = Vector2( 322, 1607 )
+rotation = 1.74533
+
+[node name="StarsGroup3" type="Node2D" parent="Landing/StarsContainer/StarsContainer2"]
+position = Vector2( 1152, -38 )
+
+[node name="Stars" parent="Landing/StarsContainer/StarsContainer2/StarsGroup3" instance=ExtResource( 5 )]
+position = Vector2( -170, 1366 )
+
+[node name="Stars6" parent="Landing/StarsContainer/StarsContainer2/StarsGroup3" instance=ExtResource( 5 )]
+position = Vector2( -322, 1462 )
+rotation = -1.5708
+
+[node name="Stars8" parent="Landing/StarsContainer/StarsContainer2/StarsGroup3" instance=ExtResource( 5 )]
+position = Vector2( 854, 1702 )
+rotation = -3.14159
+
+[node name="Stars9" parent="Landing/StarsContainer/StarsContainer2/StarsGroup3" instance=ExtResource( 5 )]
+position = Vector2( 6, 1609 )
+rotation = 1.74533
+
+[node name="StarsGroup4" type="Node2D" parent="Landing/StarsContainer/StarsContainer2"]
+position = Vector2( 1608, -23 )
+
+[node name="Stars2" parent="Landing/StarsContainer/StarsContainer2/StarsGroup4" instance=ExtResource( 5 )]
+position = Vector2( -442, 1279 )
+rotation = 0.785398
+
+[node name="Stars5" parent="Landing/StarsContainer/StarsContainer2/StarsGroup4" instance=ExtResource( 5 )]
+position = Vector2( -498, 1499 )
+rotation = -1.5708
+
+[node name="Stars8" parent="Landing/StarsContainer/StarsContainer2/StarsGroup4" instance=ExtResource( 5 )]
+position = Vector2( 441, 1454 )
+rotation = -3.14159
+
+[node name="Stars10" parent="Landing/StarsContainer/StarsContainer2/StarsGroup4" instance=ExtResource( 5 )]
+position = Vector2( -66, 1655 )
+rotation = -3.14159
+
+[node name="Stars9" parent="Landing/StarsContainer/StarsContainer2/StarsGroup4" instance=ExtResource( 5 )]
+position = Vector2( -290, 1241 )
+rotation = 1.74533
+
+[node name="StarsGroup5" type="Node2D" parent="Landing/StarsContainer/StarsContainer2"]
+position = Vector2( 2045, -9 )
+
+[node name="Stars" parent="Landing/StarsContainer/StarsContainer2/StarsGroup5" instance=ExtResource( 5 )]
+position = Vector2( -1034, 1193 )
+
+[node name="Stars8" parent="Landing/StarsContainer/StarsContainer2/StarsGroup5" instance=ExtResource( 5 )]
+position = Vector2( -463, 1337 )
+rotation = -3.14159
+
+[node name="Stars9" parent="Landing/StarsContainer/StarsContainer2/StarsGroup5" instance=ExtResource( 5 )]
+position = Vector2( -567, 1374 )
+rotation = 1.74533
+
+[node name="StarsGroup6" type="Node2D" parent="Landing/StarsContainer/StarsContainer2"]
+position = Vector2( 2513, 10 )
+
+[node name="Stars2" parent="Landing/StarsContainer/StarsContainer2/StarsGroup6" instance=ExtResource( 5 )]
+position = Vector2( -667, 1337 )
+rotation = 0.785398
+
+[node name="Stars5" parent="Landing/StarsContainer/StarsContainer2/StarsGroup6" instance=ExtResource( 5 )]
+position = Vector2( -1179, 1654 )
+rotation = -1.5708
+
+[node name="Stars8" parent="Landing/StarsContainer/StarsContainer2/StarsGroup6" instance=ExtResource( 5 )]
+position = Vector2( -739, 1499 )
+rotation = -3.14159
+
+[node name="Stars9" parent="Landing/StarsContainer/StarsContainer2/StarsGroup6" instance=ExtResource( 5 )]
+position = Vector2( -811, 1398 )
+rotation = -3.14159
+
+[node name="Stars10" parent="Landing/StarsContainer/StarsContainer2/StarsGroup6" instance=ExtResource( 5 )]
+position = Vector2( -379, 1614 )
+rotation = -3.14159
+
+[node name="StarsGroup7" type="Node2D" parent="Landing/StarsContainer/StarsContainer2"]
+position = Vector2( -11, -195 )
+
+[node name="Stars" parent="Landing/StarsContainer/StarsContainer2/StarsGroup7" instance=ExtResource( 5 )]
+position = Vector2( 65, 1559 )
+
+[node name="Stars3" parent="Landing/StarsContainer/StarsContainer2/StarsGroup7" instance=ExtResource( 5 )]
+position = Vector2( 209, 1413 )
+rotation = 1.5708
+
+[node name="Stars5" parent="Landing/StarsContainer/StarsContainer2/StarsGroup7" instance=ExtResource( 5 )]
+position = Vector2( 377, 1644 )
+rotation = -1.5708
+
+[node name="Stars6" parent="Landing/StarsContainer/StarsContainer2/StarsGroup7" instance=ExtResource( 5 )]
+position = Vector2( 321, 1475 )
+rotation = -1.5708
+
+[node name="StarsGroup8" type="Node2D" parent="Landing/StarsContainer/StarsContainer2"]
+position = Vector2( 596, -233 )
+
+[node name="Stars" parent="Landing/StarsContainer/StarsContainer2/StarsGroup8" instance=ExtResource( 5 )]
+position = Vector2( -86, 1604 )
+
+[node name="Stars2" parent="Landing/StarsContainer/StarsContainer2/StarsGroup8" instance=ExtResource( 5 )]
+position = Vector2( -590, 1417 )
+rotation = 0.785398
+
+[node name="Stars5" parent="Landing/StarsContainer/StarsContainer2/StarsGroup8" instance=ExtResource( 5 )]
+position = Vector2( -102, 1817 )
+rotation = -1.5708
+
+[node name="Stars6" parent="Landing/StarsContainer/StarsContainer2/StarsGroup8" instance=ExtResource( 5 )]
+position = Vector2( 10, 1553 )
+rotation = -1.5708
+
+[node name="Stars10" parent="Landing/StarsContainer/StarsContainer2/StarsGroup8" instance=ExtResource( 5 )]
+position = Vector2( 71, 1630 )
+
+[node name="StarsGroup9" type="Node2D" parent="Landing/StarsContainer/StarsContainer2"]
+position = Vector2( 1331, -207 )
+
+[node name="Stars" parent="Landing/StarsContainer/StarsContainer2/StarsGroup9" instance=ExtResource( 5 )]
+position = Vector2( -373, 1676 )
+
+[node name="Stars3" parent="Landing/StarsContainer/StarsContainer2/StarsGroup9" instance=ExtResource( 5 )]
+position = Vector2( -541, 1463 )
+rotation = 1.5708
+
+[node name="Stars6" parent="Landing/StarsContainer/StarsContainer2/StarsGroup9" instance=ExtResource( 5 )]
+position = Vector2( -573, 1783 )
+rotation = -1.5708
+
+[node name="Stars8" parent="Landing/StarsContainer/StarsContainer2/StarsGroup9" instance=ExtResource( 5 )]
+position = Vector2( -13, 1638 )
+rotation = -3.14159
+
+[node name="StarsGroup10" type="Node2D" parent="Landing/StarsContainer/StarsContainer2"]
+position = Vector2( 1865, -203 )
+
+[node name="Stars" parent="Landing/StarsContainer/StarsContainer2/StarsGroup10" instance=ExtResource( 5 )]
+position = Vector2( 69, 1435 )
+
+[node name="Stars6" parent="Landing/StarsContainer/StarsContainer2/StarsGroup10" instance=ExtResource( 5 )]
+position = Vector2( -643, 1803 )
+rotation = -1.5708
+
+[node name="Stars8" parent="Landing/StarsContainer/StarsContainer2/StarsGroup10" instance=ExtResource( 5 )]
+position = Vector2( -155, 1488 )
+rotation = -3.14159
+
+[node name="StarsGroup11" type="Node2D" parent="Landing/StarsContainer/StarsContainer2"]
+position = Vector2( 2273, -189 )
+
+[node name="Stars" parent="Landing/StarsContainer/StarsContainer2/StarsGroup11" instance=ExtResource( 5 )]
+position = Vector2( -923, 1669 )
+
+[node name="Stars10" parent="Landing/StarsContainer/StarsContainer2/StarsGroup11" instance=ExtResource( 5 )]
+position = Vector2( -194, 1450 )
+
+[node name="StarsGroup12" type="Node2D" parent="Landing/StarsContainer/StarsContainer2"]
+position = Vector2( 2916, -201 )
+
+[node name="Stars4" parent="Landing/StarsContainer/StarsContainer2/StarsGroup12" instance=ExtResource( 5 )]
+position = Vector2( -1006, 1686 )
+
+[node name="Stars5" parent="Landing/StarsContainer/StarsContainer2/StarsGroup12" instance=ExtResource( 5 )]
+position = Vector2( -1294, 1821 )
+rotation = -1.5708
+
+[node name="Stars6" parent="Landing/StarsContainer/StarsContainer2/StarsGroup12" instance=ExtResource( 5 )]
+position = Vector2( -1398, 1713 )
+rotation = -1.5708
+
+[node name="Stars9" parent="Landing/StarsContainer/StarsContainer2/StarsGroup12" instance=ExtResource( 5 )]
+position = Vector2( -1458, 1441 )
+rotation = 1.74533
+
+[node name="StarsGroup13" type="Node2D" parent="Landing/StarsContainer/StarsContainer2"]
+position = Vector2( 2832, -20 )
+
+[node name="Stars" parent="Landing/StarsContainer/StarsContainer2/StarsGroup13" instance=ExtResource( 5 )]
+position = Vector2( -723, 1444 )
+
+[node name="Stars4" parent="Landing/StarsContainer/StarsContainer2/StarsGroup13" instance=ExtResource( 5 )]
+position = Vector2( -1058, 1266 )
+
+[node name="Stars9" parent="Landing/StarsContainer/StarsContainer2/StarsGroup13" instance=ExtResource( 5 )]
+position = Vector2( -994, 1601 )
+rotation = 1.74533
+
+[node name="Cosmos" type="Sprite" parent="Landing/StarsContainer"]
+modulate = Color( 0.705882, 0.498039, 0.498039, 0.792157 )
+position = Vector2( 653, -26 )
+scale = Vector2( 2.21875, 2.21875 )
+texture = ExtResource( 3 )
+
+[node name="Cosmos2" type="Sprite" parent="Landing/StarsContainer"]
+modulate = Color( 1, 1, 1, 0.721569 )
+position = Vector2( 960, 592 )
+rotation = 3.14159
+scale = Vector2( 4.03287, -2.48302 )
+texture = ExtResource( 3 )
+
+[node name="Cosmos3" type="Sprite" parent="Landing/StarsContainer"]
+modulate = Color( 0.937255, 0.321569, 0.882353, 0.752941 )
+position = Vector2( 1446, 361 )
+rotation = 3.14159
+scale = Vector2( 2.19189, 2.35919 )
+texture = ExtResource( 3 )
+
+[node name="Cosmos4" type="Sprite" parent="Landing/StarsContainer"]
+modulate = Color( 0.760784, 0.443137, 0.92549, 0.764706 )
+position = Vector2( 2072, -157 )
+scale = Vector2( 3.83984, -4.54883 )
+texture = ExtResource( 3 )
+
+[node name="Cosmos5" type="Sprite" parent="Landing/StarsContainer"]
+modulate = Color( 0.639216, 0.203922, 0.639216, 0.741176 )
+position = Vector2( 1816, 641 )
+rotation = 0.50091
+scale = Vector2( 2.4375, 2.4375 )
+texture = ExtResource( 15 )
+
+[node name="Cosmos6" type="Sprite" parent="Landing/StarsContainer"]
+modulate = Color( 0.815686, 0.439216, 0.392157, 0.698039 )
+position = Vector2( 1103.05, -164.158 )
+rotation = 3.09447
+scale = Vector2( 2.01435, 1.94151 )
+texture = ExtResource( 14 )
+offset = Vector2( 13.256, 4.30826 )
+
+[node name="Rotation" type="AnimationPlayer" parent="Landing/StarsContainer/Cosmos6"]
+autoplay = "rotation"
+anims/RESET = SubResource( 18 )
+anims/rotation = SubResource( 19 )
+
+[node name="Moon" parent="Landing" instance=ExtResource( 4 )]
+position = Vector2( 2744, 672 )
+scale = Vector2( 1e-05, 1e-05 )
+offset = Vector2( -362.258, -262.75 )
+polygon = PoolVector2Array( 352, 144, 288, 160, 248, 200, 232, 256, 248, 312, 280, 352, 320, 376, 368, 384, 416, 376, 456, 352, 472, 296, 472, 248, 456, 200, 416, 160 )
+
+[node name="ShipClip" parent="Landing" instance=ExtResource( 6 )]
+position = Vector2( -192, 664 )
+
+[node name="Landing" type="AnimationPlayer" parent="Landing"]
+anims/Landing = SubResource( 4 )
+anims/RESET = SubResource( 5 )
+
+[node name="Skip" type="Button" parent="."]
+margin_left = 192.0
+margin_top = 960.0
+margin_right = 448.0
+margin_bottom = 1024.0
+focus_mode = 0
+enabled_focus_mode = 0
+flat = true
+icon_align = 1
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="MessageBackground" type="Polygon2D" parent="Skip"]
+color = Color( 0, 0, 0, 0.196078 )
+offset = Vector2( 0, -1024 )
+polygon = PoolVector2Array( 0, 1024, 256, 1024, 256, 1088, 0, 1088 )
+
+[node name="Message" type="Label" parent="Skip/MessageBackground"]
+margin_right = 256.0
+margin_bottom = 65.0
+custom_colors/font_color = Color( 0.396078, 0.396078, 0.396078, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Пропустить"
+align = 1
+valign = 1
+autowrap = true
+uppercase = true
+
+[connection signal="mouse_entered" from="FirstStartGame/ButtonBackground/Start" to="." method="_on_Start_mouse_entered"]
+[connection signal="pressed" from="FirstStartGame/ButtonBackground/Start" to="." method="_on_Start_pressed"]
+[connection signal="animation_finished" from="FirstStartGame/ButtonBackground/Start/Started" to="." method="_on_Started_animation_finished"]
+[connection signal="mouse_entered" from="FirstStartGame/ButtonBackground/Exit" to="." method="_on_Exit_mouse_entered"]
+[connection signal="pressed" from="FirstStartGame/ButtonBackground/Exit" to="." method="_on_Exit_pressed"]
+[connection signal="mouse_entered" from="FirstStartGame/ButtonBackground/AudiosPlayingContainer/AudiosPlaying" to="." method="_on_AudiosPlaying_mouse_entered"]
+[connection signal="mouse_exited" from="FirstStartGame/ButtonBackground/AudiosPlayingContainer/AudiosPlaying" to="." method="_on_AudiosPlaying_mouse_exited"]
+[connection signal="pressed" from="FirstStartGame/ButtonBackground/AudiosPlayingContainer/AudiosPlaying" to="." method="_on_AudiosPlaying_pressed"]
+[connection signal="button_down" from="FirstStartGame/ButtonBackground/CallFriends" to="." method="_on_CallFriends_button_down"]
+[connection signal="button_down" from="FirstStartGame/ButtonBackground/ShareFriends" to="." method="_on_ShareFriends_button_down"]
+[connection signal="animation_finished" from="Luna/Landing" to="." method="_on_Landing_animation_finished"]
+[connection signal="pressed" from="Skip" to="." method="_on_Skip_pressed"]

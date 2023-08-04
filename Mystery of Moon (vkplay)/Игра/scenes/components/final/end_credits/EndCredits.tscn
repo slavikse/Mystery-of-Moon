@@ -1,0 +1,230 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://fonts/intro.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://scenes/components/final/end_credits/EndCredits.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Background:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 6.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Background:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 0.784314 ) ]
+}
+tracks/1/type = "animation"
+tracks/1/path = NodePath("Background/TitlesContainer/EndTitles")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": PoolStringArray( "start" ),
+"times": PoolRealArray( 1 )
+}
+
+[sub_resource type="DynamicFont" id=3]
+size = 20
+outline_size = 2
+outline_color = Color( 0.133333, 0.133333, 0.133333, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 1080 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "start"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 1080 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="DynamicFont" id=6]
+size = 32
+outline_size = 4
+outline_color = Color( 0.196078, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 20
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 26
+outline_size = 2
+outline_color = Color( 0.133333, 0.133333, 0.133333, 1 )
+font_data = ExtResource( 1 )
+
+[node name="EndCredits" type="CanvasLayer"]
+layer = 2
+script = ExtResource( 2 )
+
+[node name="Background" type="Polygon2D" parent="."]
+color = Color( 0, 0, 0, 0 )
+polygon = PoolVector2Array( -128, -128, 2048, -128, 2048, 1216, -128, 1216 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="EndScreen" type="AnimationPlayer" parent="Background"]
+root_node = NodePath("../..")
+anims/RESET = SubResource( 1 )
+anims/end = SubResource( 2 )
+
+[node name="TitlesContainer" type="Node2D" parent="Background"]
+position = Vector2( 0, 1080 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Title" type="Label" parent="Background/TitlesContainer"]
+margin_top = 328.0
+margin_right = 1920.0
+margin_bottom = 392.0
+custom_colors/font_color = Color( 0.678431, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Конец игры!"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Description" type="Label" parent="Background/TitlesContainer"]
+margin_top = 400.0
+margin_right = 1920.0
+margin_bottom = 472.0
+custom_colors/font_color = Color( 0.682353, 0.682353, 0.682353, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Спасибо за игру!
+Команда PixSynt поздравляет Вас с прохождением!
+Открыта одна из двух концовок."
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="FinalTitle" type="Label" parent="Background/TitlesContainer"]
+margin_top = 488.0
+margin_right = 1920.0
+margin_bottom = 552.0
+custom_colors/font_color = Color( 0.682353, 0.682353, 0.682353, 1 )
+custom_fonts/font = SubResource( 3 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="EndTitles" type="AnimationPlayer" parent="Background/TitlesContainer"]
+anims/RESET = SubResource( 5 )
+anims/start = SubResource( 4 )
+
+[node name="Reset" type="Node2D" parent="Background/TitlesContainer"]
+position = Vector2( 0, 184 )
+scale = Vector2( 0.6, 0.6 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Reset" type="Button" parent="Background/TitlesContainer/Reset"]
+margin_left = 1387.0
+margin_top = 733.0
+margin_right = 1813.0
+margin_bottom = 777.0
+focus_mode = 0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0.678431, 0, 0, 1 )
+custom_fonts/font = SubResource( 6 )
+enabled_focus_mode = 0
+text = "Удалить сохранения"
+flat = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Tips" type="Label" parent="Background/TitlesContainer/Reset"]
+visible = false
+margin_left = 1387.0
+margin_top = 773.0
+margin_right = 1813.0
+margin_bottom = 827.0
+custom_colors/font_color = Color( 0.682353, 0.682353, 0.682353, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "Закроет игру"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Exit" type="Node2D" parent="Background/TitlesContainer"]
+scale = Vector2( 0.5, 0.5 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Exit" type="Button" parent="Background/TitlesContainer/Exit"]
+margin_left = 1840.0
+margin_top = 1424.0
+margin_right = 2000.0
+margin_bottom = 1472.0
+focus_mode = 0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 0, 1 )
+custom_fonts/font = SubResource( 8 )
+enabled_focus_mode = 0
+text = "Выход"
+flat = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[connection signal="mouse_entered" from="Background/TitlesContainer/Reset/Reset" to="." method="_on_Reset_mouse_entered"]
+[connection signal="mouse_exited" from="Background/TitlesContainer/Reset/Reset" to="." method="_on_Reset_mouse_exited"]
+[connection signal="pressed" from="Background/TitlesContainer/Reset/Reset" to="." method="_on_Reset_pressed"]
+[connection signal="pressed" from="Background/TitlesContainer/Exit/Exit" to="." method="_on_Exit_pressed"]

@@ -1,0 +1,103 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://scenes/components/player/fuel/Fuel.gd" type="Script" id=1]
+[ext_resource path="res://scenes/components/player/fuel/textures/player_fuel.png" type="Texture" id=2]
+[ext_resource path="res://scenes/components/player/fuel/textures/player_engine.png" type="Texture" id=3]
+[ext_resource path="res://scenes/components/player/fuel/textures/player_engine_hand.png" type="Texture" id=4]
+[ext_resource path="res://scenes/components/player/fuel/audio/replenishment.wav" type="AudioStream" id=5]
+[ext_resource path="res://scenes/components/player/fuel/textures/flame1.png" type="Texture" id=6]
+[ext_resource path="res://scenes/components/player/fuel/audio/hisses.ogg" type="AudioStream" id=7]
+[ext_resource path="res://scenes/components/player/fuel/audio/refill.wav" type="AudioStream" id=8]
+[ext_resource path="res://scenes/components/player/fuel/textures/flame2.png" type="Texture" id=9]
+[ext_resource path="res://scenes/components/player/fuel/textures/flame3.png" type="Texture" id=10]
+
+[sub_resource type="StreamTexture" id=1]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 6 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 6 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="Fuel" type="Polygon2D"]
+position = Vector2( -1, 0 )
+z_index = 1
+color = Color( 0.25098, 0.133333, 0.0196078, 0 )
+polygon = PoolVector2Array( -7, 0, -7, 48, 9, 48, 9, 0 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Engine" type="Sprite" parent="."]
+position = Vector2( 0, 40 )
+texture = ExtResource( 3 )
+offset = Vector2( 0, -40 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Quantity" type="Polygon2D" parent="."]
+position = Vector2( 0, 40 )
+color = Color( 0.678431, 0.678431, 0.678431, 0 )
+offset = Vector2( 0, -40 )
+texture = SubResource( 1 )
+polygon = PoolVector2Array( -8, -8, 8, -8, 8, 40, -8, 40 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="FuelTexture" type="Sprite" parent="Quantity"]
+texture = ExtResource( 2 )
+offset = Vector2( 0, -39.9696 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Replenishment" type="AudioStreamPlayer" parent="Quantity"]
+stream = ExtResource( 5 )
+volume_db = -12.0
+pitch_scale = 2.0
+bus = "Effects"
+
+[node name="Refill" type="AudioStreamPlayer" parent="Quantity"]
+stream = ExtResource( 8 )
+volume_db = -6.0
+pitch_scale = 0.1
+bus = "Effects"
+
+[node name="PlayerEngineHand" type="Sprite" parent="."]
+visible = false
+position = Vector2( -1, 15 )
+texture = ExtResource( 4 )
+offset = Vector2( 1, -15 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Flame" type="Node2D" parent="."]
+position = Vector2( -1.5, 43 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Sprite" type="AnimatedSprite" parent="Flame"]
+visible = false
+position = Vector2( 1.15094, 14.5183 )
+scale = Vector2( 1, 1.4 )
+frames = SubResource( 2 )
+frame = 3
+playing = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Hisses" type="AudioStreamPlayer" parent="Flame"]
+stream = ExtResource( 7 )
+volume_db = -14.0
+pitch_scale = 1.5
+bus = "Effects"

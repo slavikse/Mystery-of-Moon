@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/components/cosmos/textures/moon.png" type="Texture" id=1]
+
+[node name="Moon" type="Polygon2D"]
+color = Color( 0, 0, 0, 0 )
+offset = Vector2( -384, -280 )
+polygon = PoolVector2Array( 192, -16, 88, 48, 40, 192, 32, 344, 96, 520, 216, 616, 344, 640, 520, 616, 656, 544, 720, 424, 752, 296, 744, 168, 704, 80, 624, 24, 504, -24, 336, -32 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Moon" type="Sprite" parent="."]
+scale = Vector2( 10, 10 )
+texture = ExtResource( 1 )
+offset = Vector2( 0.399998, 1.90735e-06 )
+__meta__ = {
+"_edit_lock_": true
+}

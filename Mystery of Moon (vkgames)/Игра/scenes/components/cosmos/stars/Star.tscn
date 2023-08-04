@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/components/cosmos/stars/textures/star_0.png" type="Texture" id=2]
+[ext_resource path="res://scenes/components/cosmos/stars/textures/star_1.png" type="Texture" id=3]
+
+[node name="Star" type="Node2D"]
+
+[node name="Star1" type="Polygon2D" parent="."]
+color = Color( 0, 0, 0, 0 )
+offset = Vector2( 0, -16 )
+polygon = PoolVector2Array( 0, 24, 8, 32, 8, 40, 16, 24 )
+
+[node name="Star0" type="Sprite" parent="Star1"]
+texture = ExtResource( 2 )
+
+[node name="Star2" type="Polygon2D" parent="."]
+position = Vector2( 48, 16 )
+rotation = 0.785398
+color = Color( 0, 0, 0, 0 )
+offset = Vector2( 0, -16 )
+polygon = PoolVector2Array( 0, 24, 8, 32, 8, 40, 16, 24 )
+
+[node name="Star1" type="Sprite" parent="Star2"]
+texture = ExtResource( 3 )

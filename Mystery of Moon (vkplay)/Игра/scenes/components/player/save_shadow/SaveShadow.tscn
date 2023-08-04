@@ -1,0 +1,30 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scenes/components/player/save_shadow/textures/2.png" type="Texture" id=4]
+[ext_resource path="res://scenes/components/player/save_shadow/textures/4.png" type="Texture" id=5]
+[ext_resource path="res://scenes/components/player/save_shadow/textures/3.png" type="Texture" id=6]
+[ext_resource path="res://scenes/components/player/save_shadow/textures/1.png" type="Texture" id=7]
+[ext_resource path="res://scenes/components/player/save_shadow/textures/6.png" type="Texture" id=8]
+[ext_resource path="res://scenes/components/player/save_shadow/textures/5.png" type="Texture" id=9]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 8 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 6.0
+} ]
+
+[node name="SaveShadow" type="Node2D"]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Hologram" type="AnimatedSprite" parent="."]
+modulate = Color( 0.627451, 0.627451, 0.627451, 0.627451 )
+rotation = 0.10472
+frames = SubResource( 1 )
+playing = true
+__meta__ = {
+"_edit_lock_": true
+}

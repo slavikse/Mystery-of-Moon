@@ -1,0 +1,481 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://scenes/components/ground/Ground.gd" type="Script" id=1]
+[ext_resource path="res://scenes/components/ground/SandDeath.gd" type="Script" id=2]
+[ext_resource path="res://scenes/components/ground/textures/crater_top_1.png" type="Texture" id=3]
+[ext_resource path="res://scenes/components/ground/textures/crater_top_2.png" type="Texture" id=4]
+[ext_resource path="res://scenes/components/ground/textures/crater_top_0.png" type="Texture" id=5]
+[ext_resource path="res://scenes/components/ground/textures/crater_2.png" type="Texture" id=6]
+[ext_resource path="res://scenes/components/ground/textures/crater_1.png" type="Texture" id=7]
+[ext_resource path="res://scenes/components/ground/textures/crater_3.png" type="Texture" id=12]
+[ext_resource path="res://scenes/components/ground/textures/crater_top_3.png" type="Texture" id=13]
+
+[node name="Ground" type="Area2D"]
+position = Vector2( 0, 1024 )
+z_index = 2
+z_as_relative = false
+collision_layer = 16
+collision_mask = 33685504
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_editor_description_": "Обновив ландшафт - не забудь скопировать в TempoArea коллизию и поднять на  4 квадратика!
+"
+}
+
+[node name="Collision" type="CollisionPolygon2D" parent="."]
+visible = false
+position = Vector2( -40, -16 )
+z_index = 4
+polygon = PoolVector2Array( 40, 25, 39, 146, 18641, 175, 18641, 102, 17248, 117, 16520, 79, 15827, 104, 13941, 69, 11746, 100, 11324, 35, 10627, 68, 9821, 26, 9050, 90, 7334, 101, 6878, 61, 6209, 59, 5739, 19, 4568, 21, 4037, -46, 3192, -62, 2422, 35, 1500, 11 )
+__meta__ = {
+"_edit_lock_": true,
+"_editor_description_": "Нельзя делать острые углы для подъёмов."
+}
+
+[node name="CratersCenter" type="Node2D" parent="."]
+z_index = 2
+z_as_relative = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CratersCenterGroup01" type="Node2D" parent="CratersCenter"]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Crater01" type="Sprite" parent="CratersCenter/CratersCenterGroup01"]
+position = Vector2( 768, 72 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 5 )
+
+[node name="Crater04" type="Sprite" parent="CratersCenter/CratersCenterGroup01"]
+position = Vector2( 2233, 106 )
+scale = Vector2( 5, 5 )
+texture = ExtResource( 4 )
+
+[node name="Crater06" type="Sprite" parent="CratersCenter/CratersCenterGroup01"]
+position = Vector2( 1216, 64 )
+rotation = 3.14159
+scale = Vector2( -3, -3 )
+texture = ExtResource( 3 )
+offset = Vector2( 0, -4 )
+
+[node name="Crater07" type="Sprite" parent="CratersCenter/CratersCenterGroup01"]
+position = Vector2( 7456, 144 )
+rotation = 0.0349066
+scale = Vector2( 3, 3 )
+texture = ExtResource( 3 )
+offset = Vector2( 0, -4 )
+
+[node name="Crater10" type="Sprite" parent="CratersCenter/CratersCenterGroup01"]
+position = Vector2( 16203, 212 )
+scale = Vector2( 6, 6 )
+texture = ExtResource( 3 )
+offset = Vector2( 0, -4 )
+
+[node name="Crater11" type="Sprite" parent="CratersCenter/CratersCenterGroup01"]
+position = Vector2( 9480, 176 )
+rotation = -0.0349066
+scale = Vector2( 6, 6 )
+texture = ExtResource( 3 )
+offset = Vector2( 0, -4 )
+
+[node name="Crater22" type="Sprite" parent="CratersCenter/CratersCenterGroup01"]
+position = Vector2( 304, 240 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 13 )
+offset = Vector2( -11.0017, -41.8864 )
+
+[node name="Crater42" type="Sprite" parent="CratersCenter/CratersCenterGroup01"]
+position = Vector2( 14200, 362 )
+rotation = 0.0174533
+scale = Vector2( 5.06198, 5.06198 )
+texture = ExtResource( 13 )
+offset = Vector2( -11.0017, -41.8864 )
+
+[node name="Crater27" type="Sprite" parent="CratersCenter/CratersCenterGroup01"]
+position = Vector2( 5546, 244 )
+rotation = 0.0349066
+scale = Vector2( 4, 4 )
+texture = ExtResource( 13 )
+offset = Vector2( -11.0017, -41.8864 )
+
+[node name="Crater40" type="Sprite" parent="CratersCenter/CratersCenterGroup01"]
+position = Vector2( 14888, 416 )
+rotation = 0.0174533
+scale = Vector2( 5.68374, 5.68374 )
+texture = ExtResource( 13 )
+offset = Vector2( -11.0017, -41.8864 )
+
+[node name="Crater33" type="Sprite" parent="CratersCenter/CratersCenterGroup01"]
+position = Vector2( 8944, 312 )
+rotation = -0.0174533
+scale = Vector2( 4, 4 )
+texture = ExtResource( 13 )
+offset = Vector2( -11.0017, -41.8864 )
+
+[node name="Crater23" type="Sprite" parent="CratersCenter/CratersCenterGroup01"]
+position = Vector2( 1616, 240 )
+scale = Vector2( -4, 4 )
+texture = ExtResource( 13 )
+offset = Vector2( -11.0017, -41.8864 )
+
+[node name="Crater30" type="Sprite" parent="CratersCenter/CratersCenterGroup01"]
+position = Vector2( 6960, 296 )
+rotation = 0.0698132
+scale = Vector2( -4, 4 )
+texture = ExtResource( 13 )
+offset = Vector2( -11.0017, -41.8864 )
+
+[node name="Crater31" type="Sprite" parent="CratersCenter/CratersCenterGroup01"]
+position = Vector2( 7848, 320 )
+rotation = 0.0174533
+scale = Vector2( -4, 4 )
+texture = ExtResource( 13 )
+offset = Vector2( -11.0017, -41.8864 )
+
+[node name="Crater32" type="Sprite" parent="CratersCenter/CratersCenterGroup01"]
+position = Vector2( 8352, 320 )
+rotation = -0.0174533
+scale = Vector2( -4, 4 )
+texture = ExtResource( 13 )
+offset = Vector2( -11.0017, -41.8864 )
+
+[node name="Crater24" type="Sprite" parent="CratersCenter/CratersCenterGroup01"]
+position = Vector2( 2808, 264 )
+rotation = -0.122173
+scale = Vector2( -5, 5 )
+texture = ExtResource( 13 )
+offset = Vector2( -11.0017, -41.8864 )
+
+[node name="Crater43" type="Sprite" parent="CratersCenter/CratersCenterGroup01"]
+position = Vector2( 3438.41, 229.224 )
+rotation = 0.0349066
+scale = Vector2( -6.02809, 5 )
+texture = ExtResource( 13 )
+offset = Vector2( -11.0017, -41.8864 )
+
+[node name="Crater38" type="Sprite" parent="CratersCenter/CratersCenterGroup01"]
+position = Vector2( 12056, 388 )
+rotation = -0.0174533
+scale = Vector2( -5, 5 )
+texture = ExtResource( 13 )
+offset = Vector2( -11.0017, -41.8864 )
+
+[node name="Crater35" type="Sprite" parent="CratersCenter/CratersCenterGroup01"]
+position = Vector2( 10840, 346.274 )
+rotation = -0.0523599
+scale = Vector2( -5, 5 )
+texture = ExtResource( 13 )
+offset = Vector2( -11.0017, -41.8864 )
+
+[node name="Crater29" type="Sprite" parent="CratersCenter/CratersCenterGroup01"]
+position = Vector2( 6504, 256 )
+scale = Vector2( -3.53662, 3.53662 )
+texture = ExtResource( 13 )
+offset = Vector2( -11.0017, -41.8864 )
+
+[node name="Crater26" type="Sprite" parent="CratersCenter/CratersCenterGroup01"]
+position = Vector2( 4880, 296 )
+scale = Vector2( -5, 5 )
+texture = ExtResource( 13 )
+offset = Vector2( -11.0017, -41.8864 )
+
+[node name="Crater41" type="Sprite" parent="CratersCenter/CratersCenterGroup01"]
+position = Vector2( 13456, 360 )
+rotation = -0.0174533
+scale = Vector2( -5, 5 )
+texture = ExtResource( 13 )
+offset = Vector2( -11.0017, -41.8864 )
+
+[node name="Crater39" type="Sprite" parent="CratersCenter/CratersCenterGroup01"]
+position = Vector2( 15449, 385 )
+rotation = 0.0174533
+scale = Vector2( -5, 5 )
+texture = ExtResource( 13 )
+offset = Vector2( -11.0017, -41.8864 )
+
+[node name="Crater46" type="Sprite" parent="CratersCenter/CratersCenterGroup01"]
+position = Vector2( 17480, 320 )
+scale = Vector2( 3.64743, 3.64743 )
+texture = ExtResource( 13 )
+offset = Vector2( -11.0017, -41.8864 )
+
+[node name="Crater47" type="Sprite" parent="CratersCenter/CratersCenterGroup01"]
+position = Vector2( 17943, 320 )
+scale = Vector2( 3.64743, 3.64743 )
+texture = ExtResource( 13 )
+offset = Vector2( -11.0017, -41.8864 )
+
+[node name="Crater48" type="Sprite" parent="CratersCenter/CratersCenterGroup01"]
+position = Vector2( 18408, 320 )
+scale = Vector2( 3.64743, 3.64743 )
+texture = ExtResource( 13 )
+offset = Vector2( -11.0017, -41.8864 )
+
+[node name="Crater45" type="Sprite" parent="CratersCenter/CratersCenterGroup01"]
+position = Vector2( 16832, 392 )
+rotation = 0.0174533
+scale = Vector2( -5, 5 )
+texture = ExtResource( 13 )
+offset = Vector2( -11.0017, -41.8864 )
+
+[node name="Crater36" type="Sprite" parent="CratersCenter/CratersCenterGroup01"]
+position = Vector2( 11432, 346.274 )
+rotation = 0.10472
+scale = Vector2( -5, 5 )
+texture = ExtResource( 13 )
+offset = Vector2( -11.0017, -41.8864 )
+
+[node name="Crater25" type="Sprite" parent="CratersCenter/CratersCenterGroup01"]
+position = Vector2( 4176, 264 )
+rotation = 0.10472
+scale = Vector2( -6, 5 )
+texture = ExtResource( 13 )
+offset = Vector2( -11.0017, -41.8864 )
+
+[node name="Crater37" type="Sprite" parent="CratersCenter/CratersCenterGroup01"]
+position = Vector2( 12742, 376 )
+rotation = -0.0174533
+scale = Vector2( -6, 5 )
+texture = ExtResource( 13 )
+offset = Vector2( -11.0017, -41.8864 )
+
+[node name="Crater34" type="Sprite" parent="CratersCenter/CratersCenterGroup01"]
+position = Vector2( 10160, 344 )
+rotation = 0.0174533
+scale = Vector2( -6, 5 )
+texture = ExtResource( 13 )
+offset = Vector2( -11.0017, -41.8864 )
+
+[node name="Crater28" type="Sprite" parent="CratersCenter/CratersCenterGroup01"]
+position = Vector2( 5984, 248 )
+rotation = 0.0523599
+scale = Vector2( -4.47633, 3.73027 )
+texture = ExtResource( 13 )
+offset = Vector2( -11.0017, -41.8864 )
+
+[node name="Pave" type="Node2D" parent="CratersCenter/CratersCenterGroup01"]
+
+[node name="Crater53" type="Sprite" parent="CratersCenter/CratersCenterGroup01/Pave"]
+position = Vector2( 14457, 847 )
+scale = Vector2( 7.6875, 5.26563 )
+texture = ExtResource( 12 )
+
+[node name="Crater56" type="Sprite" parent="CratersCenter/CratersCenterGroup01/Pave"]
+position = Vector2( 14064.5, 1339.5 )
+scale = Vector2( 10.7578, 5.44532 )
+texture = ExtResource( 12 )
+
+[node name="Crater51" type="Sprite" parent="CratersCenter/CratersCenterGroup01/Pave"]
+position = Vector2( 13430, 840.5 )
+scale = Vector2( 8.78125, 6.13281 )
+texture = ExtResource( 12 )
+
+[node name="Crater54" type="Sprite" parent="CratersCenter/CratersCenterGroup01/Pave"]
+position = Vector2( 12527, 1233 )
+scale = Vector2( 14.0391, 6.21484 )
+texture = ExtResource( 12 )
+
+[node name="Crater55" type="Sprite" parent="CratersCenter/CratersCenterGroup01/Pave"]
+position = Vector2( 15435.5, 834.5 )
+scale = Vector2( 7.94531, 5.46094 )
+texture = ExtResource( 12 )
+
+[node name="Crater59" type="Sprite" parent="CratersCenter/CratersCenterGroup01/Pave"]
+position = Vector2( 15416.3, 1333.25 )
+scale = Vector2( 11.0117, 5.54297 )
+texture = ExtResource( 12 )
+
+[node name="Crater27" type="Sprite" parent="CratersCenter/CratersCenterGroup01/Pave"]
+position = Vector2( 512, 576 )
+scale = Vector2( 8, 4 )
+texture = ExtResource( 12 )
+
+[node name="Crater31" type="Sprite" parent="CratersCenter/CratersCenterGroup01/Pave"]
+position = Vector2( 1394, 1072 )
+scale = Vector2( 8, 4 )
+texture = ExtResource( 12 )
+
+[node name="Crater28" type="Sprite" parent="CratersCenter/CratersCenterGroup01/Pave"]
+position = Vector2( 1490, 531.5 )
+scale = Vector2( 7.34375, 4.69531 )
+texture = ExtResource( 12 )
+
+[node name="Crater29" type="Sprite" parent="CratersCenter/CratersCenterGroup01/Pave"]
+position = Vector2( 464, 1120 )
+scale = Vector2( 7.34375, 4.69531 )
+texture = ExtResource( 12 )
+
+[node name="Crater43" type="Sprite" parent="CratersCenter/CratersCenterGroup01/Pave"]
+position = Vector2( 9368, 776 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 12 )
+
+[node name="Crater44" type="Sprite" parent="CratersCenter/CratersCenterGroup01/Pave"]
+position = Vector2( 9493, 1233 )
+scale = Vector2( 12.3828, 5.25 )
+texture = ExtResource( 12 )
+
+[node name="Crater38" type="Sprite" parent="CratersCenter/CratersCenterGroup01/Pave"]
+position = Vector2( 7504, 634 )
+scale = Vector2( 9.3125, 5.09375 )
+texture = ExtResource( 12 )
+
+[node name="Crater42" type="Sprite" parent="CratersCenter/CratersCenterGroup01/Pave"]
+position = Vector2( 7034, 1184 )
+scale = Vector2( 9.3125, 5.09375 )
+texture = ExtResource( 12 )
+
+[node name="Crater39" type="Sprite" parent="CratersCenter/CratersCenterGroup01/Pave"]
+position = Vector2( 8612.13, 696.375 )
+scale = Vector2( 8.00196, 4.69727 )
+texture = ExtResource( 12 )
+
+[node name="Crater41" type="Sprite" parent="CratersCenter/CratersCenterGroup01/Pave"]
+position = Vector2( 5838.44, 1196.69 )
+scale = Vector2( 9.38378, 4.89551 )
+texture = ExtResource( 12 )
+
+[node name="Crater30" type="Sprite" parent="CratersCenter/CratersCenterGroup01/Pave"]
+position = Vector2( 2480, 596 )
+scale = Vector2( 8.12499, 3.6875 )
+texture = ExtResource( 12 )
+
+[node name="Crater33" type="Sprite" parent="CratersCenter/CratersCenterGroup01/Pave"]
+position = Vector2( 2404, 1063 )
+scale = Vector2( 8.12499, 3.6875 )
+texture = ExtResource( 12 )
+
+[node name="Crater50" type="Sprite" parent="CratersCenter/CratersCenterGroup01/Pave"]
+position = Vector2( 10110, 750 )
+scale = Vector2( 8.59374, 5.03125 )
+texture = ExtResource( 12 )
+
+[node name="Crater52" type="Sprite" parent="CratersCenter/CratersCenterGroup01/Pave"]
+position = Vector2( 8172, 1184 )
+scale = Vector2( 8.59374, 5.03125 )
+texture = ExtResource( 12 )
+
+[node name="Crater57" type="Sprite" parent="CratersCenter/CratersCenterGroup01/Pave"]
+position = Vector2( 16444, 830.5 )
+scale = Vector2( 7.8125, 5.52343 )
+texture = ExtResource( 12 )
+
+[node name="Crater60" type="Sprite" parent="CratersCenter/CratersCenterGroup01/Pave"]
+position = Vector2( 16695, 1435.25 )
+scale = Vector2( 10.6719, 5.76172 )
+texture = ExtResource( 12 )
+
+[node name="Crater46" type="Sprite" parent="CratersCenter/CratersCenterGroup01/Pave"]
+position = Vector2( 12372, 809.5 )
+scale = Vector2( 8.5625, 5.14844 )
+texture = ExtResource( 12 )
+
+[node name="Crater47" type="Sprite" parent="CratersCenter/CratersCenterGroup01/Pave"]
+position = Vector2( 10979, 1236.25 )
+scale = Vector2( 11.2344, 5.19922 )
+texture = ExtResource( 12 )
+
+[node name="Crater32" type="Sprite" parent="CratersCenter/CratersCenterGroup01/Pave"]
+position = Vector2( 3539.5, 614 )
+scale = Vector2( 10.1953, 4.59375 )
+texture = ExtResource( 12 )
+
+[node name="Crater34" type="Sprite" parent="CratersCenter/CratersCenterGroup01/Pave"]
+position = Vector2( 5776.08, 628.084 )
+scale = Vector2( 8.31119, 4.9987 )
+texture = ExtResource( 12 )
+
+[node name="Crater35" type="Sprite" parent="CratersCenter/CratersCenterGroup01/Pave"]
+position = Vector2( 4761, 644.01 )
+scale = Vector2( 9.00716, 4.74984 )
+texture = ExtResource( 12 )
+
+[node name="Crater37" type="Sprite" parent="CratersCenter/CratersCenterGroup01/Pave"]
+position = Vector2( 3453, 1184 )
+scale = Vector2( 9.00716, 4.74984 )
+texture = ExtResource( 12 )
+
+[node name="Crater48" type="Sprite" parent="CratersCenter/CratersCenterGroup01/Pave"]
+position = Vector2( 11242, 770.042 )
+scale = Vector2( 9.0931, 5.4681 )
+texture = ExtResource( 12 )
+
+[node name="Crater58" type="Sprite" parent="CratersCenter/CratersCenterGroup01/Pave"]
+position = Vector2( 17316.5, 838.512 )
+scale = Vector2( 6.17951, 5.39825 )
+texture = ExtResource( 12 )
+
+[node name="Crater62" type="Sprite" parent="CratersCenter/CratersCenterGroup01/Pave"]
+position = Vector2( 18156.5, 784.512 )
+scale = Vector2( 6.94511, 6.242 )
+texture = ExtResource( 12 )
+
+[node name="Crater63" type="Sprite" parent="CratersCenter/CratersCenterGroup01/Pave"]
+position = Vector2( 17984.8, 1438.76 )
+scale = Vector2( 9.62877, 6.53506 )
+texture = ExtResource( 12 )
+
+[node name="Crater36" type="Sprite" parent="CratersCenter/CratersCenterGroup01/Pave"]
+position = Vector2( 6624, 632 )
+scale = Vector2( 4.93685, 4.93685 )
+texture = ExtResource( 12 )
+
+[node name="Crater40" type="Sprite" parent="CratersCenter/CratersCenterGroup01/Pave"]
+position = Vector2( 4628, 1184 )
+scale = Vector2( 10.57, 5.09342 )
+texture = ExtResource( 12 )
+
+[node name="Crater1" type="Sprite" parent="CratersCenter/CratersCenterGroup01/Pave"]
+position = Vector2( 4400, 400 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 7 )
+
+[node name="Crater5" type="Sprite" parent="CratersCenter/CratersCenterGroup01/Pave"]
+position = Vector2( 12032.2, 485.135 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 7 )
+
+[node name="Crater4" type="Sprite" parent="CratersCenter/CratersCenterGroup01/Pave"]
+position = Vector2( 17456, 432 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 7 )
+
+[node name="Crater2" type="Sprite" parent="CratersCenter/CratersCenterGroup01/Pave"]
+position = Vector2( 6015, 360 )
+scale = Vector2( 6.625, 6.625 )
+texture = ExtResource( 6 )
+
+[node name="Crater6" type="Sprite" parent="CratersCenter/CratersCenterGroup01/Pave"]
+position = Vector2( 8384, 440 )
+scale = Vector2( 4.4375, 4.4375 )
+texture = ExtResource( 6 )
+
+[node name="Crater7" type="Sprite" parent="CratersCenter/CratersCenterGroup01/Pave"]
+position = Vector2( 14224, 496 )
+scale = Vector2( 4.4375, 4.4375 )
+texture = ExtResource( 6 )
+
+[node name="SandDeath" type="Area2D" parent="."]
+position = Vector2( 0, -64 )
+z_index = 10
+collision_layer = 2048
+collision_mask = 0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Collision" type="CollisionPolygon2D" parent="SandDeath"]
+visible = false
+position = Vector2( 8, -192 )
+polygon = PoolVector2Array( -8, 384, 18593, 384, 18593, 512, -8, 520 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[connection signal="body_entered" from="." to="." method="_on_Ground_body_entered"]

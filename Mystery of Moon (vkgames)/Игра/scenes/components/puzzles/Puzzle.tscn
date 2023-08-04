@@ -1,0 +1,146 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scenes/components/puzzles/Puzzle.gd" type="Script" id=1]
+[ext_resource path="res://scenes/components/puzzles/textures/puzzle_topface.png" type="Texture" id=4]
+[ext_resource path="res://scenes/components/puzzles/audio/collect.wav" type="AudioStream" id=5]
+
+[sub_resource type="Animation" id=11]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.987654, 0.902256 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.666667, 0.666667, 0.666667, 0.666667 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "hide"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 0.5, 2 ),
+"update": 0,
+"values": [ Vector2( 0.987654, 0.902256 ), Vector2( 1.3, 1.3 ), Vector2( 10, 10 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 1 ),
+"transitions": PoolRealArray( 0.5, 0.5, 2 ),
+"update": 0,
+"values": [ 0.0, 30.0, 180.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 0.5, 1 ),
+"update": 0,
+"values": [ Color( 0.666667, 0.666667, 0.666667, 0.666667 ), Color( 0.666667, 0.666667, 0.666667, 0.666667 ), Color( 0.666667, 0.666667, 0.666667, 0 ) ]
+}
+
+[node name="Puzzle" type="Area2D"]
+scale = Vector2( 0.6, 0.6 )
+z_as_relative = false
+collision_layer = 16384
+collision_mask = 0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Текстура устанавливается на уровне!
+Сэйв располагать так, чтобы пазл не был виден после перезапуска игры."
+}
+
+[node name="Collision" type="CollisionPolygon2D" parent="."]
+visible = false
+position = Vector2( -32, -32 )
+scale = Vector2( 2, 2 )
+polygon = PoolVector2Array( -24, -44, -24, 76, 56, 76, 56, -44 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Texture" type="Sprite" parent="."]
+modulate = Color( 0.666667, 0.666667, 0.666667, 0.666667 )
+position = Vector2( 4.76837e-07, -5.6611e-06 )
+scale = Vector2( 0.987654, 0.902256 )
+__meta__ = {
+"_edit_lock_": true,
+"_editor_description_": "Текстура устанавливается на уровне!"
+}
+
+[node name="Hide" type="AnimationPlayer" parent="Texture"]
+anims/RESET = SubResource( 11 )
+anims/hide = SubResource( 12 )
+
+[node name="PuzzleTopface" type="Sprite" parent="Texture"]
+position = Vector2( -3.93391e-06, 1.14441e-05 )
+scale = Vector2( 5.0625, 4.15625 )
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="PuzzleTopface2" type="Sprite" parent="Texture"]
+modulate = Color( 0, 0.858824, 1, 1 )
+position = Vector2( -4.10586e-06, 16.625 )
+rotation = 3.14159
+scale = Vector2( 5.0625, 4.15625 )
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Collected" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
+pitch_scale = 0.4
+bus = "Effects"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[connection signal="animation_finished" from="Texture/Hide" to="." method="_on_Hide_animation_finished"]

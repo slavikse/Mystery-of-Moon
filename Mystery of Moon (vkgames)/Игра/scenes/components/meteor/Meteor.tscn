@@ -1,0 +1,282 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://scenes/components/meteor/textures/meteor.png" type="Texture" id=1]
+[ext_resource path="res://scenes/components/meteor/Meteor.gd" type="Script" id=2]
+[ext_resource path="res://scenes/components/crater/lifting_beam/LiftingBeam.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/components/meteor/MeteorLaunch.gd" type="Script" id=4]
+[ext_resource path="res://scenes/components/puzzles/Puzzle.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/components/meteor/MeteorContainer.gd" type="Script" id=7]
+[ext_resource path="res://scenes/components/puzzles/images/image_part_3.png" type="Texture" id=8]
+[ext_resource path="res://scenes/components/meteor/audio/rock-destroy.wav" type="AudioStream" id=9]
+[ext_resource path="res://scenes/components/meteor/audio/monotonous_noise.ogg" type="AudioStream" id=10]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "fall"
+length = 12.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 12 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -2664, 2360 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=31]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Meteor/PuzzleContainer/Puzzle:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 48.0002 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Meteor/PuzzleContainer/Puzzle:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.3, 0.3 ) ]
+}
+
+[sub_resource type="Animation" id=32]
+resource_name = "top"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Meteor/PuzzleContainer/Puzzle:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.1 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 48.0002 ), Vector2( 0, -80 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Meteor/PuzzleContainer/Puzzle:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 0.9, 1.2 ),
+"transitions": PoolRealArray( 0.5, 0.5, 2, 0.5, 0.5, 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 0.3, 0.3 ), Vector2( -0.3, 0.3 ), Vector2( 0.3, 0.3 ), Vector2( -0.3, 0.3 ), Vector2( 0.3, 0.3 ), Vector2( -0.3, 0.3 ), Vector2( 0.3, 0.3 ) ]
+}
+
+[sub_resource type="Curve" id=33]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -2.55682, 0.0, 0, 0 ]
+
+[node name="MeteorContainer" type="Node2D"]
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_group_": true,
+"_editor_description_": "Приземлять на ровную поверхность.
+Внутри может находится только 1 пазл и его номер 3.
+"
+}
+
+[node name="Meteor" type="Area2D" parent="."]
+collision_layer = 1024
+collision_mask = 139280
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="VisibilityNotifier" type="VisibilityNotifier2D" parent="Meteor"]
+visible = false
+rect = Rect2( 100, -100, -200, 200 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Collision" type="CollisionPolygon2D" parent="Meteor"]
+visible = false
+z_index = 1
+polygon = PoolVector2Array( 22, 13, 24, 0, 19, -7, 10, -17, -3, -22, -19, -12, -25, -4, -22, 5, -12, 8, 7, 21, 13, 20 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Texture" type="Sprite" parent="Meteor"]
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="FallPath" type="Polygon2D" parent="Meteor"]
+color = Color( 0.701961, 0.407843, 0.0823529, 0.196078 )
+polygon = PoolVector2Array( -8, -8, -2008, 1792, -1992, 1808, 8, 8 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BottomLine" type="Polygon2D" parent="Meteor/FallPath"]
+color = Color( 0.701961, 0.407843, 0.0823529, 0.196078 )
+polygon = PoolVector2Array( 160, 320, 160, 344, -152, 344, -152, 320 )
+__meta__ = {
+"_edit_lock_": true,
+"_editor_description_": "Линия кратера должна быть выше, чем линия космоса.
+"
+}
+
+[node name="Fall" type="AnimationPlayer" parent="Meteor"]
+anims/RESET = SubResource( 1 )
+anims/fall = SubResource( 2 )
+
+[node name="DelayFalled" type="Timer" parent="Meteor/Fall"]
+wait_time = 0.1
+one_shot = true
+
+[node name="PuzzleContainer" type="Node2D" parent="Meteor"]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Puzzle" parent="Meteor/PuzzleContainer" instance=ExtResource( 6 )]
+position = Vector2( 0, 48.0002 )
+scale = Vector2( 0.3, 0.3 )
+z_index = 1
+__meta__ = {
+"_editor_description_": "Сэйв располагать так, чтобы пазл не был виден после рестарта.
+Интересные пазлы располагать: обычный, интересный, обычный, обычный, интересный и тд.
+Для усложнения получения пазла: рядом с пазлом размещать от 1 до 3х метеоров."
+}
+number = 3
+_texture = ExtResource( 8 )
+
+[node name="Lift" type="AnimationPlayer" parent="Meteor/PuzzleContainer/Puzzle"]
+root_node = NodePath("../../../..")
+anims/RESET = SubResource( 31 )
+anims/top = SubResource( 32 )
+
+[node name="LiftingBeam" parent="Meteor" instance=ExtResource( 3 )]
+position = Vector2( -32, -1038 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_editor_description_": "Будет только единстенный кратер, который не поднимает, а спускает вниз."
+}
+
+[node name="Destroy" type="CPUParticles2D" parent="Meteor"]
+z_index = 1
+emitting = false
+amount = 6
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.6
+local_coords = false
+texture = ExtResource( 1 )
+emission_shape = 1
+emission_sphere_radius = 30.0
+direction = Vector2( 0, 1 )
+spread = 10.0
+gravity = Vector2( 0, 400 )
+radial_accel = 400.0
+scale_amount = 1.2
+scale_amount_random = 0.1
+scale_amount_curve = SubResource( 33 )
+color = Color( 0.529412, 0.529412, 0.529412, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Flight" type="AudioStreamPlayer2D" parent="Meteor"]
+stream = ExtResource( 10 )
+volume_db = 6.0
+max_distance = 3000.0
+bus = "Effects"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Destroyed" type="AudioStreamPlayer2D" parent="Meteor"]
+stream = ExtResource( 9 )
+volume_db = 4.0
+pitch_scale = 0.8
+max_distance = 3000.0
+bus = "Effects"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="MeteorLaunch" type="Area2D" parent="."]
+collision_layer = 4096
+collision_mask = 0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Collision" type="CollisionPolygon2D" parent="MeteorLaunch"]
+visible = false
+position = Vector2( -704, 0 )
+polygon = PoolVector2Array( -1280, 1800, -1280, 0, -1312, 0, -1312, 1800 )
+__meta__ = {
+"_edit_lock_": true,
+"_editor_description_": "Вызов падения метеора из космоса.
+"
+}
+
+[connection signal="area_entered" from="Meteor" to="Meteor" method="_on_Meteor_area_entered"]
+[connection signal="body_entered" from="Meteor" to="Meteor" method="_on_Meteor_body_entered"]
+[connection signal="screen_entered" from="Meteor/VisibilityNotifier" to="Meteor" method="_on_VisibilityNotifier_screen_entered"]
+[connection signal="screen_exited" from="Meteor/VisibilityNotifier" to="Meteor" method="_on_VisibilityNotifier_screen_exited"]
+[connection signal="timeout" from="Meteor/Fall/DelayFalled" to="Meteor" method="_on_DelayFalled_timeout"]

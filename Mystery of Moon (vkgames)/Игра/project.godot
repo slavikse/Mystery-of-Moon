@@ -1,0 +1,454 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Area2D",
+"class": "Alien",
+"language": "GDScript",
+"path": "res://scenes/components/alien/Alien.gd"
+}, {
+"base": "Area2D",
+"class": "AlienBody",
+"language": "GDScript",
+"path": "res://scenes/components/alien/AlienBody.gd"
+}, {
+"base": "Area2D",
+"class": "AlienCloak",
+"language": "GDScript",
+"path": "res://scenes/components/alien/AlienCloak.gd"
+}, {
+"base": "Area2D",
+"class": "AlienMob",
+"language": "GDScript",
+"path": "res://scenes/components/alien/AlienMob.gd"
+}, {
+"base": "Area2D",
+"class": "AlienTentacles",
+"language": "GDScript",
+"path": "res://scenes/components/alien/AlienTentacles.gd"
+}, {
+"base": "Area2D",
+"class": "Altar",
+"language": "GDScript",
+"path": "res://scenes/components/altar/Altar.gd"
+}, {
+"base": "Node2D",
+"class": "AltarContainer",
+"language": "GDScript",
+"path": "res://scenes/components/altar/AltarContainer.gd"
+}, {
+"base": "Area2D",
+"class": "AltarSphere",
+"language": "GDScript",
+"path": "res://scenes/components/altar/AltarSphere.gd"
+}, {
+"base": "Area2D",
+"class": "Boost",
+"language": "GDScript",
+"path": "res://scenes/components/boost/Boost.gd"
+}, {
+"base": "RigidBody2D",
+"class": "Bubble",
+"language": "GDScript",
+"path": "res://scenes/components/alien/Bubble.gd"
+}, {
+"base": "Node2D",
+"class": "BubbleParticles",
+"language": "GDScript",
+"path": "res://scenes/components/crater/lifting_beam/BubbleParticles.gd"
+}, {
+"base": "CanvasLayer",
+"class": "ControlManager",
+"language": "GDScript",
+"path": "res://scenes/components/player/control_manager/ControlManager.gd"
+}, {
+"base": "Area2D",
+"class": "Cosmos",
+"language": "GDScript",
+"path": "res://scenes/components/cosmos/Cosmos.gd"
+}, {
+"base": "Area2D",
+"class": "CosmosBufferZone",
+"language": "GDScript",
+"path": "res://scenes/components/cosmos/CosmosBufferZone.gd"
+}, {
+"base": "Area2D",
+"class": "CraterDeath",
+"language": "GDScript",
+"path": "res://scenes/components/crater/lifting_beam/CraterDeath.gd"
+}, {
+"base": "Area2D",
+"class": "CraterDeath2",
+"language": "GDScript",
+"path": "res://scenes/components/ground/SandDeath2.gd"
+}, {
+"base": "CanvasLayer",
+"class": "EndCredits",
+"language": "GDScript",
+"path": "res://scenes/components/final/end_credits/EndCredits.gd"
+}, {
+"base": "Area2D",
+"class": "EnergyShield",
+"language": "GDScript",
+"path": "res://scenes/components/player/energy_shield/EnergyShield.gd"
+}, {
+"base": "Area2D",
+"class": "Final",
+"language": "GDScript",
+"path": "res://scenes/components/final/Final.gd"
+}, {
+"base": "Polygon2D",
+"class": "Fuel",
+"language": "GDScript",
+"path": "res://scenes/components/player/fuel/Fuel.gd"
+}, {
+"base": "Node2D",
+"class": "FuelCharger",
+"language": "GDScript",
+"path": "res://scenes/components/boost/Fuel.gd"
+}, {
+"base": "Area2D",
+"class": "Ground",
+"language": "GDScript",
+"path": "res://scenes/components/ground/Ground.gd"
+}, {
+"base": "Node2D",
+"class": "HelloLuna",
+"language": "GDScript",
+"path": "res://scenes/components/hello_luna/HelloLuna.gd"
+}, {
+"base": "Node2D",
+"class": "LaserShot",
+"language": "GDScript",
+"path": "res://scenes/components/player/laser_shot/LaserShot.gd"
+}, {
+"base": "Area2D",
+"class": "LaserShotRay",
+"language": "GDScript",
+"path": "res://scenes/components/player/laser_shot/LaserShotRay.gd"
+}, {
+"base": "Node2D",
+"class": "Level",
+"language": "GDScript",
+"path": "res://scenes/levels/Level.gd"
+}, {
+"base": "Area2D",
+"class": "LiftingBeam",
+"language": "GDScript",
+"path": "res://scenes/components/crater/lifting_beam/LiftingBeam.gd"
+}, {
+"base": "CanvasLayer",
+"class": "Menu",
+"language": "GDScript",
+"path": "res://scenes/components/player/menu/Menu.gd"
+}, {
+"base": "Area2D",
+"class": "Meteor",
+"language": "GDScript",
+"path": "res://scenes/components/meteor/Meteor.gd"
+}, {
+"base": "Area2D",
+"class": "MeteorInCosmos",
+"language": "GDScript",
+"path": "res://scenes/components/meteor/MeteorInCosmos.gd"
+}, {
+"base": "Area2D",
+"class": "MeteorLaunch",
+"language": "GDScript",
+"path": "res://scenes/components/meteor/MeteorLaunch.gd"
+}, {
+"base": "AnimatedSprite",
+"class": "MouseClick",
+"language": "GDScript",
+"path": "res://scenes/components/player/control/MouseClick.gd"
+}, {
+"base": "Node2D",
+"class": "Narration",
+"language": "GDScript",
+"path": "res://scenes/components/puzzles/Narration.gd"
+}, {
+"base": "Area2D",
+"class": "Player",
+"language": "GDScript",
+"path": "res://scenes/components/player/Player.gd"
+}, {
+"base": "Area2D",
+"class": "Puzzle",
+"language": "GDScript",
+"path": "res://scenes/components/puzzles/Puzzle.gd"
+}, {
+"base": "Node2D",
+"class": "PuzzleMenu",
+"language": "GDScript",
+"path": "res://scenes/components/puzzles/PuzzleMenu.gd"
+}, {
+"base": "Node2D",
+"class": "PuzzlesMenu",
+"language": "GDScript",
+"path": "res://scenes/components/puzzles/PuzzlesMenu.gd"
+}, {
+"base": "Area2D",
+"class": "SandDeath",
+"language": "GDScript",
+"path": "res://scenes/components/ground/SandDeath.gd"
+}, {
+"base": "Area2D",
+"class": "SavePoint",
+"language": "GDScript",
+"path": "res://scenes/components/save_point/SavePoint.gd"
+}, {
+"base": "RigidBody2D",
+"class": "Scrap",
+"language": "GDScript",
+"path": "res://scenes/components/player/scraps/scrap/Scrap.gd"
+}, {
+"base": "Node2D",
+"class": "Scraps",
+"language": "GDScript",
+"path": "res://scenes/components/player/scraps/Scraps.gd"
+}, {
+"base": "Area2D",
+"class": "TempoArea",
+"language": "GDScript",
+"path": "res://scenes/components/ground/TempoArea.gd"
+}, {
+"base": "Area2D",
+"class": "TentacleHook",
+"language": "GDScript",
+"path": "res://scenes/components/alien/TentacleHook.gd"
+} ]
+_global_script_class_icons={
+"Alien": "",
+"AlienBody": "",
+"AlienCloak": "",
+"AlienMob": "",
+"AlienTentacles": "",
+"Altar": "",
+"AltarContainer": "",
+"AltarSphere": "",
+"Boost": "",
+"Bubble": "",
+"BubbleParticles": "",
+"ControlManager": "",
+"Cosmos": "",
+"CosmosBufferZone": "",
+"CraterDeath": "",
+"CraterDeath2": "",
+"EndCredits": "",
+"EnergyShield": "",
+"Final": "",
+"Fuel": "",
+"FuelCharger": "",
+"Ground": "",
+"HelloLuna": "",
+"LaserShot": "",
+"LaserShotRay": "",
+"Level": "",
+"LiftingBeam": "",
+"Menu": "",
+"Meteor": "",
+"MeteorInCosmos": "",
+"MeteorLaunch": "",
+"MouseClick": "",
+"Narration": "",
+"Player": "",
+"Puzzle": "",
+"PuzzleMenu": "",
+"PuzzlesMenu": "",
+"SandDeath": "",
+"SavePoint": "",
+"Scrap": "",
+"Scraps": "",
+"TempoArea": "",
+"TentacleHook": ""
+}
+
+[application]
+
+config/name="Mystery of Moon"
+config/description="Вы отправляетесь на агрессивную поверхность Луны, чтобы отыскать артефакты и вернуть их на родную планету, и тут вы понимаете, что Вас уже ждут..."
+run/main_scene="res://scenes/levels/Level.tscn"
+boot_splash/image="res://assets/logo.png"
+boot_splash/fullsize=false
+boot_splash/use_filter=false
+boot_splash/bg_color=Color( 0, 0, 0, 1 )
+config/icon="res://assets/icon_46x46.png"
+
+[autoload]
+
+GC="*res://scenes/global/GC.tscn"
+
+[debug]
+
+settings/crash_handler/message="Пожалуйста, укажите это при сообщении об ошибке на support@pixsynt.ru"
+settings/fps/force_fps=60
+gdscript/completion/autocomplete_setters_and_getters=true
+gdscript/warnings/unused_class_variable=true
+gdscript/warnings/unsafe_property_access=true
+gdscript/warnings/unsafe_method_access=true
+gdscript/warnings/unsafe_cast=true
+gdscript/warnings/unsafe_call_argument=true
+
+[display]
+
+window/size/width=1920
+window/size/height=1080
+window/size/resizable=false
+mouse_cursor/custom_image="res://assets/cursor.png"
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
+
+[editor]
+
+scene_naming=1
+
+[importer_defaults]
+
+ogg_vorbis={
+"loop": true,
+"loop_offset": 0
+}
+texture={
+"compress/bptc_ldr": 0,
+"compress/hdr_mode": 0,
+"compress/lossy_quality": 0.7,
+"compress/mode": 0,
+"compress/normal_map": 0,
+"detect_3d": false,
+"flags/anisotropic": false,
+"flags/filter": false,
+"flags/mipmaps": false,
+"flags/repeat": 0,
+"flags/srgb": 2,
+"process/HDR_as_SRGB": false,
+"process/fix_alpha_border": true,
+"process/invert_color": false,
+"process/normal_map_invert_y": false,
+"process/premult_alpha": false,
+"size_limit": 0,
+"stream": false,
+"svg/scale": 1.0
+}
+
+[input]
+
+ui_accept={
+"deadzone": 0.5,
+"events": [  ]
+}
+ui_select={
+"deadzone": 0.5,
+"events": [  ]
+}
+ui_cancel={
+"deadzone": 0.5,
+"events": [  ]
+}
+ui_focus_next={
+"deadzone": 0.5,
+"events": [  ]
+}
+ui_focus_prev={
+"deadzone": 0.5,
+"events": [  ]
+}
+ui_left={
+"deadzone": 0.5,
+"events": [  ]
+}
+ui_right={
+"deadzone": 0.5,
+"events": [  ]
+}
+ui_up={
+"deadzone": 0.5,
+"events": [  ]
+}
+ui_down={
+"deadzone": 0.5,
+"events": [  ]
+}
+ui_page_up={
+"deadzone": 0.5,
+"events": [  ]
+}
+ui_page_down={
+"deadzone": 0.5,
+"events": [  ]
+}
+ui_home={
+"deadzone": 0.5,
+"events": [  ]
+}
+ui_end={
+"deadzone": 0.5,
+"events": [  ]
+}
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Boost"
+2d_physics/layer_3="LiftingBeam"
+2d_physics/layer_4="EnergyShield"
+2d_physics/layer_5="Ground"
+2d_physics/layer_6="Cosmos"
+2d_physics/layer_7="SavePoint"
+2d_physics/layer_8="AlienTentacles"
+2d_physics/layer_9="TempoArea"
+2d_physics/layer_10="CosmosBufferZone"
+2d_physics/layer_11="Meteor"
+2d_physics/layer_12="SandDeath"
+2d_physics/layer_13="MeteorLaunch"
+2d_physics/layer_14="MeteorInCosmos"
+2d_physics/layer_15="Puzzle"
+2d_physics/layer_16="Final"
+2d_physics/layer_17="Alien"
+2d_physics/layer_18="Bubble"
+2d_physics/layer_19="AlienLurk"
+2d_physics/layer_20="AlienRight"
+2d_physics/layer_21="AlienLeft"
+2d_physics/layer_22="LaserShotRay"
+2d_physics/layer_23="Altar"
+2d_physics/layer_24="AlienBody"
+2d_physics/layer_25="CraterDeath"
+2d_physics/layer_26="Scrap"
+2d_physics/layer_27="TentacleIncrease"
+2d_physics/layer_28="AlienMob"
+2d_physics/layer_29="AltarSphere"
+2d_physics/layer_30="TentacleHook"
+2d_physics/layer_31="CallingShip"
+2d_physics/layer_32="CraterDeath2"
+2d_physics/layer_33=""
+
+[locale]
+
+fallback="ru_RU"
+locale_filter=[ 1, [ "en", "ru" ] ]
+
+[rendering]
+
+quality/driver/driver_name="GLES2"
+quality/intended_usage/framebuffer_allocation=0
+quality/intended_usage/framebuffer_allocation.mobile=0
+vram_compression/import_etc=true
+vram_compression/import_etc2=false
+quality/shadows/filter_mode=0
+quality/reflections/texture_array_reflections=false
+quality/reflections/high_quality_ggx=false
+quality/filters/anisotropic_filter_level=1
+2d/options/ninepatch_mode=0
+environment/default_clear_color=Color( 0.14902, 0.172549, 0.231373, 1 )
+quality/depth/hdr=false
+quality/2d/use_pixel_snap=false

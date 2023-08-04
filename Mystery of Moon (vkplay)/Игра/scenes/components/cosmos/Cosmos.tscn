@@ -1,0 +1,118 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/components/cosmos/Cosmos.gd" type="Script" id=1]
+[ext_resource path="res://scenes/components/cosmos/CosmosBufferZone.gd" type="Script" id=2]
+[ext_resource path="res://scenes/components/cosmos/textures/stars.png" type="Texture" id=4]
+
+[node name="Cosmos" type="Area2D"]
+collision_layer = 32
+collision_mask = 0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Collision" type="CollisionPolygon2D" parent="."]
+visible = false
+position = Vector2( 425.396, -8 )
+scale = Vector2( 1.76302, 1 )
+polygon = PoolVector2Array( -313.891, 8, 1079.17, 8, 1079.17, 200, -313.891, 200 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CosmosBufferZone" type="Area2D" parent="."]
+position = Vector2( 0, 176 )
+collision_layer = 512
+collision_mask = 0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Collision" type="CollisionPolygon2D" parent="CosmosBufferZone"]
+visible = false
+position = Vector2( 0, -16 )
+polygon = PoolVector2Array( -128, 0, -128, 192, 2328, 192, 2328, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Stars" type="Node2D" parent="."]
+position = Vector2( 24, -1508 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="StarsLine1" type="Node2D" parent="Stars"]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Stars1" type="Sprite" parent="Stars/StarsLine1"]
+position = Vector2( 267, 1079 )
+texture = ExtResource( 4 )
+
+[node name="Stars2" type="Sprite" parent="Stars/StarsLine1"]
+position = Vector2( 1072, 1076 )
+texture = ExtResource( 4 )
+
+[node name="Stars3" type="Sprite" parent="Stars/StarsLine1"]
+position = Vector2( 1890, 1076 )
+texture = ExtResource( 4 )
+
+[node name="StarsLine2" type="Node2D" parent="Stars"]
+position = Vector2( 2152, 788 )
+scale = Vector2( -1, 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Stars1" type="Sprite" parent="Stars/StarsLine2"]
+position = Vector2( 267, 1079 )
+texture = ExtResource( 4 )
+
+[node name="Stars2" type="Sprite" parent="Stars/StarsLine2"]
+position = Vector2( 1072, 1076 )
+texture = ExtResource( 4 )
+
+[node name="Stars3" type="Sprite" parent="Stars/StarsLine2"]
+position = Vector2( 1890, 1076 )
+texture = ExtResource( 4 )
+
+[node name="StarsLine3" type="Node2D" parent="Stars"]
+position = Vector2( 0, 1568 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Stars1" type="Sprite" parent="Stars/StarsLine3"]
+position = Vector2( 267, 1079 )
+texture = ExtResource( 4 )
+
+[node name="Stars2" type="Sprite" parent="Stars/StarsLine3"]
+position = Vector2( 1072, 1076 )
+texture = ExtResource( 4 )
+
+[node name="Stars3" type="Sprite" parent="Stars/StarsLine3"]
+position = Vector2( 1890, 1076 )
+texture = ExtResource( 4 )
+
+[node name="StarsLine4" type="Node2D" parent="Stars"]
+position = Vector2( 2136, 2356 )
+scale = Vector2( -1, 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Stars1" type="Sprite" parent="Stars/StarsLine4"]
+position = Vector2( 267, 1079 )
+texture = ExtResource( 4 )
+
+[node name="Stars2" type="Sprite" parent="Stars/StarsLine4"]
+position = Vector2( 1072, 1076 )
+texture = ExtResource( 4 )
+
+[node name="Stars3" type="Sprite" parent="Stars/StarsLine4"]
+position = Vector2( 1890, 1076 )
+texture = ExtResource( 4 )
